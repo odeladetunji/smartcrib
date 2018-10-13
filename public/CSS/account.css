@@ -1,0 +1,214 @@
+* {
+	margin: 0px;
+	padding: 0px;
+    font-family: Geneva;
+    border: border-box;
+}
+
+.row {
+	margin-left: 0px;
+	margin-right: 0px;
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
+.header {
+	padding-top: 8px;
+	padding-bottom: 40px;
+	width: 100%;
+	background-color: #eeeeee;
+	border-bottom: 1px solid black;
+}
+
+.header button {
+	padding: 3px 20px;
+	color: white;
+	border: none;
+	float: right;
+	background-color: black;
+	margin-right: 20px;
+}
+
+.nav ul li {
+    padding: 10px;
+    color: white;
+    background-color: transparent;
+}
+
+.nav ul {
+	cursor: pointer;
+	padding-top: 70px;
+	margin-left: 10px;
+}
+
+.nav {
+	background-color: black;
+    padding-bottom: 515px;
+}
+
+.mainBody {
+   background-color: white;
+   padding-left: 0px;
+   padding-right: 0px;
+}
+
+.widget {
+	background-color: purple;
+	width: 270px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	margin-left: 50px;
+	color: white;
+	margin-bottom: 30px;
+	border-radius: 5px;
+}
+
+.widget:hover {
+	cursor: pointer;
+	background-color: green;
+}
+
+.widget p {
+	text-align: center;
+}
+
+.widgetContainer {
+    margin-top: 60px;
+	flex-wrap: wrap;
+}
+
+#navTitle {
+	color: purple;
+}
+
+#navHome {
+	background-color: green;
+	border-radius: 5px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+#owner {
+	float: right;
+	margin-right: 20px;
+	color: white;
+	border-bottom: 1px solid black;
+}
+
+.propertyForm {
+	width: 90%;
+	margin-left: 5%;
+	background-color: #fafafa;
+	padding-top: 30px;
+}
+
+.property-Document input {
+    padding: 20px;
+    border: 1px solid black;
+    margin-left: 10px;
+}
+
+.property-Document p {
+	padding-left: 20px;
+}
+
+.facilities input {
+	padding: 20px;
+	margin-left: 10px;
+}
+
+.facilities p {
+	padding-left: 20px;
+}
+
+.Space {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	width: 100%;
+	background-color: white;
+}
+
+.bedroom {
+	width: 40%;
+	margin-left: 10px;
+}
+
+.bedroom input {
+	width: 100%;
+	border: 1px solid #eeeeee;
+	padding: 7px;
+	margin-bottom: 5px;
+}
+
+.bedroomQuantity p{
+	margin-left: 10px;
+}
+
+.noofunits {
+	width: 40%;
+	margin-left: 10px;
+}
+
+.noofunits input {
+	width: 100%;
+	border: 1px solid #eeeeee;
+	padding: 7px;
+}
+.units p {
+	margin-left: 10px;
+}
+
+.price input {
+   width: 40%;
+   margin-left: 10px;
+   margin-bottom: 10px;
+   padding: 7px;
+   border: 1px solid #eeeeee;
+}
+
+.price p {
+	margin-top: 10px;
+	margin-left: 10px;
+	padding-bottom: 0px;
+}
+
+#category, #type {
+	width: 250px;
+	padding: 8px;
+	padding-left: 5px;
+	margin-bottom: 5px;
+	margin-left: 10px;
+	border: 1px solid #eeeeee;
+	background-color: white;
+}
+
+.size {
+	width: 100px;
+	margin-left: 10px;
+}
+
+.size input {
+    width: 100%;
+    padding: 7px;
+    border: 1px solid #eeeeee;
+}
+#measure {
+	border: 1px solid #eeeeee;
+	background-color: white;
+	padding: 8px;
+	margin-left: 10px;
+}
+
+.theTitle {
+    text-align: center;
+    border-bottom: 1px solid black;
+    padding-bottom: 5px;
+    width: 90%;
+    margin-left: 5%;
+    color: purple;
+}
+
+.fac {
+	padding-top: 20px;
+}
+
