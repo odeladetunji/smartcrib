@@ -32,7 +32,7 @@
 	  	   	    <div>
 	  	   	    	<p id="owner" style="color: black;"></p>
 	  	   	    </div>
-	  	   	    	<div class="widgetContainer" style="display: flex;">
+	  	   	    	<div class="widgetContainer" style="display: flex;" onclick="showForm()">
 	  	   	    		<div class="widget">
 	  	   	    			<p>List A Property</p>
 	  	   	    		</div>
@@ -48,9 +48,9 @@
 	  	   	    			<p>$000</p>
 	  	   	    		</div>
 	  	   	    	</div>
-	  	   	    	<form action="" class="propertyForm">
+	  	   	    	<form class="propertyForm" encType="multipart/form-data" method="POST" action="{{URL::to('/')}}" style="display: none;">{{ csrf_field() }}
 	  	   	    		<p class="theTitle">Property Category</p>
-	  	   	    		<select name="" id="category">
+	  	   	    		<select name="category" id="category">
 	  	   	    			<option value="For Rent">For Rent</option>
 	  	   	    			<option value="For Sale">For Sale</option>
 	  	   	    			<option value="Short Let">Short Let</option>
@@ -59,7 +59,7 @@
 	  	   	    			<option value="Private Development Scheme">Private Development Scheme</option>
 	  	   	    		</select><br>
                         <p class="theTitle">Type of Property</p>
-	  	   	    		<select name="" id="type">
+	  	   	    		<select name="" id="type" name="title">
 	  	   	    			<option value="Land">Land</option>
 	  	   	    			<option value="Detached House"> Detached House </option>
 	  	   	    			<option value="Semi-Detached House">  Semi-Detached House</option>
@@ -76,10 +76,10 @@
 	  	   	    		<p class="theTitle">Size of Property</p>
 	  	   	    		<div class="size-of-property" style="display: flex;">
 	  	   	    			<div class="size">
-	  	   	    				<input type="number" max="100" min="1" placeholder="0">
+	  	   	    				<input type="number" max="100" min="1" placeholder="0" name="size">
 	  	   	    			</div>
 	  	   	    			<div>
-	  	   	    				<select name="" id="measure">
+	  	   	    				<select name="" id="measure" name="measure">
 	  	   	    		            <option value="Hectare">Hectare</option>
 	  	   	    		            <option value="Arce">Arce</option>
 	  	   	    		            <option value="Plot">Plot</option>
@@ -93,7 +93,7 @@
                         <p class="theTitle fac">Type of Property Title Document</p>
                         <div class="property-Document" style="display: flex;">
                         	  <div>
-                        	  	<input type="checkbox" value="Federal C of O">
+                        	  	<input type="checkbox" value="Federal C of O" name="Federal C of O">
                         	  </div>
                         	  <div>
                         	  	<p>Federal C of O</p>
@@ -101,7 +101,7 @@
                         </div>
                         <div class="property-Document" style="display: flex;">
                         	<div>
-                        		<input type="checkbox" value="State C of O">
+                        		<input type="checkbox" value="State C of O" name="State C of O">
                         	</div>
                         	<div>
                         		<p>State C of O</p>
@@ -109,7 +109,7 @@
                         </div>
                         <div class="property-Document" style="display: flex;">
                         	<div>
-                        		<input type="checkbox" value="Gazette">
+                        		<input type="checkbox" value="Gazette" name="Gazette">
                         	</div>
                         	<div>
                         		<p>Gazette</p>
@@ -117,7 +117,7 @@
                         </div>
                         <div class="property-Document" style="display: flex;">
                         	<div>
-                        		<input type="checkbox" value="Survey Plan">
+                        		<input type="checkbox" value="Survey Plan" name="Survey Plan">
                         	</div>
                         	<div>
                         		<p>Survey Plan</p>
@@ -125,7 +125,7 @@
                         </div>
                         <div class="property-Document" style="display: flex;">
                         	<div>
-                        		<input type="checkbox" value="Family Receipt">
+                        		<input type="checkbox" value="Family Receipt" name="Family Receipt">
                         	</div>
                         	<div>
                         		<p>Family Receipt</p>
@@ -133,7 +133,7 @@
                         </div>
                         <div class="property-Document" style="display: flex;">
                         	<div>
-                        		<input type="checkbox" value="Registered Survey Plan">
+                        		<input type="checkbox" value="Registered Survey Plan" name="Registered Survey Plan">
                         	</div>
                         	<div>
                         		<p>Registered Survey Plan</p>
@@ -141,7 +141,7 @@
                         </div>
                         <div class="property-Document" style="display: flex;">
                         	<div>
-                        		<input type="checkbox" value="Registered Deed of Conveyance">
+                        		<input type="checkbox" value="Registered Deed of Conveyance" name="Registered Deed of Conveyance">
                         	</div>
                         	<div>
                         		<p>Registered Deed of Conveyance</p>
@@ -149,7 +149,7 @@
                         </div>
                         <div class="property-Document" style="display: flex;">
                         	<div>
-                        		<input type="checkbox" value="Registered Deed of Assignment">
+                        		<input type="checkbox" value="Registered Deed of Assignment" name="Registered Deed of Assignment">
                         	</div>
                         	<div>
                         		<p>Registered Deed of Assignment</p>
@@ -157,7 +157,7 @@
                         </div>
                         <div class="property-Document" style="display: flex;">
                         	<div>
-                        		<input type='checkbox' value="Deed of Assignment">
+                        		<input type='checkbox' value="Deed of Assignment" name="Deed of Assignment">
                         	</div>
                         	<div>
                         		<p>Deed of Assignment</p>
@@ -165,7 +165,7 @@
                         </div>
                         <div class="property-Document" style="display: flex;">
                         	<div>
-                        		<input type='checkbox' value="Deed of Conveyance">
+                        		<input type='checkbox' value="Deed of Conveyance" name="Deed of Conveyance">
                         	</div>
                         	<div>
                         		<p>Deed of Conveyance</p>
@@ -173,7 +173,7 @@
                         </div>
                         <div class="property-Document" style="display: flex;">
                         	<div>
-                        		<input type='checkbox' value="Governors Consent Letter">
+                        		<input type='checkbox' value="Governors Consent Letter" name="Governors Consent Letter">
                         	</div>
                         	<div>
                         		<p>Governors Consent Letter</p>
@@ -181,7 +181,7 @@
                         </div>
                         <div class="property-Document" style="display: flex;">
                         	<div>
-                        		<input type='checkbox' value="Approved Building Plan">
+                        		<input type='checkbox' value="Approved Building Plan" name="Approved Building Plan">
                         	</div>
                         	<div>
                         		<p>Approved Building Plan</p>
@@ -189,7 +189,7 @@
                         </div>
                         <div class="property-Document" style="display: flex;">
                         	<div>
-                        		<input type='checkbox' value="others"> 		
+                        		<input type='checkbox' value="others" name="others"> 		
                         	</div>
                         	<div>
                         		<p>others
@@ -203,7 +203,7 @@
                         <p class="theTitle fac">Facilities that comes with Property</p>
                         <div class="facilities" style="display: flex;">
                         	<div>
-                        		<input type="checkbox" value="Newly Built">
+                        		<input type="checkbox" value="Newly Built" name="Newly Built">
                         	</div>
                         	<div>
                         		<p>Newly Built</p>
@@ -211,7 +211,7 @@
                         </div>
                         <div class="facilities" style="display: flex;">
                         	<div>
-                        		<input type="checkbox" value="New Renovated">
+                        		<input type="checkbox" value="New Renovated" name="New Renovated">
                         	</div>
                         	<div>
                         		<p>New Renovated</p>
@@ -219,7 +219,7 @@
                         </div>
                         <div class="facilities" style="display: flex;">
                         	<div>
-                        		<input type="checkbox" value="POP">
+                        		<input type="checkbox" value="POP" name="POP">
                         	</div>
                         	<div>
                         		<p>POP</p>
@@ -227,7 +227,7 @@
                         </div>
                         <div class="facilities" style="display: flex;">
                         	<div>
-                        		<input type="checkbox" Value="Dilapidated">
+                        		<input type="checkbox" Value="Dilapidated" name="Dilapidated">
                         	</div>
                         	<div>
                         		<p>Dilapidated</p>
@@ -235,7 +235,7 @@
                         </div>
                         <div class="facilities" style="display: flex;">
                         	<div>
-                        		<input type="checkbox" value="Fenced">
+                        		<input type="checkbox" value="Fenced" name="Fenced">
                         	</div>
                         	<div>
                         		<p>Fenced</p>
@@ -243,7 +243,7 @@
                         </div>
                         <div class="facilities" style="display: flex;">
                         	<div>
-                        		<input type="checkbox" value="Well Water">
+                        		<input type="checkbox" value="Well Water" name="Well Water">
                         	</div>
                         	<div>
                         		<p>Well Water</p>
@@ -251,7 +251,7 @@
                         </div>
                         <div class="facilities" style="display: flex;">
                         	<div>
-                        		<input type="checkbox" value="Borehole">
+                        		<input type="checkbox" value="Borehole" name="Borehole">
                         	</div>
                         	<div>
                         		<p>Borehole</p>
@@ -259,7 +259,7 @@
                         </div>
                         <div class="facilities" style="display: flex;">
                         	<div>
-                        		<input type="checkbox" value="Gated Estate">
+                        		<input type="checkbox" value="Gated Estate" name="Gated Estate">
                         	</div>
                         	<div>
                         		<p>Gated Estate</p>
@@ -267,7 +267,7 @@
                         </div>
                         <div class="facilities" style="display: flex;">
                         	<div>
-                        		<input type="checkbox" value="Security">
+                        		<input type="checkbox" value="Security" name="Security">
                         	</div>
                         	<div>
                         		<p>Security</p>
@@ -275,7 +275,7 @@
                         </div>
                         <div class="facilities" style="display: flex;">
                         	<div>
-                        		<input type="checkbox" value="Water Treatment Plant">
+                        		<input type="checkbox" value="Water Treatment Plant" name="Water Treatment Plant">
                         	</div>
                         	<div>
                         		<p>Water Treatment Plant</p>
@@ -283,7 +283,7 @@
                         </div>
                         <div class="facilities" style="display: flex;">
                         	<div>
-                        		<input type="checkbox" value="All Room Ensuite">
+                        		<input type="checkbox" value="All Room Ensuite" name="All Room Ensuite">
                         	</div>
                         	<div>
                         		<p>All Room Ensuite</p>
@@ -291,7 +291,7 @@
                         </div>
                         <div class="facilities" style="display: flex;">
                         	<div>
-                        		<input type="checkbox" value="Ample parking Space">
+                        		<input type="checkbox" value="Ample parking Space" name="Ample parking Space">
                         	</div>
                         	<div>
                         		<p>Ample Parking Space</p>
@@ -299,7 +299,7 @@
                         </div>
                         <div class="facilities" style="display: flex;">
                         	<div>
-                        		<input type="checkbox" value="All others not Listed">
+                        		<input type="checkbox" value="All others not Listed" name="All others not Listed">
                         	</div>
                         	<div>
                         		<p>All others not listed</p>
@@ -312,7 +312,7 @@
                         <p class="theTitle fac">Quantities</p>
 	  	   	    		<div class="bedroomQuantity" style="display: flex;">
 						     <div class="bedroom">
-						     	<input type="number" max="200" min="1" placeholder="0">
+						     	<input type="number" max="200" min="1" placeholder="0" name="bedroom">
 						     </div>
 						     <div>
 						     	<p>Bedroom</p>
@@ -320,7 +320,7 @@
 	  	   	    		</div>
 	  	   	    		<div class="units" style="display: flex;">
 	  	   	    			 <div class="noofunits">
-	  	   	    			 	<input type="number" max="200" min="1" placeholder="0">
+	  	   	    			 	<input type="number" max="200" min="1" placeholder="0" name="units">
 	  	   	    			 </div>
 	  	   	    			 <div>
 	  	   	    			 	<p>Unit</p>
@@ -329,10 +329,10 @@
 
 	  	   	    		<div class="price">
 	  	   	    			<p>Price</p>
-	  	   	    	    	<input type="number" placeholder="$2,000">
+	  	   	    	    	<input type="number" placeholder="$2,000" name="price">
 	  	   	    		</div>
 
-	  	   	    		<select name="" id="">
+	  	   	    		<select name="" id="" name="country">
 	  	   	    			<option value=""></option>
 	  	   	    			<option value=""></option>
 	  	   	    			<option value=""></option>
@@ -411,12 +411,12 @@
 
 
       	    function submitData(param){
-                     const theToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-		        	 const xhttp = new XMLHttpRequest();
+                     var theToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+		        	 var xhttp = new XMLHttpRequest();
 		        	       xhttp.open('POST', '/listP', true);
-		        	       xhttp.onreadystatechange = () => {
+		        	       xhttp.onreadystatechange = function(){
 		        	       	    if (this.readystate == 4 && this.status == 200) {
-		        	       	    	const data = JSON.parse(this.responseText);
+		        	       	    	var data = JSON.parse(this.responseText);
 		        	       	    	      console.log(data);
 		        	       	    	      // use data here!
 		        	       	    }
@@ -433,9 +433,22 @@
             var listP = document.getElementsByClassName('propertyForm')[0];
             listP.onsubmit = function(){
             	 event.preventDefault();
+            	 var listP = document.getElementsByClassName('propertyForm')[0];
                  var formData = new FormData(listP);
                  submitData(formData);
             }
+
+            function showForm(){
+  				var theForm = document.getElementsByClassName('propertyForm')[0];
+  				if (theForm.style.display == 'block') {
+                    theForm.style.display = 'none';
+  				}else{
+  					theForm.style.display = 'block';
+  				}
+            }
+            
+            
+
       </script>
 </body>
 </html>
