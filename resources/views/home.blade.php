@@ -12,7 +12,8 @@
         <script src="/bootstrap/js/bootstrap.min.js" type="text/JavaScript"></script>
         <script src="/js/jquery-3.2.1.min(first).js" type='text/JavaScript'></script>
         <!--CSS---->
-        <link href="/CSS/home.css" rel="stylesheet" type="text/css">
+        <link href="{{ asset('CSS/home.css') }}" rel="stylesheet" type="text/css" >
+        <!--<link href="/CSS/home.css" rel="stylesheet" type="text/css">---->
 </head>
 <body>
 	   <div>

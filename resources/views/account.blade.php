@@ -14,7 +14,8 @@
         <script src="/bootstrap/js/bootstrap.min.js" type="text/JavaScript"></script>
         <script src="/js/jquery-3.2.1.min(first).js" type='text/JavaScript'></script>
         <!--CSS---->
-        <link href="/CSS/account.css" rel="stylesheet" type="text/css">
+        <link href="{{ asset('CSS/account.css') }}" rel="stylesheet" type="text/css" >
+        <!--<link href="/CSS/account.css" rel="stylesheet" type="text/css">---->
 </head>
 <body>
 	  <div class="row">
@@ -32,8 +33,8 @@
 	  	   	    <div>
 	  	   	    	<p id="owner" style="color: black;"></p>
 	  	   	    </div>
-	  	   	    	<div class="widgetContainer" style="display: flex;" onclick="showForm()">
-	  	   	    		<div class="widget">
+	  	   	    	<div class="widgetContainer" style="display: flex;">
+	  	   	    		<div class="widget" onclick="showForm()">
 	  	   	    			<p>List A Property</p>
 	  	   	    		</div>
 	  	   	    		<div class="widget">
@@ -50,7 +51,7 @@
 	  	   	    	</div>
 	  	   	    	<form class="propertyForm" encType="multipart/form-data" method="POST" action="{{URL::to('/')}}" style="display: none;">{{ csrf_field() }}
 	  	   	    		<p class="theTitle">Property Category</p>
-	  	   	    		<select name="category" id="category">
+	  	   	    		<select name="category" id="category" required>
 	  	   	    			<option value="For Rent">For Rent</option>
 	  	   	    			<option value="For Sale">For Sale</option>
 	  	   	    			<option value="Short Let">Short Let</option>
@@ -59,7 +60,7 @@
 	  	   	    			<option value="Private Development Scheme">Private Development Scheme</option>
 	  	   	    		</select><br>
                         <p class="theTitle">Type of Property</p>
-	  	   	    		<select name="" id="type" name="title">
+	  	   	    		<select name="" id="type" name="title" required>
 	  	   	    			<option value="Land">Land</option>
 	  	   	    			<option value="Detached House"> Detached House </option>
 	  	   	    			<option value="Semi-Detached House">  Semi-Detached House</option>
@@ -286,7 +287,7 @@
                         		<input type="checkbox" value="All Room Ensuite" name="All Room Ensuite">
                         	</div>
                         	<div>
-                        		<p>All Room Ensuite</p>
+                        		<p>All Room Ensuit</p>
                         	</div>
                         </div>
                         <div class="facilities" style="display: flex;">
@@ -331,8 +332,11 @@
 	  	   	    			<p>Price</p>
 	  	   	    	    	<input type="number" placeholder="$2,000" name="price">
 	  	   	    		</div>
-
-	  	   	    		<select name="" id="" name="country">
+                              <div class="Space">
+                              
+                              </div>
+                             <p id="localhead">Adress of Property</p>
+	  	   	    	     <select name="" id="" name="state" required>
 	  	   	    			<option value=""></option>
 	  	   	    			<option value=""></option>
 	  	   	    			<option value=""></option>
@@ -370,8 +374,50 @@
 	  	   	    			<option value=""></option>
 	  	   	    			<option value=""></option>
 	  	   	    		</select>
+                              
+                              <select name="" id="" name="local government" required>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                              </select>
+                              <input type="text" placeholder="Street address 1" required class="add">
+                              <input type="text" placeholder="Street address 2" required class="add bot">
 
-	  	   	    		<input type="Local Government of Property">
+                              <textarea name="" id="textarea" placeholder="Short note about property (other info you want clients to know)"></textarea required>
+                              <button>submit</button>
 	  	   	    	</form>
 	  	   </div>
 	  </div>
