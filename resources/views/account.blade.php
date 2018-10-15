@@ -90,7 +90,7 @@
 	  	   	    		</div><br>
 	  	   	    		<div class="Space">
                         	
-                        </div>
+                             </div>
                         <p class="theTitle fac">Type of Property Title Document</p>
                         <div class="property-Document" style="display: flex;">
                         	  <div>
@@ -335,7 +335,7 @@
                               <div class="Space">
                               
                               </div>
-                             <p id="localhead">Adress of Property</p>
+                             <p class="localhead">Adress of Property</p>
 	  	   	    	     <select name="" id="" name="state" required>
 	  	   	    			<option value=""></option>
 	  	   	    			<option value=""></option>
@@ -413,10 +413,20 @@
                                     <option value=""></option>
                                     <option value=""></option>
                               </select>
+                              <input type="telephone" placeholder="Telephone" class="add" required>
+                              <input type="text" placeholder="Owners Name" class="add" required>
                               <input type="text" placeholder="Street address 1" required class="add">
                               <input type="text" placeholder="Street address 2" required class="add bot">
 
                               <textarea name="" id="textarea" placeholder="Short note about property (other info you want clients to know)"></textarea required>
+                              <div class="Space">
+                              
+                              </div>
+                              <p class="localhead">Pictures Of Property</p>
+                              <h6>select cover picture</h6>
+                              <input type="file" required class="pictures"> 
+                              <h6>select other property view</h6>
+                              <input type="file" required multiple class="pictures" id="lastpicture">
                               <button>submit</button>
 	  	   	    	</form>
 	  	   </div>
