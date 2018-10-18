@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	    <meta charset="utf-8">
+	  <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -15,7 +15,6 @@
         <script src="/js/jquery-3.2.1.min(first).js" type='text/JavaScript'></script>
         <!--CSS---->
         <link href="{{ asset('CSS/account.css') }}" rel="stylesheet" type="text/css" >
-        <!--<link href="/CSS/account.css" rel="stylesheet" type="text/css">---->
 </head>
 <body>
 	  <div class="row">
@@ -49,7 +48,8 @@
 	  	   	    			<p>$000</p>
 	  	   	    		</div>
 	  	   	    	</div>
-	  	   	    	<form class="propertyForm" encType="multipart/form-data" method="POST" action="{{URL::to('/')}}" style="display: none;">{{ csrf_field() }}
+	  	   	    	<form name="thePropertyForm" class="propertyForm" encType="multipart/form-data" method="POST" action="{{URL::to('/listP')}}" style="display: none;">{{ csrf_field() }}
+                              <p class="stage">1</p>
 	  	   	    		<p class="theTitle">Property Category</p>
 	  	   	    		<select name="category" id="category" required>
 	  	   	    			<option value="For Rent">For Rent</option>
@@ -89,9 +89,9 @@
 	  	   	    			</div>
 	  	   	    		</div><br>
 	  	   	    		<div class="Space">
-                        	
-                             </div>
-                        <p class="theTitle fac">Type of Property Title Document</p>
+                        	     <p class="stage" style="margin-bottom: 20px;">2</p>
+                             </div><br>
+                        <p class="theTitle fac">Property Title Document (Type)</p>
                         <div class="property-Document" style="display: flex;">
                         	  <div>
                         	  	<input type="checkbox" value="Federal C of O" name="Federal C of O">
@@ -199,7 +199,7 @@
                         </div>
 
                         <div class="Space">
-                        	
+                        	<p class="stage">3</p>
                         </div>
                         <p class="theTitle fac">Facilities that comes with Property</p>
                         <div class="facilities" style="display: flex;">
@@ -308,7 +308,7 @@
                         </div>
 	  	   	    		
                        <div class="Space">
-                       	
+                       	    <p class="stage">4</p>
                        </div>
                         <p class="theTitle fac">Quantities</p>
 	  	   	    		<div class="bedroomQuantity" style="display: flex;">
@@ -333,86 +333,52 @@
 	  	   	    	    	<input type="number" placeholder="$2,000" name="price">
 	  	   	    		</div>
                               <div class="Space">
-                              
+                                      <p class="stage">6</p>
                               </div>
                              <p class="localhead">Adress of Property</p>
-	  	   	    	     <select name="" id="" name="state" required>
-	  	   	    			<option value=""></option>
-	  	   	    			<option value=""></option>
-	  	   	    			<option value=""></option>
-	  	   	    			<option value=""></option>
-	  	   	    			<option value=""></option>
-	  	   	    			<option value=""></option>
-	  	   	    			<option value=""></option>
-	  	   	    			<option value=""></option>
-	  	   	    			<option value=""></option>
-	  	   	    			<option value=""></option>
-	  	   	    			<option value=""></option>
-	  	   	    			<option value=""></option>
-	  	   	    			<option value=""></option>
-	  	   	    			<option value=""></option>
-	  	   	    			<option value=""></option>
-	  	   	    			<option value=""></option>
-	  	   	    			<option value=""></option>
-	  	   	    			<option value=""></option>
-	  	   	    			<option value=""></option>
-	  	   	    			<option value=""></option>
-	  	   	    			<option value=""></option>
-	  	   	    			<option value=""></option>
-	  	   	    			<option value=""></option>
-	  	   	    			<option value=""></option>
-	  	   	    			<option value=""></option>
-	  	   	    			<option value=""></option>
-	  	   	    			<option value=""></option>
-	  	   	    			<option value=""></option>
-	  	   	    			<option value=""></option>
-	  	   	    			<option value=""></option>
-	  	   	    			<option value=""></option>
-	  	   	    			<option value=""></option>
-	  	   	    			<option value=""></option>
-	  	   	    			<option value=""></option>
-	  	   	    			<option value=""></option>
-	  	   	    			<option value=""></option>
+	  	   	    	     <select id="theStates" name="state" onchange="useSelectedItem(this)" required>
+	  	   	    			<option value="Abia">Abia</option>
+                                     <option value="Adamawa">Abia</option>
+                                     <option value="Anambra">Anambra</option>
+                                     <option value="Bauchi">Bauchi</option>
+                                     <option value="Bayelsa">Bayelsa</option>
+                                     <option value="Benue">Benue</option>
+                                     <option value="Borno">Borno</option>
+                                     <option value="Cross River">Cross River</option>
+                                     <option value="Delta">Delta</option>
+                                     <option value="Ebonyi">Ebonyi</option>
+                                     <option value="Edo">Edo</option>
+                                     <option value="Ekiti">Ekiti</option>
+                                     <option value="Enugu">Enugu</option>
+                                     <option value="Gombe">Gombe</option>
+                                     <option value="Imo">Imo</option>
+                                     <option value="Jigawa">Jigawa</option>
+                                     <option value="Kaduna">Kaduna</option>
+                                     <option value="Kano">Kano</option>
+                                     <option value="Katsina">Katsina</option>
+                                     <option value="Kebbi">Kebbi</option>
+                                     <option value="Kogi">Kogi</option>
+                                     <option value="Kwara">Kwara</option>
+                                     <option value="Lagos">Lagos</option>
+                                     <option value="Nasarawa">Nasarawa</option>
+                                     <option value="Niger">Niger</option>
+                                     <option value="Ogun">Ogun</option>
+                                     <option value="Ondo">Ondo</option>
+                                     <option value="Osun">Osun</option>
+                                     <option value="Oyo">Oyo</option>
+                                     <option value="Plateau">Plateau</option>
+                                     <option value="Rivers">Rivers</option>
+                                     <option value="Sokoto">Sokoto</option>
+                                     <option value="Taraba">Taraba</option>
+                                     <option value="Yobe">Yobe</option>
+                                     <option value="Zamfara">Zamfara</option>
+                                     <option value="FCT">FCT</option>
 	  	   	    		</select>
                               
-                              <select name="" id="" name="local government" required>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
+                              <select id="locaGv" name="local government" required>
+                                    <!--<option value="" id="optG">LGA</option>-->
                               </select>
+
                               <input type="telephone" placeholder="Telephone" class="add" required>
                               <input type="text" placeholder="Owners Name" class="add" required>
                               <input type="text" placeholder="Street address 1" required class="add">
@@ -420,7 +386,7 @@
 
                               <textarea name="" id="textarea" placeholder="Short note about property (other info you want clients to know)"></textarea required>
                               <div class="Space">
-                              
+                                 <p class="stage">7</p>
                               </div>
                               <p class="localhead">Pictures Of Property</p>
                               <h6>select cover picture</h6>
@@ -432,6 +398,7 @@
 	  	   </div>
 	  </div>
 	  <p id="gottenValue" style="display: none;">{{ $owner }}</p>
+      <script src="{{ asset('js/localgovernments.js') }}" type="text/javascript"></script>
       <script type="text/JavaScript">
       	    window.load = function(){
       	    	     const theToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
@@ -502,7 +469,7 @@
   					theForm.style.display = 'block';
   				}
             }
-            
+
             
 
       </script>

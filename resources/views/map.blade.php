@@ -8,9 +8,9 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>Smart-Crib</title>
         <base href="http://127.0.0.1:8000/">
-        <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
-        <script src="/bootstrap/js/bootstrap.min.js" type="text/JavaScript"></script>
-        <script src="/js/jquery-3.2.1.min(first).js" type='text/JavaScript'></script>
+        <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
+        <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}" type="text/JavaScript"></script>
+        <script src="{{ asset('js/jquery-3.2.1.min(first).js }}" type='text/JavaScript'></script>
         <!--CSS---->
         <link href="/CSS/map.css" rel="stylesheet" type="text/css">
 </head>
@@ -48,5 +48,6 @@
       	    }
 
       </script>
+      <script src="{{ asset('js/searchDB.js')}}" type="text/javascript"></script>
 </body>
 </html>

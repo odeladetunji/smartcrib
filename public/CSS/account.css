@@ -281,4 +281,44 @@ h6 {
 	margin-top: none;
 }
 
+.stage {
+	background-color: green;
+	color: white;
+	text-align: center;
+	padding-top: 15px;
+	border-radius: 50%;
+	width: 70px;
+	height: 70px;
+	border: 6px solid orange;
+	float: right;
+	margin-right: 10px;
+	-webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+    animation-name: example;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes example {
+    0%   {border: 6px solid green;}
+    25%  {background-color: yellow;}
+    50%  {width: 35px; height: 35px;}
+    100% {background-color: purple; color: white;}
+}
+
+/* Standard syntax */
+@keyframes example {
+    0%   {border: 3px solid orange;}
+    25%  {background-color: green;}
+    50%  {width: 35px; height: 35px; padding-top: 4px; background-color: purple;}
+    100% {background-color: green;}
+}
+
+#theStates, #locaGv {
+	margin-left: 20px;
+	padding: 10px;
+	background-color: white;
+	border: 1px solid #eeeeee;
+}
 
