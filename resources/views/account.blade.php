@@ -10,9 +10,9 @@
 
         <base href="http://127.0.0.1:8000">
 
-        <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ asset('/bootstrap/css/bootstrap.min.css') }}">
         <script src="/bootstrap/js/bootstrap.min.js" type="text/JavaScript"></script>
-        <script src="/js/jquery-3.2.1.min(first).js" type='text/JavaScript'></script>
+        <script src="{{ asset('/js/jquery-3.2.1.min(first).js') }}" type='text/JavaScript'></script>
         <!--CSS---->
         <link href="{{ asset('CSS/account.css') }}" rel="stylesheet" type="text/css" >
 </head>
@@ -470,7 +470,7 @@
   				}
             }
 
-            
+
 
       </script>
 </body>
