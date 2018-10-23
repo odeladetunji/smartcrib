@@ -179,7 +179,7 @@
 }
 
 .requestForm {
-   height: 700px;
+   height: 600px;
    overflow: scroll;
    padding-bottom: 100px;
    width: 50%;
@@ -305,9 +305,9 @@
 	padding-bottom: 0px;
 }
 
-#category, #type {
+.category, #type {
 	width: 250px;
-	padding: 8px;
+	height: 40px;
 	padding-left: 5px;
 	margin-bottom: 5px;
 	margin-left: 10px;
@@ -329,6 +329,7 @@
 	border: 1px solid #eeeeee;
 	background-color: white;
 	padding: 8px;
+	height: 40px;
 	margin-left: 10px;
 }
 
@@ -378,6 +379,7 @@
 	margin-top: 10px;
 	margin-left: 5%;
 	border: 1px solid #eeeeee;
+	margin-bottom: 30px;
 }
 
 .bot {
@@ -449,7 +451,8 @@ h6 {
 }
 
 #theStates, #locaGv {
-	margin-left: 20px;
+	margin-left: 30px;
+	height: 40px;
 	padding: 10px;
 	background-color: white;
 	border: 1px solid #eeeeee;

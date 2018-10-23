@@ -94,7 +94,7 @@
 	   	     	   <form name="thePropertyForm" class="propertyForm" encType="multipart/form-data" method="POST" action="{{URL::to('/reqProp')}}" >{{ csrf_field() }}
                         <p class="stage">1</p>
 	  	   	    		<p class="theTitle">Property Category</p>
-	  	   	    		<select name="category" id="category" required>
+	  	   	    		<select name="category" class="category" required>
 	  	   	    			<option value="For Rent">For Rent</option>
 	  	   	    			<option value="For Sale">For Sale</option>
 	  	   	    			<option value="Short Let">Short Let</option>
@@ -422,7 +422,7 @@
 
                               <input type="telephone" name="telephone" placeholder="Your Phone Number" class="add" required>         
                               
-                              <button>submit</button>
+                              <button>Post Request</button>
 	  	   	    	</form>
 	   	     	   </div>
 	   	     	   <div class="advertSection">
@@ -441,7 +441,7 @@
 	   	     	</ul>
 	   	     	<p>Terms and Policies</p>
 	   	     </div>
-	  
+	    <script src="{{ asset('js/localgovernments.js') }}" type="text/javascript"></script>
         <script type="text/JavaScript">
         	// dont forget to use babal script!
         	window.onload = () => {
