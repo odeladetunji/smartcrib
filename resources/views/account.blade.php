@@ -60,7 +60,7 @@
 	  	   	    			<option value="Private Development Scheme">Private Development Scheme</option>
 	  	   	    		</select><br>
                         <p class="theTitle">Type of Property</p>
-	  	   	    		<select name="" id="type" name="title" required>
+	  	   	    		<select id="type" name="title" required>
 	  	   	    			<option value="Land">Land</option>
 	  	   	    			<option value="Detached House"> Detached House </option>
 	  	   	    			<option value="Semi-Detached House">  Semi-Detached House</option>
@@ -80,7 +80,7 @@
 	  	   	    				<input type="number" max="100" min="1" placeholder="0" name="size">
 	  	   	    			</div>
 	  	   	    			<div>
-	  	   	    				<select name="" id="measure" name="measure">
+	  	   	    			  <select id="measure" name="measure">
 	  	   	    		            <option value="Hectare">Hectare</option>
 	  	   	    		            <option value="Arce">Arce</option>
 	  	   	    		            <option value="Plot">Plot</option>
@@ -94,7 +94,7 @@
                         <p class="theTitle fac">Property Title Document (Type)</p>
                         <div class="property-Document" style="display: flex;">
                         	  <div>
-                        	  	<input type="checkbox" value="Federal C of O" name="Federal C of O">
+                        	  	<input type="checkbox" value="Federal C of O" name="Federal-C-of-O">
                         	  </div>
                         	  <div>
                         	  	<p>Federal C of O</p>
@@ -102,7 +102,7 @@
                         </div>
                         <div class="property-Document" style="display: flex;">
                         	<div>
-                        		<input type="checkbox" value="State C of O" name="State C of O">
+                        		<input type="checkbox" value="State C of O" name="State-C-of-O">
                         	</div>
                         	<div>
                         		<p>State C of O</p>
@@ -118,7 +118,7 @@
                         </div>
                         <div class="property-Document" style="display: flex;">
                         	<div>
-                        		<input type="checkbox" value="Survey Plan" name="Survey Plan">
+                        		<input type="checkbox" value="Survey Plan" name="Survey-Plan">
                         	</div>
                         	<div>
                         		<p>Survey Plan</p>
@@ -126,7 +126,7 @@
                         </div>
                         <div class="property-Document" style="display: flex;">
                         	<div>
-                        		<input type="checkbox" value="Family Receipt" name="Family Receipt">
+                        		<input type="checkbox" value="Family Receipt" name="Family-Receipt">
                         	</div>
                         	<div>
                         		<p>Family Receipt</p>
@@ -134,7 +134,7 @@
                         </div>
                         <div class="property-Document" style="display: flex;">
                         	<div>
-                        		<input type="checkbox" value="Registered Survey Plan" name="Registered Survey Plan">
+                        		<input type="checkbox" value="Registered Survey Plan" name="Registered-Survey-Plan">
                         	</div>
                         	<div>
                         		<p>Registered Survey Plan</p>
@@ -142,7 +142,7 @@
                         </div>
                         <div class="property-Document" style="display: flex;">
                         	<div>
-                        		<input type="checkbox" value="Registered Deed of Conveyance" name="Registered Deed of Conveyance">
+                        		<input type="checkbox" value="Registered Deed of Conveyance" name="Registered-Deed-of-Conveyance">
                         	</div>
                         	<div>
                         		<p>Registered Deed of Conveyance</p>
@@ -150,7 +150,7 @@
                         </div>
                         <div class="property-Document" style="display: flex;">
                         	<div>
-                        		<input type="checkbox" value="Registered Deed of Assignment" name="Registered Deed of Assignment">
+                        		<input type="checkbox" value="Registered Deed of Assignment" name="Registered-Deed-of-Assignment">
                         	</div>
                         	<div>
                         		<p>Registered Deed of Assignment</p>
@@ -158,7 +158,7 @@
                         </div>
                         <div class="property-Document" style="display: flex;">
                         	<div>
-                        		<input type='checkbox' value="Deed of Assignment" name="Deed of Assignment">
+                        		<input type='checkbox' value="Deed of Assignment" name="Deed-of-Assignment">
                         	</div>
                         	<div>
                         		<p>Deed of Assignment</p>
@@ -166,7 +166,7 @@
                         </div>
                         <div class="property-Document" style="display: flex;">
                         	<div>
-                        		<input type='checkbox' value="Deed of Conveyance" name="Deed of Conveyance">
+                        		<input type='checkbox' value="Deed of Conveyance" name="Deed-of-Conveyance">
                         	</div>
                         	<div>
                         		<p>Deed of Conveyance</p>
@@ -174,7 +174,7 @@
                         </div>
                         <div class="property-Document" style="display: flex;">
                         	<div>
-                        		<input type='checkbox' value="Governors Consent Letter" name="Governors Consent Letter">
+                        		<input type='checkbox' value="Governors Consent Letter" name="Governors-Consent-Letter">
                         	</div>
                         	<div>
                         		<p>Governors Consent Letter</p>
@@ -182,7 +182,7 @@
                         </div>
                         <div class="property-Document" style="display: flex;">
                         	<div>
-                        		<input type='checkbox' value="Approved Building Plan" name="Approved Building Plan">
+                        		<input type='checkbox' value="Approved Building Plan" name="Approved-Building-Plan">
                         	</div>
                         	<div>
                         		<p>Approved Building Plan</p>
@@ -204,7 +204,7 @@
                         <p class="theTitle fac">Facilities that comes with Property</p>
                         <div class="facilities" style="display: flex;">
                         	<div>
-                        		<input type="checkbox" value="Newly Built" name="Newly Built">
+                        		<input type="checkbox" value="Newly Built" name="Newly-Built">
                         	</div>
                         	<div>
                         		<p>Newly Built</p>
@@ -212,7 +212,7 @@
                         </div>
                         <div class="facilities" style="display: flex;">
                         	<div>
-                        		<input type="checkbox" value="Newly Renovated" name="Newly Renovated">
+                        		<input type="checkbox" value="Newly Renovated" name="Newly-Renovated">
                         	</div>
                         	<div>
                         		<p>Newly Renovated</p>
@@ -244,7 +244,7 @@
                         </div>
                         <div class="facilities" style="display: flex;">
                         	<div>
-                        		<input type="checkbox" value="Well Water" name="Well Water">
+                        		<input type="checkbox" value="Well Water" name="Well-Water">
                         	</div>
                         	<div>
                         		<p>Well Water</p>
@@ -260,7 +260,7 @@
                         </div>
                         <div class="facilities" style="display: flex;">
                         	<div>
-                        		<input type="checkbox" value="Gated Estate" name="Gated Estate">
+                        		<input type="checkbox" value="Gated Estate" name="Gated-Estate">
                         	</div>
                         	<div>
                         		<p>Gated Estate</p>
@@ -276,7 +276,7 @@
                         </div>
                         <div class="facilities" style="display: flex;">
                         	<div>
-                        		<input type="checkbox" value="Water Treatment Plant" name="Water Treatment Plant">
+                        		<input type="checkbox" value="Water Treatment Plant" name="Water-Treatment-Plant">
                         	</div>
                         	<div>
                         		<p>Water Treatment Plant</p>
@@ -284,7 +284,7 @@
                         </div>
                         <div class="facilities" style="display: flex;">
                         	<div>
-                        		<input type="checkbox" value="All Room Ensuite" name="All Room Ensuite">
+                        		<input type="checkbox" value="All Room Ensuite" name="All-Room-Ensuite">
                         	</div>
                         	<div>
                         		<p>All Room Ensuit</p>
@@ -292,7 +292,7 @@
                         </div>
                         <div class="facilities" style="display: flex;">
                         	<div>
-                        		<input type="checkbox" value="Ample parking Space" name="Ample parking Space">
+                        		<input type="checkbox" value="Ample parking Space" name="Ample-parking-Space">
                         	</div>
                         	<div>
                         		<p>Ample Parking Space</p>
@@ -300,7 +300,7 @@
                         </div>
                         <div class="facilities" style="display: flex;">
                         	<div>
-                        		<input type="checkbox" value="All others not Listed" name="All others not Listed">
+                        		<input type="checkbox" value="All others not Listed" name="All-others-not-Listed">
                         	</div>
                         	<div>
                         		<p>All others not listed</p>
@@ -375,22 +375,22 @@
                                      <option value="FCT">FCT</option>
 	  	   	    		</select>
                               
-                              <select id="locaGv" name="local government" required>
+                              <select id="locaGv" name="local-government" required>
                                     <!--<option value="" id="optG">LGA</option>-->
                               </select>
 
                               <input type="telephone" name="telephone" placeholder="Telephone" class="add" required>
-                              <input type="text" name="owners name" placeholder="Owners Name" class="add" required>
+                              <input type="text" name="owners-name" placeholder="Owners Name" class="add" required>
                               <input type="text" name="address" placeholder="Street address 1" required class="add bot">           
-                              <textarea name="short note" id="textarea" placeholder="Short note about property (other info you want clients to know)"></textarea required>
+                              <textarea name="short-note" id="textarea" placeholder="Short note about property (other info you want clients to know)"></textarea required>
                               <div class="Space">
                                  <p class="stage">7</p>
                               </div>
                               <p class="localhead">Pictures Of Property</p>
                               <h6>select cover picture</h6>
-                              <input type="file" name="cover picture" required class="pictures"> 
+                              <input type="file" name="coverpicture" required class="pictures"> 
                               <h6>select other property view</h6>
-                              <input type="file" name="other pictures" required multiple class="pictures" id="lastpicture">
+                              <input type="file" name="otherpictures[]" required  class="pictures" id="lastpicture" multiple>
                               <button>submit</button>
 	  	   	    	</form>
 	  	   </div>
@@ -448,7 +448,7 @@
 		                   xhttp.setRequestHeader("X-Requested-With", 'XMLHttpRequest');
 		                   xhttp.setRequestHeader("processData", 'false');
 		                   xhttp.setRequestHeader('cache', 'false');
-		                   xhttp.setRequestHeader("ContentType", "application/json");
+		                   xhttp.setRequestHeader("ContentType", "application/x-www-form-urlencoded");
 		                   xhttp.send(param);
       	    }
 
