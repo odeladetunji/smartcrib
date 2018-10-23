@@ -212,10 +212,10 @@
                         </div>
                         <div class="facilities" style="display: flex;">
                         	<div>
-                        		<input type="checkbox" value="New Renovated" name="New Renovated">
+                        		<input type="checkbox" value="Newly Renovated" name="Newly Renovated">
                         	</div>
                         	<div>
-                        		<p>New Renovated</p>
+                        		<p>Newly Renovated</p>
                         	</div>
                         </div>
                         <div class="facilities" style="display: flex;">
@@ -379,20 +379,18 @@
                                     <!--<option value="" id="optG">LGA</option>-->
                               </select>
 
-                              <input type="telephone" placeholder="Telephone" class="add" required>
-                              <input type="text" placeholder="Owners Name" class="add" required>
-                              <input type="text" placeholder="Street address 1" required class="add">
-                              <input type="text" placeholder="Street address 2" required class="add bot">
-
-                              <textarea name="" id="textarea" placeholder="Short note about property (other info you want clients to know)"></textarea required>
+                              <input type="telephone" name="telephone" placeholder="Telephone" class="add" required>
+                              <input type="text" name="owners name" placeholder="Owners Name" class="add" required>
+                              <input type="text" name="address" placeholder="Street address 1" required class="add bot">           
+                              <textarea name="short note" id="textarea" placeholder="Short note about property (other info you want clients to know)"></textarea required>
                               <div class="Space">
                                  <p class="stage">7</p>
                               </div>
                               <p class="localhead">Pictures Of Property</p>
                               <h6>select cover picture</h6>
-                              <input type="file" required class="pictures"> 
+                              <input type="file" name="cover picture" required class="pictures"> 
                               <h6>select other property view</h6>
-                              <input type="file" required multiple class="pictures" id="lastpicture">
+                              <input type="file" name="other pictures" required multiple class="pictures" id="lastpicture">
                               <button>submit</button>
 	  	   	    	</form>
 	  	   </div>
@@ -435,6 +433,7 @@
 
       	    function submitData(param){
                      var theToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
 		        	 var xhttp = new XMLHttpRequest();
 		        	       xhttp.open('POST', '/listP', true);
 		        	       xhttp.onreadystatechange = function(){
@@ -449,7 +448,7 @@
 		                   xhttp.setRequestHeader("X-Requested-With", 'XMLHttpRequest');
 		                   xhttp.setRequestHeader("processData", 'false');
 		                   xhttp.setRequestHeader('cache', 'false');
-		                   xhttp.setRequestHeader("Content-Type", "application/json");
+		                   xhttp.setRequestHeader("ContentType", "application/json");
 		                   xhttp.send(param);
       	    }
 
@@ -458,6 +457,9 @@
             	 event.preventDefault();
             	 var listP = document.getElementsByClassName('propertyForm')[0];
                  var formData = new FormData(listP);
+                 var theOwner = document.getElementById('gottenValue').innerHTML;
+                 console.log();
+                         formData.append('email', theOwner);
                  submitData(formData);
             }
 
