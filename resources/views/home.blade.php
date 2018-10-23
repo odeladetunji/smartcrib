@@ -13,10 +13,9 @@
         <script src="/js/jquery-3.2.1.min(first).js" type='text/JavaScript'></script>
         <!--CSS---->
         <link href="{{ asset('CSS/home.css') }}" rel="stylesheet" type="text/css" >
-        <!--<link href="/CSS/home.css" rel="stylesheet" type="text/css">---->
-</head>
+        
 <body>
-	   <div>
+
 	   	     <div class="row topHead">
 	   	     	<div class="col-sm-12 theHead">
 	   	     		<ul>
@@ -34,6 +33,7 @@
 	   	     <div class="row banner">
 	   	     	<div class="col-sm-12 bannerContent">
 	   	     		 <h1>Let's go Home</h1>
+	   	     		 <button id="postingARequest" onclick="makeRequest()">Post A Request</button>
 	   	     		 <p> <span id="Buy"  onclick="hilightAction(this)">Buy</span>
 	   	     		     <span id="Rent" onclick="hilightAction(this)">Rent</span>
 	   	     		     <span id="Sell" onclick="hilightAction(this)">Sell</span>
@@ -45,6 +45,7 @@
 	   	     		 </div>
 	   	     	</div>
 	   	     </div>
+
 	   	     <div class="row">
 	   	     	 <div class="col-sm-6 login">
 	   	     	 	  <form class="loginForm" encType="multipart/form-data" method="POST" action="{{URL::to('/')}}"> {{ csrf_field() }}
@@ -81,6 +82,358 @@
 	   	     	 	 <p>something</p>
 	   	     	 </div>
 	   	     </div>
+	   	      <div class="coverForPost">
+	   	      	  <div class="forheader">
+	   	      	  	   <button id="quitRequest" onclick="makeRequest()">Quit Post</button>
+	   	      	  </div>
+	   	      	   <div class="postingRequest" style="display: flex;">
+	   	     	  
+	   	     	   <div class="requestForm" >
+
+	   	     	   	  <p id="subtileMessage">Lets get your request</p>
+	   	     	   <form name="thePropertyForm" class="propertyForm" encType="multipart/form-data" method="POST" action="{{URL::to('/reqProp')}}" >{{ csrf_field() }}
+                        <p class="stage">1</p>
+	  	   	    		<p class="theTitle">Property Category</p>
+	  	   	    		<select name="category" id="category" required>
+	  	   	    			<option value="For Rent">For Rent</option>
+	  	   	    			<option value="For Sale">For Sale</option>
+	  	   	    			<option value="Short Let">Short Let</option>
+	  	   	    			<option value="Joint Venture">Joint Venture</option>
+	  	   	    			<option value="Government Scheme">Government Scheme</option>
+	  	   	    			<option value="Private Development Scheme">Private Development Scheme</option>
+	  	   	    		</select><br>
+	  	   	    		 <p class="theTitle fac">Quantities</p>
+	  	   	    		<div class="bedroomQuantity" style="display: flex;">
+						     <div class="bedroom">
+						     	<input type="number" max="200" min="1" placeholder="0" name="bedroom">
+						     </div>
+						     <div>
+						     	<p>Bedroom</p>
+						     </div>
+	  	   	    		</div>
+	  	   	    		<div class="units" style="display: flex;">
+	  	   	    			 <div class="noofunits">
+	  	   	    			 	<input type="number" max="200" min="1" placeholder="0" name="units">
+	  	   	    			 </div>
+	  	   	    			 <div>
+	  	   	    			 	<p>Unit</p>
+	  	   	    			 </div>
+	  	   	    		</div>
+
+	  	   	    		<div class="price">
+	  	   	    			<p>Price</p>
+	  	   	    	    	<input type="number" placeholder="$2,000" name="price">
+	  	   	    		</div>
+                        <p class="theTitle">Type of Property</p>
+	  	   	    		<select id="type" name="title" required>
+	  	   	    			<option value="Land">Land</option>
+	  	   	    			<option value="Detached House"> Detached House </option>
+	  	   	    			<option value="Semi-Detached House">  Semi-Detached House</option>
+	  	   	    			<option value="Tarraced">Tarraced House</option>
+	  	   	    			<option value="Bungalow">Bungalow</option>
+	  	   	    			<option value="Commercial Property">Commercial Property</option>
+	  	   	    			<option value="Warehouse">Warehouse</option>
+	  	   	    			<option value="Factory">Factory</option>
+	  	   	    			<option value="Event Hall">Event Hall</option>
+	  	   	    			<option value="Filling Stations">Filling Stations</option>
+	  	   	    			<option value="School">School</option>
+	  	   	    			<option value="Tank Farm">Tank Farm</option>
+	  	   	    		</select><br>
+	  	   	    		<p class="theTitle">Size of Property</p>
+	  	   	    		<div class="size-of-property" style="display: flex;">
+	  	   	    			<div class="size">
+	  	   	    				<input type="number" max="100" min="1" placeholder="0" name="size">
+	  	   	    			</div>
+	  	   	    			<div>
+	  	   	    			  <select id="measure" name="measure">
+	  	   	    		            <option value="Hectare">Hectare</option>
+	  	   	    		            <option value="Arce">Arce</option>
+	  	   	    		            <option value="Plot">Plot</option>
+	  	   	    		            <option value="Square meter">Square meter</option>
+	  	   	    		        </select>
+	  	   	    			</div>
+	  	   	    		</div><br>
+	  	   	    		<div class="Space">
+                        	     <p class="stage" style="margin-bottom: 20px;">2</p>
+                        </div><br>
+                        <p class="theTitle fac">Property Title Document (Type)</p>
+                        <div class="property-Document" style="display: flex;">
+                        	  <div>
+                        	  	<input type="checkbox" value="Federal C of O" name="Federal-C-of-O">
+                        	  </div>
+                        	  <div>
+                        	  	<p>Federal C of O</p>
+                        	  </div>
+                        </div>
+                        <div class="property-Document" style="display: flex;">
+                        	<div>
+                        		<input type="checkbox" value="State C of O" name="State-C-of-O">
+                        	</div>
+                        	<div>
+                        		<p>State C of O</p>
+                        	</div>
+                        </div>
+                        <div class="property-Document" style="display: flex;">
+                        	<div>
+                        		<input type="checkbox" value="Gazette" name="Gazette">
+                        	</div>
+                        	<div>
+                        		<p>Gazette</p>
+                        	</div>
+                        </div>
+                        <div class="property-Document" style="display: flex;">
+                        	<div>
+                        		<input type="checkbox" value="Survey Plan" name="Survey-Plan">
+                        	</div>
+                        	<div>
+                        		<p>Survey Plan</p>
+                        	</div>
+                        </div>
+                        <div class="property-Document" style="display: flex;">
+                        	<div>
+                        		<input type="checkbox" value="Family Receipt" name="Family-Receipt">
+                        	</div>
+                        	<div>
+                        		<p>Family Receipt</p>
+                        	</div>
+                        </div>
+                        <div class="property-Document" style="display: flex;">
+                        	<div>
+                        		<input type="checkbox" value="Registered Survey Plan" name="Registered-Survey-Plan">
+                        	</div>
+                        	<div>
+                        		<p>Registered Survey Plan</p>
+                        	</div>
+                        </div>
+                        <div class="property-Document" style="display: flex;">
+                        	<div>
+                        		<input type="checkbox" value="Registered Deed of Conveyance" name="Registered-Deed-of-Conveyance">
+                        	</div>
+                        	<div>
+                        		<p>Registered Deed of Conveyance</p>
+                        	</div>
+                        </div>
+                        <div class="property-Document" style="display: flex;">
+                        	<div>
+                        		<input type="checkbox" value="Registered Deed of Assignment" name="Registered-Deed-of-Assignment">
+                        	</div>
+                        	<div>
+                        		<p>Registered Deed of Assignment</p>
+                        	</div>
+                        </div>
+                        <div class="property-Document" style="display: flex;">
+                        	<div>
+                        		<input type='checkbox' value="Deed of Assignment" name="Deed-of-Assignment">
+                        	</div>
+                        	<div>
+                        		<p>Deed of Assignment</p>
+                        	</div>
+                        </div>
+                        <div class="property-Document" style="display: flex;">
+                        	<div>
+                        		<input type='checkbox' value="Deed of Conveyance" name="Deed-of-Conveyance">
+                        	</div>
+                        	<div>
+                        		<p>Deed of Conveyance</p>
+                        	</div>
+                        </div>
+                        <div class="property-Document" style="display: flex;">
+                        	<div>
+                        		<input type='checkbox' value="Governors Consent Letter" name="Governors-Consent-Letter">
+                        	</div>
+                        	<div>
+                        		<p>Governors Consent Letter</p>
+                        	</div>
+                        </div>
+                        <div class="property-Document" style="display: flex;">
+                        	<div>
+                        		<input type='checkbox' value="Approved Building Plan" name="Approved-Building-Plan">
+                        	</div>
+                        	<div>
+                        		<p>Approved Building Plan</p>
+                        	</div>
+                        </div>
+                        <div class="property-Document" style="display: flex;">
+                        	<div>
+                        		<input type='checkbox' value="others" name="others"> 		
+                        	</div>
+                        	<div>
+                        		<p>others
+                        		</p>
+                        	</div>
+                        </div>
+
+                        <div class="Space">
+                        	<p class="stage">3</p>
+                        </div>
+                        <p class="theTitle fac">Facilities that comes with Property</p>
+                        <div class="facilities" style="display: flex;">
+                        	<div>
+                        		<input type="checkbox" value="Newly Built" name="Newly-Built">
+                        	</div>
+                        	<div>
+                        		<p>Newly Built</p>
+                        	</div>
+                        </div>
+                        <div class="facilities" style="display: flex;">
+                        	<div>
+                        		<input type="checkbox" value="Newly Renovated" name="Newly-Renovated">
+                        	</div>
+                        	<div>
+                        		<p>Newly Renovated</p>
+                        	</div>
+                        </div>
+                        <div class="facilities" style="display: flex;">
+                        	<div>
+                        		<input type="checkbox" value="POP" name="POP">
+                        	</div>
+                        	<div>
+                        		<p>POP</p>
+                        	</div>
+                        </div>
+                        <div class="facilities" style="display: flex;">
+                        	<div>
+                        		<input type="checkbox" Value="Dilapidated" name="Dilapidated">
+                        	</div>
+                        	<div>
+                        		<p>Dilapidated</p>
+                        	</div>
+                        </div>
+                        <div class="facilities" style="display: flex;">
+                        	<div>
+                        		<input type="checkbox" value="Fenced" name="Fenced">
+                        	</div>
+                        	<div>
+                        		<p>Fenced</p>
+                        	</div>
+                        </div>
+                        <div class="facilities" style="display: flex;">
+                        	<div>
+                        		<input type="checkbox" value="Well Water" name="Well-Water">
+                        	</div>
+                        	<div>
+                        		<p>Well Water</p>
+                        	</div>
+                        </div>
+                        <div class="facilities" style="display: flex;">
+                        	<div>
+                        		<input type="checkbox" value="Borehole" name="Borehole">
+                        	</div>
+                        	<div>
+                        		<p>Borehole</p>
+                        	</div>
+                        </div>
+                        <div class="facilities" style="display: flex;">
+                        	<div>
+                        		<input type="checkbox" value="Gated Estate" name="Gated-Estate">
+                        	</div>
+                        	<div>
+                        		<p>Gated Estate</p>
+                        	</div>
+                        </div>
+                        <div class="facilities" style="display: flex;">
+                        	<div>
+                        		<input type="checkbox" value="Security" name="Security">
+                        	</div>
+                        	<div>
+                        		<p>Security</p>
+                        	</div>
+                        </div>
+                        <div class="facilities" style="display: flex;">
+                        	<div>
+                        		<input type="checkbox" value="Water Treatment Plant" name="Water-Treatment-Plant">
+                        	</div>
+                        	<div>
+                        		<p>Water Treatment Plant</p>
+                        	</div>
+                        </div>
+                        <div class="facilities" style="display: flex;">
+                        	<div>
+                        		<input type="checkbox" value="All Room Ensuite" name="All-Room-Ensuite">
+                        	</div>
+                        	<div>
+                        		<p>All Room Ensuit</p>
+                        	</div>
+                        </div>
+                        <div class="facilities" style="display: flex;">
+                        	<div>
+                        		<input type="checkbox" value="Ample parking Space" name="Ample-parking-Space">
+                        	</div>
+                        	<div>
+                        		<p>Ample Parking Space</p>
+                        	</div>
+                        </div>
+                        <div class="facilities" style="display: flex;">
+                        	<div>
+                        		<input type="checkbox" value="All others not Listed" name="All-others-not-Listed">
+                        	</div>
+                        	<div>
+                        		<p>All others not listed</p>
+                        	</div>
+                        </div>
+	  	   	    		
+                       <div class="Space">
+                       	    <p class="stage">4</p>
+                       </div>
+                  
+                             <p class="localhead">Adress of Property</p>
+	  	   	    	     <select id="theStates" name="state" onchange="useSelectedItem(this)" required>
+	  	   	    			         <option value="Abia">Abia</option>
+                                     <option value="Adamawa">Abia</option>
+                                     <option value="Anambra">Anambra</option>
+                                     <option value="Bauchi">Bauchi</option>
+                                     <option value="Bayelsa">Bayelsa</option>
+                                     <option value="Benue">Benue</option>
+                                     <option value="Borno">Borno</option>
+                                     <option value="Cross River">Cross River</option>
+                                     <option value="Delta">Delta</option>
+                                     <option value="Ebonyi">Ebonyi</option>
+                                     <option value="Edo">Edo</option>
+                                     <option value="Ekiti">Ekiti</option>
+                                     <option value="Enugu">Enugu</option>
+                                     <option value="Gombe">Gombe</option>
+                                     <option value="Imo">Imo</option>
+                                     <option value="Jigawa">Jigawa</option>
+                                     <option value="Kaduna">Kaduna</option>
+                                     <option value="Kano">Kano</option>
+                                     <option value="Katsina">Katsina</option>
+                                     <option value="Kebbi">Kebbi</option>
+                                     <option value="Kogi">Kogi</option>
+                                     <option value="Kwara">Kwara</option>
+                                     <option value="Lagos">Lagos</option>
+                                     <option value="Nasarawa">Nasarawa</option>
+                                     <option value="Niger">Niger</option>
+                                     <option value="Ogun">Ogun</option>
+                                     <option value="Ondo">Ondo</option>
+                                     <option value="Osun">Osun</option>
+                                     <option value="Oyo">Oyo</option>
+                                     <option value="Plateau">Plateau</option>
+                                     <option value="Rivers">Rivers</option>
+                                     <option value="Sokoto">Sokoto</option>
+                                     <option value="Taraba">Taraba</option>
+                                     <option value="Yobe">Yobe</option>
+                                     <option value="Zamfara">Zamfara</option>
+                                     <option value="FCT">FCT</option>
+	  	   	    		</select>
+                              
+                              <select id="locaGv" name="local-government" required>
+                                    <!--<option value="" id="optG">LGA</option>-->
+                              </select>
+
+                              <input type="telephone" name="telephone" placeholder="Your Phone Number" class="add" required>         
+                              
+                              <button>submit</button>
+	  	   	    	</form>
+	   	     	   </div>
+	   	     	   <div class="advertSection">
+	   	     	     	 <div>
+	   	     	     	 	<p>properties will be advertised here!</p>
+	   	     	     	 	<p>this will definitely be sponsored properties</p>
+	   	     	     	 </div>
+	   	     	   </div>
+	   	      </div>
+	   	      </div>
+             
 	   	     <div class="theFooter">
 	   	     	<ul>
 	   	     		<li>About Us</li>
@@ -255,6 +608,17 @@
                 }
         	}
 
+        	function makeRequest(){
+        		console.log('this was called');
+        		var hiddenForm = document.getElementsByClassName('coverForPost')[0];
+        		    if (hiddenForm.style.display == 'block') {
+                        hiddenForm.style.display = 'none';
+        		    }else{
+        		    	hiddenForm.style.display = 'block';
+        		    }
+        	}
+            
+           
         </script>
 </body>
 </html>
