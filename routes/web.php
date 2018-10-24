@@ -23,3 +23,4 @@ Route::post('/login', 'LoginController@login');
 Route::post('/account', 'AccountController@account');
 Route::post('/listP', 'ListingPropertyController@list');
 Route::post('/reqProp', 'PostRequestController@myrequest');
+Route::post('/searchBD', 'searchBDController@search');

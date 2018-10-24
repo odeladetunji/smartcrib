@@ -419,7 +419,7 @@
                               <select id="locaGv" name="local-government" required>
                                     <!--<option value="" id="optG">LGA</option>-->
                               </select>
-
+                              <input type="email" name="email" class="theEmail" required>
                               <input type="telephone" name="telephone" placeholder="Your Phone Number" class="add" required>         
                               
                               <button>Post Request</button>
@@ -442,6 +442,7 @@
 	   	     	<p>Terms and Policies</p>
 	   	     </div>
 	    <script src="{{ asset('js/localgovernments.js') }}" type="text/javascript"></script>
+	   <!-- <script src="{{ asset('js/google-map-api.js') }}" type="text/javascript"></script> -->
         <script type="text/JavaScript">
         	// dont forget to use babal script!
         	window.onload = () => {
@@ -617,6 +618,33 @@
         		    	hiddenForm.style.display = 'block';
         		    }
         	}
+            
+            function submitPostRequest(param){
+                     const theToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+		        	 const xhttp = new XMLHttpRequest();
+		        	       xhttp.open('POST', '/reqProp', true);
+		        	       xhttp.onreadystatechange = () => {
+		        	       	    if (this.readystate == 4 && this.status == 200) {
+		        	       	    	const data = JSON.parse(this.responseText);
+		        	       	    	      console.log(data);
+		        	       	    	      // use data here!
+		        	       	    }
+		        	       }
+
+		        	       xhttp.setRequestHeader('X-CSRF-TOKEN', theToken);
+		                   xhttp.setRequestHeader("X-Requested-With", 'XMLHttpRequest');
+		                   xhttp.setRequestHeader("processData", 'false');
+		                   xhttp.setRequestHeader('cache', 'false');
+		                   xhttp.setRequestHeader("ContentType", "application/json");
+		                   xhttp.send(param);
+            }
+
+        	var postRequest = document.getElementsByClassName('propertyForm')[0];
+        	    postRequest.onsubmit = function(){
+        	    	var postRequest = document.getElementsByClassName('propertyForm')[0];
+        	    	var formData = new FormData(postRequest);
+                        submitPostRequest(formData);
+        	    }
             
            
         </script>

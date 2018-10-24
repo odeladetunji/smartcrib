@@ -4,7 +4,6 @@
 	    <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>Smart-Crib</title>
         <base href="http://127.0.0.1:8000/">
@@ -16,15 +15,25 @@
 </head>
 <body>
 	  <div class="row header">
-	  	
+	  	   
 	  </div>
 	  <div class="row">
 	  	   <div class="col-sm-6 map">
 	  	   	   
 	  	   </div>
 	  	   <div class="col-sm-6 prop">
-	  	   	   
+	  	   	   <div class="props">
+	  	   	   	    <p>something will be rendered here!</p>
+	  	   	   </div>
 	  	   </div>
+	  </div>
+	  <div class="row propDetails">
+	  	  <div class="col-sm-6 pix">
+	  	  	   <p>content will be replaced</p>
+	  	  </div>
+	  	  <div class="col-sm-6 details">
+	  	  	   <p>content will be replaced</p>
+	  	  </div>
 	  </div>
       <script type="text/JavaScript">
       	    window.load = function(){
@@ -36,6 +45,26 @@
 		        	       	    	const data = JSON.parse(this.responseText);
 		        	       	    	      console.log(data);
 		        	       	    	      // use data here!
+		        	       	    	      function showHTML(){
+                                               var elem = document.getElementsByClassName('props')[0];
+                                                   elem.innerHTML = finalElem;
+		        	       	    	      }
+                                          
+                                          var finalElem;
+		        	       	    	      function useData(param){
+                                               for(x in param){
+                                                  
+                                               }
+		        	       	    	      }
+
+		        	       	    	      for (var i = 0; i < data.length; i++) {
+		        	       	    	      	   useData(data[i]);
+		        	       	    	      	   if (i + 1 == data.length) {
+		        	       	    	      	   	   setTimeout(function(){
+		        	       	    	      	   	   	   showHTML();
+		        	       	    	      	   	   }, 20);
+		        	       	    	      	   }
+		        	       	    	      }
 		        	       	    }
 		        	       }
 
@@ -48,6 +77,7 @@
       	    }
 
       </script>
+      <script src="{{ asset('js/displayProp.js') }}" type="text/javascript"></script>
       <script src="{{ asset('js/searchDB.js')}}" type="text/javascript"></script>
 </body>
 </html>

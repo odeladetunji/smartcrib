@@ -381,7 +381,7 @@
 
                               <input type="telephone" name="telephone" placeholder="Telephone" class="add" required>
                               <input type="text" name="owners-name" placeholder="Owners Name" class="add" required>
-                              <input type="text" name="address" placeholder="Street address 1" required class="add bot">           
+                              <input type="text" name="address" placeholder="Street address 1" required class="add bot" id="addressValue">           
                               <textarea name="short-note" id="textarea" placeholder="Short note about property (other info you want clients to know)"></textarea required>
                               <div class="Space">
                                  <p class="stage">7</p>
@@ -397,6 +397,7 @@
 	  </div>
 	  <p id="gottenValue" style="display: none;">{{ $owner }}</p>
       <script src="{{ asset('js/localgovernments.js') }}" type="text/javascript"></script>
+       <script src="{{ asset('js/google-map-api.js') }}" type="text/javascript"></script>
       <script type="text/JavaScript">
       	    window.load = function(){
       	    	     const theToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
@@ -416,7 +417,9 @@
 		                   xhttp.setRequestHeader('cache', 'false');
 		                   xhttp.setRequestHeader("Content-Type", "application/json");
 		                   xhttp.send();
+
       	    }
+
              console.log(window.screen.width);
              if (window.screen.width < 576) {
              	document.getElementsByClassName('nav')[0].style.paddingBottom = '10px';
@@ -458,9 +461,19 @@
             	 var listP = document.getElementsByClassName('propertyForm')[0];
                  var formData = new FormData(listP);
                  var theOwner = document.getElementById('gottenValue').innerHTML;
-                 console.log();
                          formData.append('email', theOwner);
-                 submitData(formData);
+                         codeAddress(function(param){
+                             
+                             console.log(param.geometry.location.lat());
+                             console.log(param.geometry.location.lng());
+                             formData.append('longitude', param.geometry.location.lng());
+                             formData.append('latitude', param.geometry.location.lat());
+                             return; //for debugging!
+                             formData.append();
+                             formData.append();
+                             formData.append();
+                             submitData(formData);
+                         });
             }
 
             function showForm(){
@@ -472,6 +485,13 @@
   				}
             }
 
+            function mapIsReady(){
+               console.log('map api is ready');
+            }
+
+      </script>
+      <script async defer
+             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4D1-koeikvwYczC2EpHU-mwLSzTH6UIE&callback=initialize">
       </script>
 </body>
 </html>
