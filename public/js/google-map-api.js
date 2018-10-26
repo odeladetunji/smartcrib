@@ -9,18 +9,35 @@
               .concat('Nigeria');
   }
 
- 
   var geocoder;
   var map;
 
   function initialize() {
     geocoder = new google.maps.Geocoder();
-    var latlng = new google.maps.LatLng(6.5244, 3.3792);
+    var latlng = new google.maps.LatLng(7.3775, 3.9470);
     var mapOptions = {
       zoom: 8,
       center: latlng
     }
     map = new google.maps.Map(document.getElementById('map'), mapOptions);
+  }
+
+  function cityMap(concatedLocation, callback){
+  	  geocoder.geocode( {'address': concatedLocation}, function(results, status){
+  	  	  if (status == 'OK') {
+	              var latlng = new google.maps.LatLng(param1, param2);
+			      var mapOptions = {
+			          zoom: 8,
+			          center: latlng
+			      }
+
+			      map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+			      callback(map);
+  	  	  }else{
+  	  	  	 cityMap(concatedLocation, callback);
+  	  	  }
+  	  });
   }
 
   function codeAddress(callback) {
@@ -35,7 +52,8 @@
            callback(results[0]);
 
       } else {
-        alert('Geocode was not successful for the following reason: ' + status);
+        //alert('Geocode was not successful for the following reason: ' + status);
+          codeAddress(callback);
       }
     });
   }

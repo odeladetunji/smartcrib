@@ -23,6 +23,7 @@
 	  	   	    	<li id="navTitle">Welcome</li>
 	  	   	    	<li id="navHome">home</li>
 	  	   	    	<li>Listed Properties</li>
+                        <li onclick="gotoMap()">Go to Map</li>
 	  	   	   </ul>
 	  	   </div>
 	  	   <div class="col-sm-10 mainBody">
@@ -395,6 +396,9 @@
 	  	   	    	</form>
 	  	   </div>
 	  </div>
+        <form name="goingToMap" id="goingToMap" encType="multipart/form-data" method="POST" action="{{URL::to('/searchBD')}}" style="display: none;">{{ csrf_field() }} 
+             <input type="text" name="routing" id="hiInput">
+        </form>
 	  <p id="gottenValue" style="display: none;">{{ $owner }}</p>
       <script src="{{ asset('js/localgovernments.js') }}" type="text/javascript"></script>
        <script src="{{ asset('js/google-map-api.js') }}" type="text/javascript"></script>
@@ -441,7 +445,7 @@
 		        	       xhttp.open('POST', '/listP', true);
 		        	       xhttp.onreadystatechange = function(){
 		        	       	    if (this.readystate == 4 && this.status == 200) {
-		        	       	    	var data = JSON.parse(this.responseText);
+		        	       	    	var data = this.responseText;
 		        	       	    	      console.log(data);
 		        	       	    	      // use data here!
 		        	       	    }
@@ -463,30 +467,27 @@
                  var theOwner = document.getElementById('gottenValue').innerHTML;
                          formData.append('email', theOwner);
                          codeAddress(function(param){
-                             
-                             console.log(param.geometry.location.lat());
-                             console.log(param.geometry.location.lng());
                              formData.append('longitude', param.geometry.location.lng());
                              formData.append('latitude', param.geometry.location.lat());
-                             return; //for debugging!
-                             formData.append();
-                             formData.append();
-                             formData.append();
+                             formData.append('propIdentity', param.place_id);
                              submitData(formData);
                          });
             }
 
             function showForm(){
-  				var theForm = document.getElementsByClassName('propertyForm')[0];
-  				if (theForm.style.display == 'block') {
-                    theForm.style.display = 'none';
-  				}else{
-  					theForm.style.display = 'block';
-  				}
+      		var theForm = document.getElementsByClassName('propertyForm')[0];
+      		if (theForm.style.display == 'block') {
+                       theForm.style.display = 'none';
+      		}else{
+      			theForm.style.display = 'block';
+      		}
             }
 
-            function mapIsReady(){
-               console.log('map api is ready');
+            function gotoMap(){
+                 var form = document.getElementById('goingToMap');
+                     document.getElementById('hiInput').value = 'routing from accountpage';
+                     form.submit();
+                     console.log('something is wrong');
             }
 
       </script>

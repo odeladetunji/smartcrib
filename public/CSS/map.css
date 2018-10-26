@@ -3,5 +3,52 @@
 	padding: 0px;
     font-family: Geneva;
     border: border-box;
+    background-color: cyan;
 }
 
+.welm_form {
+    background-color: transparent;
+    margin-top: 100px;
+    width: 90%;
+}
+
+.welm_form select {
+	width: 90%;
+	height: 50px;
+	padding-left: 20px;
+	margin-left: 9%;
+	border: 1px solid orange;
+	margin-top: 200px;
+	background-color: transparent;
+	color: white;
+	font-weight: bold;
+}
+
+.wel_form select option {
+	padding-left: 20px;
+}
+
+.welm_form button {
+	background-color: green;
+	color: white;
+	font-size: 16px;
+	padding: 5px 30px;
+	margin-right: 1%;
+	border: 1px solid orange;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	float: right;
+	border-radius: 5px;
+}
+
+
+
+.ltnInterface {
+    background-color: rgb(0,0,6); /* Fallback color */
+    background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+    padding-bottom: 350px;
+}
+
+.welm {
+	background-color: transparent;
+}

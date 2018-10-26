@@ -442,7 +442,7 @@
 	   	     	<p>Terms and Policies</p>
 	   	     </div>
 	    <script src="{{ asset('js/localgovernments.js') }}" type="text/javascript"></script>
-	   <!-- <script src="{{ asset('js/google-map-api.js') }}" type="text/javascript"></script> -->
+	   <!-- <script src="{{ asset('js/google-map-api.js') }}" type="text/javascript"></script> --> 
         <script type="text/JavaScript">
         	// dont forget to use babal script!
         	window.onload = () => {
