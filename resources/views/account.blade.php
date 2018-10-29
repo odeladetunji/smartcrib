@@ -396,7 +396,7 @@
 	  	   	    	</form>
 	  	   </div>
 	  </div>
-        <form name="goingToMap" id="goingToMap" encType="multipart/form-data" method="POST" action="{{URL::to('/searchBD')}}" style="display: none;">{{ csrf_field() }} 
+        <form name="goingToMap" id="goingToMap" encType="multipart/form-data" method="POST" action="{{URL::to('/searchDB')}}" style="display: none;">{{ csrf_field() }} 
              <input type="text" name="routing" id="hiInput">
         </form>
 	  <p id="gottenValue" style="display: none;">{{ $owner }}</p>
@@ -467,6 +467,8 @@
                  var theOwner = document.getElementById('gottenValue').innerHTML;
                          formData.append('email', theOwner);
                          codeAddress(function(param){
+                             console.log(param.geometry.location.lat());
+                             console.log(param.geometry.location.lng)
                              formData.append('longitude', param.geometry.location.lng());
                              formData.append('latitude', param.geometry.location.lat());
                              formData.append('propIdentity', param.place_id);

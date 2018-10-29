@@ -16,19 +16,21 @@ class searchDBController extends BaseController
          $data = DB::table('properties')
               ->join('facilities', 'properties.identity', '=', 'facilities.identity')
                   ->join('quantity', 'properties.identity', '=', 'quantity.identity')
-                      ->select('properties.*', 'facilities.*', 'quantity.*')
-                         ->where('state_property_is_located', $state)
-                             ->get();
+                      ->join('pictures_of_properties', 'properties.identity', '=', 'pictures_of_properties.identity')
+                           ->select('properties.*', 'facilities.*', 'quantity.*', 'pictures_of_properties.*')
+                                 ->where('state_property_is_located', $state)
+                                     ->get();
          return $data;
 	}
 
     public function search(Request $request){
 
     	 $a_message = 'routing from accountpage';
+         $imageUrlConstant = '/storage/images/';
 
     	 switch ($request->input('routing')) {
     	 	case 'routing from accountpage':
-    	 		return view('map')->with('value', $a_message);
+    	 		return view('map')->with('value', $a_message, 'imageUrlConstant', $imageUrlConstant);
     	 		break;
 
     	 	case 'use navigator alone':

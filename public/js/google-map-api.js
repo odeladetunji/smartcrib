@@ -14,27 +14,33 @@
 
   function initialize() {
     geocoder = new google.maps.Geocoder();
-    var latlng = new google.maps.LatLng(7.3775, 3.9470);
-    var mapOptions = {
-      zoom: 8,
-      center: latlng
-    }
-    map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+    map = new google.maps.Map(document.getElementById('map'), {
+		  center : {lat: 6.465422, lng: 3.406448},
+		  zoom: 14
+    });
+    console.log('map was initialized ....');
   }
 
   function cityMap(concatedLocation, callback){
   	  geocoder.geocode( {'address': concatedLocation}, function(results, status){
   	  	  if (status == 'OK') {
-	              var latlng = new google.maps.LatLng(param1, param2);
+  	  	  	      console.log();
+  	  	  	      
+	              var latlng = new google.maps.LatLng(results[0].geometry.location.lat(),
+	                  results[0].geometry.location.lng());
 			      var mapOptions = {
-			          zoom: 8,
+			          zoom: 16,
 			          center: latlng
 			      }
 
 			      map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-			      callback(map);
+			      callback(map, results[0]);
   	  	  }else{
+  	  	  	 console.log('CityMap() Function ....');
+  	  	  	 console.log('geocode was not suceefully');
+  	  	  	 console.lo('initializing Geocoder again ...');
   	  	  	 cityMap(concatedLocation, callback);
   	  	  }
   	  });
@@ -48,20 +54,14 @@
             map: map,
             position: results[0].geometry.location
         }); */
-        
            callback(results[0]);
 
       } else {
         //alert('Geocode was not successful for the following reason: ' + status);
+          console.log('codeAddress() Function ....');
+  	  	  console.log('geocode was not suceefully');
+  	  	  console.lo('initializing Geocoder again ...');
           codeAddress(callback);
       }
     });
   }
-
-
-/* <div id="map" style="width: 320px; height: 480px;"></div>
-  <div>
-    <input id="address" type="textbox" value="Sydney, NSW">
-    <input type="button" value="Encode" onclick="codeAddress()">
-  </div>
-</body> */

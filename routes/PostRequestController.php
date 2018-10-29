@@ -181,7 +181,7 @@ class PostRequestController extends BaseController
 
         if($request->filled('owners-name')) {
             DB::update('update request_quantity set owners_name = ? where email = ?', [$request->input('owners-name'), $email]);
-        }
+        }p
 
         if($request->filled('address')) {
             DB::update('update request_quantity set address = ? where email = ?', [$request->input('address'), $email]);

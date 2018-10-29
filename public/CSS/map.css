@@ -3,7 +3,12 @@
 	padding: 0px;
     font-family: Geneva;
     border: border-box;
-    background-color: cyan;
+}
+
+.row {
+  margin-right: 0px;
+  margin-left: 0px;
+  width: 100% !important;
 }
 
 .welm_form {
@@ -18,13 +23,30 @@
 	padding-left: 20px;
 	margin-left: 9%;
 	border: 1px solid orange;
-	margin-top: 200px;
 	background-color: transparent;
+	color: white;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+#city {
+	margin-top: 110px;
+}
+
+#locaGv {
+	width: 90%;
+	height: 50px;
+	padding-left: 20px;
+	margin-left: 9%;
+	border: 1px solid orange;
+	background-color: transparent;
+	margin-top: 10px;
 	color: white;
 	font-weight: bold;
 }
 
 .wel_form select option {
+	padding: 10px;
 	padding-left: 20px;
 }
 
@@ -42,13 +64,172 @@
 }
 
 
+body, html {
+	height: 100%;
 
+}
 .ltnInterface {
     background-color: rgb(0,0,6); /* Fallback color */
     background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
     padding-bottom: 350px;
+    position: absolute;
+    z-index: 2;
+    top: 0px;
+    width: 100%;
+}
+
+.property_modal {
+	background-color: rgb(0,0,6); /* Fallback color */
+    background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+    padding-bottom: 350px;
+    position: absolute;
+    z-index: 3;
+    top: 0px;
+    width: 100%;
+    display: none;
+}
+
+.custom-modal-wrapper{
+	width: 100%;
+	background-color: rgba(0,0,0, .5);
+	position: absolute;
+	top: 0;
+	z-index: 3;
+	display: none;
+ }
+
+.custom-wrapper{
+	width: 100%;
+	background-color: transparent;
+	padding: 20px;
+	margin-top: 40px;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.thePix {
+	margin-top: 50px;
+}
+
+.pictures_section{
+	background-color: transparent;
+	width: 90%; 
+	margin-left: 5%;
+}
+
+.prop_facilities {
+	background-color: white;
+	width: 100%;
+}
+
+.other_images {
+	width: 90%;
+	height: 250px;
+	background-size: cover;
+	background-position: center;
+	list-style-type: none;
+	display: inline-block;
+	margin-left: 
+}
+
+
+.ul_of_props {
+	height: 600px;
+	max-height: 600px;
+	width: 100%;
+	overflow-y: scroll;
+	padding-left: 0px;
 }
 
 .welm {
 	background-color: transparent;
 }
+
+.property_hanler {
+	background-color: transparent;
+}
+
+.welm_form_right {
+	background-color: transparent;
+	padding-top: 200px;
+}
+
+.welm_form_right i {
+     font-size: 200px;
+     color: orange;
+     background-color: transparent;
+     padding-left: 100px;
+}
+
+#map {
+	height: 100%;
+	margin-left: 10px;
+}
+
+.mapCover {
+	padding-top: 10px;
+	background-color: white;
+}
+
+.props {
+	flex-wrap: wrap;
+	height: 700px;
+	overflow: scroll;
+}
+
+.a_property {
+     width: 300px;
+     margin-left: 5px;
+     margin-top: 20px;
+     border: 1px solid white;
+     border-radius: 5px;
+     background-color: #eeeeee;
+     cursor: pointer;
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+.a_property:hover {
+	border: 1px solid green;
+	color: green;
+}
+
+.a_property ul li {
+	list-style-type: none;
+	text-align: center;
+	padding: 5px;
+}
+
+.cover_pix {
+	width: 100%;
+	height: 200px;
+	background-position: center;
+	background-size: cover;
+}
+
+.contact_agent {
+    background-color: transparent;
+    width: 100%;
+    margin-top: 70px;
+    margin-bottom: 70px;
+    color: white;
+}
+
+.contact_agent input{
+    background-color: transparent;
+    width: 95%;
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+    border: 1px solid orange;
+    margin-bottom: 5px;
+}
+
+
+.pixCont {
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 100% !important;
+}
+
+
+
