@@ -23,6 +23,17 @@ class searchDBController extends BaseController
          return $data;
 	}
 
+	public function searchEngine($state){
+         $data = DB::table('properties')
+              ->join('facilities', 'properties.identity', '=', 'facilities.identity')
+                  ->join('quantity', 'properties.identity', '=', 'quantity.identity')
+                      ->join('pictures_of_properties', 'properties.identity', '=', 'pictures_of_properties.identity')
+                           ->select('properties.*', 'facilities.*', 'quantity.*', 'pictures_of_properties.*')
+                                 ->where('state_property_is_located', $state)
+                                     ->get();
+         return $data;
+	}
+
     public function search(Request $request){
 
     	 $a_message = 'routing from accountpage';
@@ -43,8 +54,12 @@ class searchDBController extends BaseController
     	 }
 
     	 if ($request->input('city')) {
-    	 	 $theDatas = $this->queryDB($request->input('city'));
+    	 	 $theDatas = $this->searchEngine($request->input(''), $request->input(''));
     	 	 return response()->json(array('data' => $theDatas));
+    	 }
+
+    	 if ($request->input('searchDB')) {
+    	 	 
     	 }
     }
 }

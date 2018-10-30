@@ -339,7 +339,7 @@
                              <p class="localhead">Adress of Property</p>
 	  	   	    	     <select id="theStates" name="state" onchange="useSelectedItem(this)" required>
 	  	   	    			<option value="Abia">Abia</option>
-                                     <option value="Adamawa">Abia</option>
+                                     <option value="Adamawa">Adamawa</option>
                                      <option value="Anambra">Anambra</option>
                                      <option value="Bauchi">Bauchi</option>
                                      <option value="Bayelsa">Bayelsa</option>

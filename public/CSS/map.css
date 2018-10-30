@@ -118,8 +118,34 @@ body, html {
 }
 
 .prop_facilities {
-	background-color: white;
-	width: 100%;
+	width: 90%;
+    cursor: pointer;
+    margin-left: 0px;
+    background-color: #eeeeee;
+}
+
+.facilities_with_props {
+	width: 90%;
+	margin-left: 0px;
+	cursor: pointer;
+	background-color: #eeeeee;
+}
+
+.propTitle_documents {
+	width: 90%;
+	margin-left: 0px;
+	cursor: pointer;
+	background-color: #eeeeee;
+}
+
+.midsection {
+    max-height: 900px;
+    overflow: scroll;
+    background-color: transparent;
+}
+
+.prop_facilities p {
+    color: purple;
 }
 
 .other_images {
@@ -215,13 +241,42 @@ body, html {
 }
 
 .contact_agent input{
-    background-color: transparent;
-    width: 95%;
+    background-color: white;
+    width: 90%;
     padding: 10px;
     color: white;
     border-radius: 5px;
-    border: 1px solid orange;
+    margin-bottom: 10px;
+    border: none;
+}
+
+.contact_agent textarea {
+	background-color: white;
+    width: 90%;
+    padding: 10px;
+    height: 100px;
+    color: white;
+    border-radius: 5px;
+    border: none;
     margin-bottom: 5px;
+}
+
+.contact_agent button {
+	padding: 5px 30px;
+	border-radius: 5px;
+	border: 1px solid orange;
+	color: white;
+	background-color: purple;
+	cursor: pointer;
+	float: right;
+	margin-top: 10px;
+	margin-right: 30px;
+}
+
+.contact_agent button:hover {
+	background-color: lightgreen;
+	color: black;
+	border: 1px solid white;
 }
 
 
@@ -229,6 +284,190 @@ body, html {
     padding-left: 0px;
     padding-right: 0px;
     width: 100% !important;
+}
+
+.propContainer {
+	flex-wrap: nowrap;
+	background-color: transparent;
+}
+
+.an_icon {
+	width: 10%;
+	background-color: transparent;
+}
+
+.an_icon i {
+    font-size: 30px;
+    padding-left: 8px;
+    color: #2a938e;
+}
+
+.actual_content {
+	width: 100%;
+	background-color: transparent;
+}
+
+.propContent {
+	padding-left: 20px;
+	color: purple;
+	background-color: transparent;
+	border-bottom: 1px solid #2a938e;
+	width: 95%;
+	padding-bottom: 10px;
+}
+
+.left_part {
+	width: 10%;
+    background-color: transparent;
+}
+
+.left_part i {
+	font-size: 25px;
+	background-color: transparent;
+	color: #2a938e;
+	padding-left: 8px;
+}
+
+.left_part p {
+	padding-left: 20px;
+	color: purple;
+	background-color: transparent;
+}
+
+.right_part {
+	width: 80%;
+	background-color: transparent;
+}
+
+.right_part p {
+	padding-left: 20px;
+	color: purple;
+	background-color: transparent;
+}
+
+.prop_facilities h6 {
+	padding-left: 10px;
+	padding-top: 10px;
+	text-align: center;
+	padding-bottom: 10px;
+	background-color: black;
+	color: white;
+}
+
+.last_heading {
+	padding-left: 10px;
+	padding-top: 10px;
+	text-align: center;
+	padding-bottom: 5px;
+	background-color: black;
+	color: white;
+}
+
+.titleDocument {
+	display: flex;
+	flex-wrap: nowrap;
+}
+
+.documentValue {
+	padding-top: 10px;
+    width: 90%;
+}
+
+.documentValue p{
+    color: purple;
+    padding-left: 20px;
+    border-bottom: 1px solid #2a938e;
+    border-right: 1px solid #2a938e;;
+    width: 95%;
+    padding-bottom: 10px;
+}
+
+.forIcon {
+    width: 10%;
+    float: right;
+    font-size: 30px;
+    padding-left: 10px;
+    color: #2a938e;
+}
+
+.search_section {
+	width: 50%;
+	background-color: rgba(0,0,0, .5);
+	padding-top: 70px;
+	position: fixed;
+	z-index: 5;
+	top: 0px;
+	right: 0px;
+	max-height: 750px;
+	padding-bottom: 80px;
+	overflow: scroll;
+	cursor: pointer;
+}
+
+.search_section form {
+	width: 80%;
+	margin-left: 10%;
+	margin-right: 10%;
+	background-color: transparent;
+}
+
+.search_section form select {
+	height: 50px;
+	width: 100%;
+	background-color: #eeeeee;
+	margin-bottom: 10px;
+}
+
+.search_section input {
+	background-color: #eeeeee;
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
+.search_section p {
+	padding: 10px;
+	background-color: #eeeeee;
+	width: 100%;
+	margin-bottom: 0px;
+	margin-bottom: 10px;
+}
+
+.search_section .actualPrices {
+	width: 50%;
+	display: none;
+}
+
+.actualPrices input {
+	margin-bottom: 0px;
+}
+
+.actualPrices {
+	height: 300px;
+	overflow: auto;
+}
+
+.search_section button {
+	padding: 7px 30px;
+	background-color: purple;
+	color: white;
+	border: 1px solid orange;
+	float: right;
+	border-radius: 5px;
+}
+
+.maxmin {
+	display: flex !important;
+	width: 100%;
+	flex-wrap: nowrap;
+}
+
+.maxValue, .minValue {
+	width: 50% !important;
+}
+
+.wrap_prices {
+	width: 50%;
 }
 
 

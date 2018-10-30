@@ -1,9 +1,23 @@
 // script for querying DB engine!
+var searchForm = document.getElementsByClassName('search_form')[0];
+    searchForm.onsubmit = function(){
+         event.preventDefault();
+         var searchForm = document.getElementsByClassName('search_form')[0];
+         var formData = new FormData(searchForm);
+             formData.append('searchDB', 'searchDB');
+             
+             var category = document.getElementById('category').value;
+             if (category == 'Category') {
+             	return;
+             }
 
-function searchBD(){
+             searchDB(formData);
+    }
+
+function searchDB(param){
      const theToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
      const xhttp = new XMLHttpRequest();
-       xhttp.open('POST', '/searchBD', true);
+       xhttp.open('POST', '/searchDB', true);
        xhttp.onreadystatechange = () => {
        	    if (this.readystate == 4 && this.status == 200) {
        	    	const data = JSON.parse(this.responseText);
@@ -37,5 +51,5 @@ function searchBD(){
        xhttp.setRequestHeader("processData", 'false');
        xhttp.setRequestHeader('cache', 'false');
        xhttp.setRequestHeader("Content-Type", "application/json");
-       xhttp.send();
+       xhttp.send(param);
 }

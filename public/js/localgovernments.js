@@ -112,6 +112,17 @@ var lGA = {
     };
 
 
+function displayLGA(param){
+     var parentE = document.getElementById('locaGv_for_search');
+    //console.log(param);
+    var emptOptn = '<option value="" id="optG1">Select LGA</option>';
+    parentE.innerHTML = emptOptn;
+    for (var i = 0; i < param.length; i++) {
+         var elem = '<option value="' + param[i] + '">' + param[i] + '</option>';
+                    $(elem).insertBefore('#optG1');
+    }
+}
+
 function useCity(param){
     var parentE = document.getElementById('locaGv');
     console.log(param);

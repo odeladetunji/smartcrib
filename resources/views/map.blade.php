@@ -47,9 +47,11 @@
 	  <div class="row ltnInterface">
 	  	  <div class="col-sm-6 welm">
 	  	  	 <form name="welcomeForm" class="welm_form" encType="multipart/form-data" method="POST" action="{{URL::to('/searchDB')}}" >{{ csrf_field() }}
+
 	  	  	 	<select id="city" name="city" onchange="selectCity(this)" required>
 	  	   	    			         <option value="... City (state)">... Select City (state)</option>
-                                     <option value="Adamawa">Abia</option>
+	  	   	    			         <option value="Abia">Abia</option>
+                                     <option value="Adamawa">Adamawa</option>
                                      <option value="Anambra">Anambra</option>
                                      <option value="Bauchi">Bauchi</option>
                                      <option value="Bayelsa">Bayelsa</option>
@@ -105,74 +107,80 @@
 	  	   	  	 
 	  	   	            </div>
 	  				</div>
-	  				<div class="col-md-4 pixCont">
+	  				<div class="col-md-4 pixCont midsection">
 	  					 <div class="prop_facilities">
 	  					 	      <div>
-	  					 	      	 <h3>Quantity</h3>
-                                    <div>
-			  	   	  	              	   <div id="totalUnit">
-			  	   	  	              	   	   <p>units</p>
+	  					 	      	 <h6>Quantity</h6>
+                                    <div style="display: flex;">
+			  	   	  	              	   <div class="left_part">
+			  	   	  	              	   	   <p id="no_of_units">units</p>
 			  	   	  	              	   </div>
-			  	   	  	              	   <div id="the_unit">
-			  	   	  	              	   	   <p></p>
+			  	   	  	              	   <div class="right_part">
+			  	   	  	              	   	   <p id="forbedroom"></p>
 			  	   	  	              	   </div>
 		  	   	  	                 </div>
-		  	   	  	                 <h3>Price of Property</h3>
-	  					 	      	 <div>
-			  	   	  	              	   <div>
-			  	   	  	              	   	   <i></i>
+		  	   	  	                 <h6>Price of Property</h6>
+	  					 	      	 <div style="display: flex;">
+			  	   	  	              	   <div class="left_part">
+			  	   	  	              	   	   <i class="fas fa-money-bill-alt"></i>
 			  	   	  	              	   </div>
-			  	   	  	              	   <div id="propPrice">
-			  	   	  	              	   	   <p></p>
+			  	   	  	              	   <div class="right_part">
+			  	   	  	              	   	   <p id="forprice"></p>
 			  	   	  	              	   </div>
 		  	   	  	                 </div>
 	  					 	      </div>
-		  	   	  	              <h3>Address of Property</h3>
-		  	   	  	              <div>
-		  	   	  	              	 <div>
-		  	   	  	              	 	<i></i>
+		  	   	  	              <h6>Address of Property</h6>
+		  	   	  	              <div style="display: flex;">
+		  	   	  	              	 <div class="left_part">
+		  	   	  	              	 	<i class="fas fa-address-book"></i>
 		  	   	  	              	 </div>
-		  	   	  	              	 <div id="full_address">
-		  	   	  	              	 	<p></p>
+		  	   	  	              	 <div class="right_part">
+		  	   	  	              	 	<p id="foraddress"></p>
 		  	   	  	              	 </div>
 		  	   	  	              </div>
 
-		  	   	  	              <div>
-		  	   	  	              	   <div>
-		  	   	  	              	   	   <i></i>
+		  	   	  	              <div style="display: flex;">
+		  	   	  	              	   <div class="left_part">
+		  	   	  	              	   	   <i class="fas fa-thumbtack"></i>
 		  	   	  	              	   </div>
-		  	   	  	              	   <div id="locaGv_state">
-		  	   	  	              	   	   <p></p>
-		  	   	  	              	   	   <p></p>
+		  	   	  	              	   <div class="right_part">
+		  	   	  	              	   	   <p id="forlocaGv"></p>
+		  	   	  	              	   	   <p id="forstate"></p>
 		  	   	  	              	   </div>
 		  	   	  	              </div>
-		  	   	  	              <h3>Category</h3>
-		  	   	  	              <p id="category_value"></p>
-		  	   	  	              <h3>Type of Property</h3>
-		  	   	  	              <p id="propType"></p>
-		  	   	  	              <h3>size of property</h3>
+		  	   	  	              <h6>Category</h6>
+		  	   	  	              <p id="category_value" style="padding-left: 10px;"></p>
+		  	   	  	              <h6>Type of Property</h6>
+		  	   	  	              <p id="propType" style="padding-left: 10px;"></p>
+		  	   	  	              <h6>size of property</h6>
 		  	   	  	              
-		  	   	  	              <div>
-		  	   	  	              	   <div>
-		  	   	  	              	   	   <i></i>
+		  	   	  	              <div style="display: flex;">
+		  	   	  	              	   <div class="left_part">
+		  	   	  	              	   	   <p id="forsize"></p>
 		  	   	  	              	   </div>
-		  	   	  	              	   <div id="stateFa">
-		  	   	  	              	   	   <p></p>
+		  	   	  	              	   <div class="right_part">
+		  	   	  	              	   	   <p id="formeasure"></p>
 		  	   	  	              	   </div>
 		  	   	  	              </div>
+		  	   	         </div>
+		  	   	         <div class="facilities_with_props">
+		  	   	         	  
+		  	   	         </div>
+		  	   	         <div class="propTitle_documents">
+		  	   	         	
 		  	   	         </div>
 	  				</div>
 	  				<div class="col-md-2 pixCont">
 	  					<div class="property_hanler">
 				  	   	  	  <form name="contactAgent" class="contact_agent" encType="multipart/form-data" method="POST" action="{{URL::to('/searchDB')}}" >{{ csrf_field() }}
-				  	   	  	  	 <label>Full Name</label>
+				  	   	  	  	 
 				  	   	  	  	 <input type="text" placeholder="your fullname">
-				  	   	  	  	 <label>Telephone</label>
+				  	   	  	  	 
 				  	   	  	  	 <input type="number" placeholder="000-0000-0000">
-				  	   	  	  	 <label>Email</label>
+				  	   	  	  	 
 				  	   	  	  	 <input type="email" placeholder="Email">
-				  	   	  	  	 <label>short Message</label>
-				  	   	  	  	 <textarea name="" id="short_note"></textarea>
+				  	   	  	  	 
+				  	   	  	  	 <textarea name="" id="short_note" placeholder="short message"></textarea>
 				  	   	  	  	 <button>contact agent</button>
 				  	   	  	  </form>
 		  	   	  </div>
@@ -184,6 +192,113 @@
 	  	</div>
 	  </div>
 	 
+	  <div class="search_section">
+	  	  	  <form name="searchForm" class="search_form" encType="multipart/form-data" method="POST" action="{{URL::to('/')}}" >{{ csrf_field() }}
+		  	  	  	<select name="category" id="category" required>
+		  	  	  		    <option value="Category">Category</option>
+		   	    			<option value="For Rent">For Rent</option>
+		   	    			<option value="For Sale">For Sale</option>
+		   	    			<option value="Short Let">Short Let</option>
+		   	    			<option value="Joint Venture">Joint Venture</option>
+		   	    			<option value="Government Scheme">Government Scheme</option>
+		   	    			<option value="Private Development Scheme">Private Development Scheme</option>
+		  	   	   </select>
+		  	  	  	<select name="price" id="">
+		  	  	  		<option value="select price">select price</option>
+  	  	  				<option value="N50,000+">N50,000+</option>
+  	  	  				<option value="N80,000+">N80,000+</option>
+  	  	  				<option value="N100,000+">N100,000+</option>
+  	  	  				<option value="N150,000+">N150,000+</option>
+  	  	  				<option value="N200,000+">N200,000+</option>
+  	  	  				<option value="250,000+">250,000+</option>
+  	  	  				<option value="N300,000+">N300,000+</option>
+  	  	  				<option value="N350,000+">N350,000+</option>
+  	  	  				<option value="N400,000+">N400,000+</option>
+  	  	  				<option value="N450,000+">N450,000+</option>
+  	  	  				<option value="N500,000+">N500,000+</option>
+  	  	  				<option value="N550,000+">N550,000+</option>
+  	  	  				<option value="N600,000+">N600,000+</option>
+  	  	  				<option value="N650,000+">N650,000+</option>
+  	  	  				<option value="N700,000+">N700,000+</option>
+  	  	  				<option value="N800,000+">N800,000+</option>
+  	  	  				<option value="N1,000,000+">N1,000,000+</option>
+  	  	  				<option value="N2,000,000+">N2,000,000+</option>
+  	  	  				<option value="N3,000,000+">N3,000,000+</option>
+  	  	  				<option value="N4,000,000+">N4,000,000+</option>
+  	  	  				<option value="N6,000,000+">N6,000,000+</option>
+  	  	  				<option value="N10,000,000+">N10,000,000+</option>
+			  	  	  			</select>
+	                <select name="bedrooms" id="">
+                        <option value="Bedroom">Bedroom</option>
+	                	<option value="1">1+ bedroom</option>
+	                	<option value="2">2+ bedroom</option>
+	                	<option value="3">2+ bedroom</option>
+	                	<option value="4">4+ bedroom</option>
+	                	<option value="5">5+ bedroom</option>
+	                	<option value="6">6+ bedroom</option>
+	                </select>
+
+	                 <select id="theStates" name="state" onchange="select_city_for_search(this)" required>
+	   	    			     <option value="Abia">Abia</option>
+                             <option value="Adamawa">Adamawa</option>
+                             <option value="Anambra">Anambra</option>
+                             <option value="Bauchi">Bauchi</option>
+                             <option value="Bayelsa">Bayelsa</option>
+                             <option value="Benue">Benue</option>
+                             <option value="Borno">Borno</option>
+                             <option value="Cross River">Cross River</option>
+                             <option value="Delta">Delta</option>
+                             <option value="Ebonyi">Ebonyi</option>
+                             <option value="Edo">Edo</option>
+                             <option value="Ekiti">Ekiti</option>
+                             <option value="Enugu">Enugu</option>
+                             <option value="Gombe">Gombe</option>
+                             <option value="Imo">Imo</option>
+                             <option value="Jigawa">Jigawa</option>
+                             <option value="Kaduna">Kaduna</option>
+                             <option value="Kano">Kano</option>
+                             <option value="Katsina">Katsina</option>
+                             <option value="Kebbi">Kebbi</option>
+                             <option value="Kogi">Kogi</option>
+                             <option value="Kwara">Kwara</option>
+                             <option value="Lagos">Lagos</option>
+                             <option value="Nasarawa">Nasarawa</option>
+                             <option value="Niger">Niger</option>
+                             <option value="Ogun">Ogun</option>
+                             <option value="Ondo">Ondo</option>
+                             <option value="Osun">Osun</option>
+                             <option value="Oyo">Oyo</option>
+                             <option value="Plateau">Plateau</option>
+                             <option value="Rivers">Rivers</option>
+                             <option value="Sokoto">Sokoto</option>
+                             <option value="Taraba">Taraba</option>
+                             <option value="Yobe">Yobe</option>
+                             <option value="Zamfara">Zamfara</option>
+                             <option value="FCT">FCT</option>
+	  	   	    		</select>
+
+	  	   	    		<select name="locaGv" id="locaGv_for_search" required>
+	  	   	    			
+	  	   	    		</select>
+
+	                <select id="type" name="title">
+	                	<option value="Type of Property">Type of Property</option>
+  	   	    			<option value="Land">Land</option>
+  	   	    			<option value="Detached House"> Detached House </option>
+  	   	    			<option value="Semi-Detached House">  Semi-Detached House</option>
+  	   	    			<option value="Tarraced">Tarraced House</option>
+  	   	    			<option value="Bungalow">Bungalow</option>
+  	   	    			<option value="Commercial Property">Commercial Property</option>
+  	   	    			<option value="Warehouse">Warehouse</option>
+  	   	    			<option value="Factory">Factory</option>
+  	   	    			<option value="Event Hall">Event Hall</option>
+  	   	    			<option value="Filling Stations">Filling Stations</option>
+  	   	    			<option value="School">School</option>
+  	   	    			<option value="Tank Farm">Tank Farm</option>
+	  	   	    	</select>
+                    <button>search database</button>
+	  	  	  </form>
+	  </div>
 	 
       <script type="text/JavaScript">
             
@@ -191,12 +306,14 @@
                document.getElementsByClassName('props')[0].style.backgroundImage = 'url(/storage/images/smartcribpix1.jpg)';
                document.getElementsByClassName('props')[0].style.backgroundPosition = 'center';
                document.getElementsByClassName('props')[0].style.backgroundSize = 'cover';
-               document.getElementsByClassName('property_modal')[0].style.display = 'none';
+               //document.getElementsByClassName('property_modal')[0].style.display = 'none';
             }
 
       	    function setPointersOnMap(map, param){
       	    	 console.log('setPointersOnMap');
       	    	 var counter = 0;
+      	    	 var markerTriggered = null;
+
       	    	 console.log(param['data'].length);
                  for (var i =0; i < param['data'].length; i++) {
                        counter++;
@@ -204,12 +321,28 @@
 	                   marker = new google.maps.Marker({
 	                       map: map,
 	                       position: new google.maps.LatLng(param['data'][i].latitude , param['data'][i].longitude)
-	                   }); 
+	                   });
+
+	                   var infowindow = new google.maps.InfoWindow({
+                           content: param['data'][i].address.concat(',').concat(' ').concat(param['data'][i].local_government).concat(',').concat(' ').concat(param['data'][i].state_property_is_located) //address of location
+                       });
 
 	                   google.maps.event.addListener(marker, 'click', (function(marker, i) {
 					        return function() {
-					          infowindow.setContent(locations[i][0]);
 					          infowindow.open(map, marker);
+					          display_property(param['data'][i], markerTriggered);
+					        }
+				       })(marker, i));
+ 
+				       google.maps.event.addListener(marker, 'mouseover', (function(marker, i) {
+					        return function() {
+					          infowindow.open(map, marker);
+					        }
+				       })(marker, i));
+ 
+                       google.maps.event.addListener(marker, 'mouseout', (function(marker, i) {
+					        return function() {
+					          infowindow.close();
 					        }
 				       })(marker, i));
                  } 
@@ -271,7 +404,7 @@
                                                }
 
                                                if (Object.keys(param).length == counter) {
-                                               	  var a_component = '<div class="a_property" onclick="display_property(' + param['identity'] + ')">' + '<div class="cover_pix" style="background-image: url(/storage/images/' + param['cover_picture'] + ')" );"></div>' + '<ul>' + category + price + address + '</ul></div>';
+                                               	  var a_component = '<div class="a_property" onclick="display_property(' + param['identity'] + this + ')">' + '<div class="cover_pix" style="background-image: url(/storage/images/' + param['cover_picture'] + ')" );"></div>' + '<ul>' + category + price + address + '</ul></div>';
                                                	  finalElem = finalElem.concat(a_component);
                                                }
                                            }
@@ -338,90 +471,38 @@
                      }, 7000); // thats 7 seconds thereafter the event.
                 }
 
-
-                function display_property(param){
-                		//document.querySelector(".custom-modal-wrapper").style.display = "block";
-                	 function usePropStore(param){
-                	 	 var ul = '<ul class="ul_of_props">';
-                	 	 var counter = 0;
-                	 	 var microImages = '';
-                         var facilities = '';
-                         var title_document = '';
-
-                         for(x in param){
-                         	  counter++;
-                              if (x.indexOf('otherpicture') !=  -1) {
-                              	  if (param[x] == null) {
-                                      ul = ul + '</ul>';
-	                              	  document.getElementsByClassName('pictures_section')[0].innerHTML = ul;
-	                              	  //document.getElementsByClassName('picture_tray')[0].innerHTML = microImages;
-	                              	  document.getElementsByClassName('custom-modal-wrapper')[0].style.display = 'block';
-	                              	      continue;
-                              	  }
-
-                              	  var li = '<li style="background-image: url(/storage/images/' + param[x] + ')" class="other_images"></li>';
-                                  ul = ul + li;
-                
-                                  if (x == '' && param[x] != null) {
-                                  	  var each_Facilities = 
-	                                  	   '<div style="display: flex;" class="propContainer">' +
-	                                  	       '<div class="an_icon">' + 
-	                                  	            '<i></i>' +
-	                                  	       '</div>'+
-	                                  	       '<div class="actual_content">' + 
-	                                  	           '<p class="propHeading">' + '</p>' +
-	                                  	           '<p class="propContent">' + '</p>' +
-	                                  	       '</div>' +
-	                                  	   '</div>';
-
-                                  	   facilities = facilities + each_Facilities;
-                                  }
-
-                                  if(x == '' && param[x] != null){
-                                  	  var prop_document = 
-                                  	        '<div class="titleDocument">' +
-                                  	             '<div class="forIcon">' +
-                                  	                 '<i></i>' +
-                                  	             '</div>' + 
-                                  	             '<div class="documentValue">' +
-          											 '<p>' + '</p>' +
-                                  	             '</div>' +
-                                  	        '</div>';
-
-                                  	      title_document = title_document + prop_document;
-                                  }
-
-                             
-
-                                  // var micro = '<li style="background-image: url(/storage/images/' + param[x] + ')" class=""></li>';
-                                  // microImages = microImages + micro;
-
-                              }
-
-                              // if (Object.keys(param).length == counter) {
-                              	  
-                              // }
-                         }
-                	 }
-
- 					 for (var i = 0; i < propStore[city].length; i++) {
- 					 	   console.log(propStore[city][i]);
- 					 	if (propStore[city][i]['identity'] == param) {
- 					 		// if (propStore[city]['identity']) {}
- 					 		 usePropStore(propStore[city][i]);
- 					 	}
- 					 }
+                function select_city_for_search(param){
+                    displayLGA(lGA[param.value]);
                 }
 
+                /// event handler function
+                function togglePrices(){
+                    var comp = document.getElementsByClassName('actualPrices')[0];
+                    var component = document.getElementsByClassName('maxmin')[0];
 
+                    if (comp.style.display == 'block') {
+                    	comp.style.display = 'none';
+                    }else{
+                    	comp.style.display = 'block';
+                    }
+
+                    if (component.style.display == 'block') {
+                    	component.style.display = 'none';
+                    }else{
+                    	component.style.display = 'block';
+                    }
+                }
+                
+                
       </script>
+      <script src="{{ asset('js/google-map-api.js') }}"></script>
+      <script src="{{ asset('js/propertydetails.js') }}"></script>
       <script src="{{ asset('js/displayProp.js') }}" type="text/javascript"></script>
       <script src="{{ asset('js/searchDB.js') }}" type="text/javascript"></script>
       <script src="{{ asset('js/localgovernments.js') }}"></script>
       <script async defer
              src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4D1-koeikvwYczC2EpHU-mwLSzTH6UIE&callback=initialize">
       </script>
-      <script src="{{ asset('js/google-map-api.js') }}"></script>
       <script type="text/javascript">
       	document.querySelector("#closemodal").addEventListener("click", () => {
       		document.querySelector(".custom-modal-wrapper").style.display = "none";
