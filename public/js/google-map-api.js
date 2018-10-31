@@ -9,6 +9,13 @@
               .concat('Nigeria');
   }
 
+  function concatSearchedAddress(){
+  	  var state = document.getElementById('theStates').value;
+  	  var locaGv = document.getElementById('locaGv_for_search').value;
+  	  return locaGv.concat(',').concat(' ').concat('state').concat(',').concat(' ')
+  	          .concat('Nigeria');
+  }
+
   var geocoder;
   var map;
 
@@ -62,6 +69,25 @@
   	  	  console.log('geocode was not suceefully');
   	  	  console.lo('initializing Geocoder again ...');
           codeAddress(callback);
+      }
+    });
+  }
+
+  function codeSearchedAddress(callback) {
+    geocoder.geocode( { 'address': concatSearchedAddress()}, function(results, status) {
+      if (status == 'OK') {
+          var latlng = new google.maps.LatLng(results[0].geometry.location.lat(),
+              results[0].geometry.location.lng());
+	      var mapOptions = {
+	          zoom: 16,
+	          center: latlng
+	      }
+
+	      map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+	      callback(map, results[0]);
+      } else {
+           codeSearchedAddress(callback);
       }
     });
   }

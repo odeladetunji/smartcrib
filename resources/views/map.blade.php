@@ -18,8 +18,8 @@
 </head>
 <body>
 	 
-	  <div class="row header">
-	  	   
+	  <div class="menuIcon">
+	  	   <i class="fas fa-bars" onclick="closeMenu()"></i>
 	  </div>
 	  
 	  <div class="row mapCover">
@@ -193,6 +193,7 @@
 	  </div>
 	 
 	  <div class="search_section">
+	  <i class="fas fa-window-close" onclick="closeMenu()"></i>
 	  	  	  <form name="searchForm" class="search_form" encType="multipart/form-data" method="POST" action="{{URL::to('/')}}" >{{ csrf_field() }}
 		  	  	  	<select name="category" id="category" required>
 		  	  	  		    <option value="Category">Category</option>
@@ -203,33 +204,36 @@
 		   	    			<option value="Government Scheme">Government Scheme</option>
 		   	    			<option value="Private Development Scheme">Private Development Scheme</option>
 		  	   	   </select>
-		  	  	  	<select name="price" id="">
+		  	   	   <p id="enterCategory">Select Category</p>
+		  	  	  	<select name="price" id="price_component" onchange="showMaxInput(this)">
 		  	  	  		<option value="select price">select price</option>
-  	  	  				<option value="N50,000+">N50,000+</option>
-  	  	  				<option value="N80,000+">N80,000+</option>
-  	  	  				<option value="N100,000+">N100,000+</option>
-  	  	  				<option value="N150,000+">N150,000+</option>
-  	  	  				<option value="N200,000+">N200,000+</option>
-  	  	  				<option value="250,000+">250,000+</option>
-  	  	  				<option value="N300,000+">N300,000+</option>
-  	  	  				<option value="N350,000+">N350,000+</option>
-  	  	  				<option value="N400,000+">N400,000+</option>
-  	  	  				<option value="N450,000+">N450,000+</option>
-  	  	  				<option value="N500,000+">N500,000+</option>
-  	  	  				<option value="N550,000+">N550,000+</option>
-  	  	  				<option value="N600,000+">N600,000+</option>
-  	  	  				<option value="N650,000+">N650,000+</option>
-  	  	  				<option value="N700,000+">N700,000+</option>
-  	  	  				<option value="N800,000+">N800,000+</option>
-  	  	  				<option value="N1,000,000+">N1,000,000+</option>
-  	  	  				<option value="N2,000,000+">N2,000,000+</option>
-  	  	  				<option value="N3,000,000+">N3,000,000+</option>
-  	  	  				<option value="N4,000,000+">N4,000,000+</option>
-  	  	  				<option value="N6,000,000+">N6,000,000+</option>
-  	  	  				<option value="N10,000,000+">N10,000,000+</option>
-			  	  	  			</select>
+  	  	  				<option value="50000">N50,000+</option>
+  	  	  				<option value="80000">N80,000+</option>
+  	  	  				<option value="100000">N100,000+</option>
+  	  	  				<option value="150000">N150,000+</option>
+  	  	  				<option value="200000">N200,000+</option>
+  	  	  				<option value="250000">250,000+</option>
+  	  	  				<option value="300000">N300,000+</option>
+  	  	  				<option value="350000">N350,000+</option>
+  	  	  				<option value="400000">N400,000+</option>
+  	  	  				<option value="450000">N450,000+</option>
+  	  	  				<option value="500000">N500,000+</option>
+  	  	  				<option value="550000">N550,000+</option>
+  	  	  				<option value="600000">N600,000+</option>
+  	  	  				<option value="650000">N650,000+</option>
+  	  	  				<option value="700000">N700,000+</option>
+  	  	  				<option value="800000">N800,000+</option>
+  	  	  				<option value="1000000">N1,000,000+</option>
+  	  	  				<option value="2000000">N2,000,000+</option>
+  	  	  				<option value="3000000">N3,000,000+</option>
+  	  	  				<option value="4000000">N4,000,000+</option>
+  	  	  				<option value="6000000">N6,000,000+</option>
+  	  	  				<option value="10000000">N10,000,000+</option>
+			  	  	</select>
+			  	  	<input type="number" name= "max" id="maxcheck" placeholder="maximum price">
+			  	  	<p id="maxError">wrong maximum input</p>
 	                <select name="bedrooms" id="">
-                        <option value="Bedroom">Bedroom</option>
+                        <option value="Bedroom">No of Bedrooms</option>
 	                	<option value="1">1+ bedroom</option>
 	                	<option value="2">2+ bedroom</option>
 	                	<option value="3">2+ bedroom</option>
@@ -239,6 +243,7 @@
 	                </select>
 
 	                 <select id="theStates" name="state" onchange="select_city_for_search(this)" required>
+	                 	     <option value="">select state of property</option> 
 	   	    			     <option value="Abia">Abia</option>
                              <option value="Adamawa">Adamawa</option>
                              <option value="Anambra">Anambra</option>
@@ -278,8 +283,9 @@
 	  	   	    		</select>
 
 	  	   	    		<select name="locaGv" id="locaGv_for_search" required>
-	  	   	    			
+	  	   	    			<option value="Local Government">Local Government</option>
 	  	   	    		</select>
+	  	   	    		<P id="enterLocalGov">Select local government</P>
 
 	                <select id="type" name="title">
 	                	<option value="Type of Property">Type of Property</option>
@@ -373,6 +379,7 @@
                                                elem.innerHTML = finalElem;
                                                document.getElementsByClassName('ltnInterface')[0].style.display = 'none';
                                                document.getElementsByClassName('props')[0].style.backgroundImage = '';
+                                               document.getElementsByClassName('menuIcon')[0].style.display = 'block';
 	        	       	    	      }
                                       
                                       var finalElem = '';
@@ -404,7 +411,7 @@
                                                }
 
                                                if (Object.keys(param).length == counter) {
-                                               	  var a_component = '<div class="a_property" onclick="display_property(' + param['identity'] + this + ')">' + '<div class="cover_pix" style="background-image: url(/storage/images/' + param['cover_picture'] + ')" );"></div>' + '<ul>' + category + price + address + '</ul></div>';
+                                               	  var a_component = '<div class="a_property" onclick="display_property(' + param['identity'] + ',' + ' ' + this + ')">' + '<div class="cover_pix" style="background-image: url(/storage/images/' + param['cover_picture'] + ')" );"></div>' + '<ul>' + category + price + address + '</ul></div>';
                                                	  finalElem = finalElem.concat(a_component);
                                                }
                                            }
@@ -493,6 +500,38 @@
                     }
                 }
                 
+                function showMaxInput(param){
+                    if (param.value != 'select price') {
+                    	document.getElementById('maxcheck').style.display = 'block';
+                        document.getElementById('maxcheck').style.backgroundColor = '#eeeeee';
+                    }else{
+                    	document.getElementById('maxcheck').style.display = 'none';
+                    }
+                }
+
+                function closeMenu(){
+                	//console.log('am working');
+                	var search_section = document.getElementsByClassName('search_section')[0];
+                	   //console.log(search_section.style.display);
+                	if (search_section.style.display == '') {
+                		search_section.style.display = 'block';
+                		//console.log('1');
+                	}else if(search_section.style.display == 'none'){
+                		search_section.style.display = 'block';
+                		console.log('2');
+                	}else{
+                        search_section.style.display = 'none';
+                		//console.log('3');
+                	}
+                    
+                    var menuIcon = document.getElementsByClassName('menuIcon')[0];
+                        if (menuIcon.style.display == 'none') {
+                        	menuIcon.style.display = 'block';
+                        }else{
+                        	menuIcon.style.display = 'none';
+                        }
+
+                }
                 
       </script>
       <script src="{{ asset('js/google-map-api.js') }}"></script>

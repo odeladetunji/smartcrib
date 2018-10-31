@@ -392,8 +392,8 @@ body, html {
 
 .search_section {
 	width: 50%;
-	background-color: rgba(0,0,0, .5);
-	padding-top: 70px;
+	background-color: rgba(0,0,0, .7);
+	padding-top: 10px;
 	position: fixed;
 	z-index: 5;
 	top: 0px;
@@ -402,6 +402,7 @@ body, html {
 	padding-bottom: 80px;
 	overflow: scroll;
 	cursor: pointer;
+	display: none;
 }
 
 .search_section form {
@@ -414,14 +415,19 @@ body, html {
 .search_section form select {
 	height: 50px;
 	width: 100%;
-	background-color: #eeeeee;
+	color: white;
+	border: 1px solid orange;
+	background-color: transparent;
 	margin-bottom: 10px;
 }
 
 .search_section input {
-	background-color: #eeeeee;
+	background-color: transparent;
 	width: 100%;
 	padding: 10px;
+	border: 1px solid orange;
+	border-radius: 5px;
+	color: white;
 	margin-bottom: 10px;
 }
 
@@ -468,6 +474,68 @@ body, html {
 
 .wrap_prices {
 	width: 50%;
+}
+
+#enterLocalGov {
+	padding: 8px;
+	color: red;
+	background-color: transparent;
+	text-align: center;
+	display: none;
+}
+
+#enterCategory {
+	padding: 8px;
+	color: red;
+	background-color: transparent;
+	text-align: center;
+	display: none;
+}
+
+#maxError {
+	padding: 10px;
+	color: red;
+	text-align: center;
+	display: none;
+	background-color: transparent;
+}
+
+#maxcheck {
+	display: none;
+	color: black;
+}
+
+.fa-window-close {
+	font-size: 40px;
+	margin-left: 20px;
+	color: white;
+	background-color: transparent;
+	margin-bottom: 70px;
+}
+
+.menuIcon {
+	max-width: 70px;
+	background-color: transparent;
+	float: right;
+	position: fixed;
+	top: 10px;
+	z-index: 7;
+	right: 20px;
+	max-height: 60px;
+	display: none;
+}
+
+.menuIcon i {
+	color: white;
+	border: 1px solid orange;
+	border-radius: 5px;
+	font-size: 50px;
+	padding: 10px;
+	background-color: black;
+}
+
+.menuIcon i:hover {
+	color: green;
 }
 
 

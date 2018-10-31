@@ -417,9 +417,17 @@ function display_property(param, secondParam){
            switch(secondParam){
                case null:
                    usePropStore(param);
+               case 'searchDBPropertyContainer':
+                        for (var i = 0; i < searchDBPropertyContainer['data'].length; i++) {
+                            //console.log(propStore[city][i]);
+                            if (searchDBPropertyContainer['data'][i]['identity'] == param) {
+                               usePropStore(searchDBPropertyContainer['data'][i]);
+                            }
+                        }
+                   usePropStore(searchDBPropertyContainer['data'])
                default:
                    for (var i = 0; i < propStore[city].length; i++) {
-                        console.log(propStore[city][i]);
+                        //console.log(propStore[city][i]);
                         if (propStore[city][i]['identity'] == param) {
                            usePropStore(propStore[city][i]);
                         }
