@@ -23,23 +23,24 @@
 	  </div>
 	  
 	  <div class="row mapCover">
-	  	   <div class="col-sm-6 mapOuterContainer">
-	  	   	   <div id="map" style="height: 700px;">
+	  	   <div class="col-sm-6 mapOuterContainer" style="padding-left: 0px; padding-right: 0px;">
+	  	   	   <div id="map" style="">
 	  	    	    
 	  	       </div>
 	  	   </div>
 	  	   <div class="col-sm-6 prop">
+	  	   	    <p id="propertiesFound"></p>
 	  	   	   <div class="props" style="display: flex;">
-	  	   	   	    <p>something will be rendered here!</p>
+	  	   	   	    
 	  	   	   </div>
 	  	   </div>
 	  </div>
 	  <div class="row propDetails">
 	  	  <div class="col-sm-6 pix">
-	  	  	   <p>content will be replaced</p>
+	  	  	   
 	  	  </div>
 	  	  <div class="col-sm-6 details">
-	  	  	   <p>content will be replaced</p>
+	  	  	   
 	  	  </div>
 	  </div>
 	  <p id="state"></p>
@@ -100,6 +101,7 @@
 	  	<div class="custom-wrapper">
 	  			<div class="row">
 	  				<div class="col-md-6 pixCont">
+	  					<i class="fas fa-window-close closeDetails" onclick="closePropDetails()"></i>
 	  					<div class="pictures_section">
 	  	   	  	              
 	  	   	            </div>
@@ -186,9 +188,9 @@
 		  	   	  </div>
 	  				</div>
 	  			</div>
-	  			<div class="row">
+	  			<!-- <div class="row">
 	  				<div class="col-md-12" style="color: black; cursor: pointer; text-align: center;" id="closemodal"> close </div>
-	  			</div>
+	  			</div> -->
 	  	</div>
 	  </div>
 	 
@@ -337,6 +339,8 @@
 					        return function() {
 					          infowindow.open(map, marker);
 					          display_property(param['data'][i], markerTriggered);
+					          
+					          //console.log('this is not working right');
 					        }
 				       })(marker, i));
  
@@ -368,7 +372,7 @@
 	        	       	    if (this.readyState == 4 && this.status == 200) {
 	        	       	    	 var data = JSON.parse(this.responseText);
 	        	       	    	      console.log('Debug');
-	        	       	    	      console.log(data);
+	        	       	    	      //console.log(data);
 	        	       	    	      
                                       propStore[city] = data['data'];
                                       setPointersOnMap(map, data);
@@ -381,7 +385,8 @@
                                                document.getElementsByClassName('props')[0].style.backgroundImage = '';
                                                document.getElementsByClassName('menuIcon')[0].style.display = 'block';
 	        	       	    	      }
-                                      
+
+                                      var nullValue = "vintage";
                                       var finalElem = '';
 	        	       	    	      function useData(param){
 	        	       	    	      	   var coverpicture;
@@ -393,7 +398,7 @@
 
                                            for(x in param){
                                            	   counter++;
-                                           	   console.log(param);
+                                           	   //console.log(param);
                                            	   if (x == 'coverpicture') {
                                            	   	     coverpicture = '<li>' + param[x] + '</li>';
                                            	   }
@@ -411,7 +416,7 @@
                                                }
 
                                                if (Object.keys(param).length == counter) {
-                                               	  var a_component = '<div class="a_property" onclick="display_property(' + param['identity'] + ',' + ' ' + this + ')">' + '<div class="cover_pix" style="background-image: url(/storage/images/' + param['cover_picture'] + ')" );"></div>' + '<ul>' + category + price + address + '</ul></div>';
+                                               	  var a_component = '<div class="a_property" onclick="displayThisProperty(' + param['identity'] + ')">' + '<div class="cover_pix" style="background-image: url(/storage/images/' + param['cover_picture'] + ')" );"></div>' + '<ul>' + category + price + address + '</ul></div>';
                                                	  finalElem = finalElem.concat(a_component);
                                                }
                                            }
@@ -532,6 +537,17 @@
                         }
 
                 }
+
+                function closePropDetails(){
+                     var closePropDetails = document.getElementsByClassName('custom-modal-wrapper')[0];
+                         if (closePropDetails.style.display == 'block') {
+                         	 closePropDetails.style.display = 'none';
+                         }else{
+                         	 closePropDetails.style.display = 'block';
+                         }
+
+                         document.getElementsByClassName('menuIcon')[0].style.display = 'block';
+                }
                 
       </script>
       <script src="{{ asset('js/google-map-api.js') }}"></script>
@@ -539,13 +555,9 @@
       <script src="{{ asset('js/displayProp.js') }}" type="text/javascript"></script>
       <script src="{{ asset('js/searchDB.js') }}" type="text/javascript"></script>
       <script src="{{ asset('js/localgovernments.js') }}"></script>
+      <script src="{{ asset('js/secondPropertyDetails.js') }}"></script>
       <script async defer
              src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4D1-koeikvwYczC2EpHU-mwLSzTH6UIE&callback=initialize">
-      </script>
-      <script type="text/javascript">
-      	document.querySelector("#closemodal").addEventListener("click", () => {
-      		document.querySelector(".custom-modal-wrapper").style.display = "none";
-      	});
       </script>
 </body>
 </html>

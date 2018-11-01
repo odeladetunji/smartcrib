@@ -54,6 +54,13 @@ var searchForm = document.getElementsByClassName('search_form')[0];
              codeSearchedAddress(function(map, results){
                  searchDB(formData, map, results);
              })
+
+             var menuIcon = document.getElementsByClassName('menuIcon')[0];
+                 if (menuIcon.style.display == 'none') {
+                 	 menuIcon.style.display = 'block';
+                 }else{
+                 	 menuIcon.style.display = 'none';
+                 }
     }
 
 var searchDBPropertyContainer;
@@ -65,7 +72,6 @@ function searchDB(formData, map, results){
        	    if (this.readyState == 4 && this.status == 200) {
        	    	const data = JSON.parse(this.responseText);
        	    	      console.log(data);
-       	    	      // use data here!
                       setPointersOnMap(map, data);
        	    	      function showHTML(finalElem){
                            var elem = document.getElementsByClassName('props')[0];
@@ -136,8 +142,7 @@ function searchDB(formData, map, results){
                                 }
                            }
        	    	      }
-                      
-                     // var entPrice = document.getElementById('price_component').value;
+                   
                       
                       var outOfRange = [];
                       var inRange = [];

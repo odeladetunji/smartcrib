@@ -1,7 +1,5 @@
-function display_property(param, secondParam){
+function displayThisProperty(param){
                 		//document.querySelector(".custom-modal-wrapper").style.display = "block";
-                  //  console.log('whats going on');
-                document.getElementsByClassName('menuIcon')[0].style.display = 'none';
                 function usePropStore(param){
                 	 	 var ul = '<ul class="ul_of_props">';
                 	 	 var counter = 0;
@@ -416,25 +414,15 @@ function display_property(param, secondParam){
                 	 }
 
 
-           switch(secondParam){
-               case null:
-                   usePropStore(param);
-               case 'searchDBPropertyContainer':
-                        for (var i = 0; i < searchDBPropertyContainer['data'].length; i++) {
-                            //console.log(propStore[city][i]);
-                            if (searchDBPropertyContainer['data'][i]['identity'] == param) {
-                               usePropStore(searchDBPropertyContainer['data'][i]);
-                            }
-                        }
-                   usePropStore(searchDBPropertyContainer['data'])
-               default:
+           
                    for (var i = 0; i < propStore[city].length; i++) {
                         //console.log(propStore[city][i]);
                         if (propStore[city][i]['identity'] == param) {
                            usePropStore(propStore[city][i]);
                         }
                    }
-           }
 
-          // console.log('something is definitely wrong');
+                   document.getElementsByClassName('menuIcon')[0].style.display = 'none';
+                       
+          // }
   }
