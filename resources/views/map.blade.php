@@ -561,7 +561,7 @@
       <script src="{{ asset('js/google-map-api.js') }}"></script>
       <script src="{{ asset('js/propertydetails.js') }}"></script>
       <script src="{{ asset('js/displayProp.js') }}" type="text/javascript"></script>
-      <script src="{{ asset('js/searchDB.js') }}" type="text/javascript"></script>
+      <script src="{{ asset('js/searchDB.JS') }}" type="text/javascript"></script>
       <script src="{{ asset('js/localgovernments.js') }}"></script>
       <script src="{{ asset('js/secondPropertyDetails.js') }}"></script>
       <script async defer
