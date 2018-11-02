@@ -31,7 +31,7 @@
 	   	     	    </ul>
 	   	     	</div>
 	   	     </div>
-	   	     <div class="row banner" style="background-image: url(/storage/images/smartapartment.jpg);">
+	   	     <div class="row banner" style="background-image: url( {{ asset('/storage/images/smartapartment.jpg') }} )">
 	   	     	<div class="col-sm-12 bannerContent">
 	   	     		 <h1 id="welcome_note">Let's go Home</h1>
 	   	     		 <button id="postingARequest" onclick="makeRequest()">Post A Request</button>
