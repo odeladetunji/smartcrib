@@ -20,6 +20,14 @@
 	 
 	  <div class="menuIcon">
 	  	   <i class="fas fa-bars" onclick="closeMenu()"></i>
+	  	   <button>Buy</button>
+	  	   <button>Rent</button>
+	  	   <button>Sell</button>
+	  	   <button>Mortgage</button>
+	  	   <button>Agent finder</button>
+	  	   <button>more</button>
+	  	   <button>signup</button>
+	  	   <button>login</button>
 	  </div>
 	  
 	  <div class="row mapCover">
@@ -339,7 +347,7 @@
 					        return function() {
 					          infowindow.open(map, marker);
 					          display_property(param['data'][i], markerTriggered);
-					          
+
 					          //console.log('this is not working right');
 					        }
 				       })(marker, i));

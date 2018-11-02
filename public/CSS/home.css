@@ -18,8 +18,14 @@
 	padding: 10px;
 	cursor: pointer;
 }
+
+.banner {
+	background-size: cover;
+	background-position: center;
+}
 .bannerContent {
 	padding-bottom: 100px;
+	background-color: rgba(0,0,0, .5);
 }
 .bannerContent p {
 	text-align: center;
@@ -103,8 +109,13 @@
 	right: 5px;
 }
 
-.bannerContent {
-	background-color: lightgreen;
+span {
+	color: white;
+	border: 1px solid white;
+}
+
+#welcome_note {
+	color: white;
 }
 .container {
 	padding-left: 0px;
@@ -175,19 +186,19 @@
    background-color: rgb(0,0,6); /* Fallback color */
    background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
    padding-bottom: 100px;
-   flex-wrap: nowrap;
+   flex-wrap: wrap;
 }
 
 .requestForm {
    height: 600px;
    overflow: scroll;
    padding-bottom: 100px;
-   width: 50%;
+   max-width: 600px;
 }
 
 .advertSection {
 	padding-bottom: 100px;
-	width: 50%;
+	width: 600px;
 }
 
 .advertSection div {
@@ -460,6 +471,33 @@ h6 {
 
 .coverForPost {
 	width: 100%;
+}
+
+.signup_form {
+	z-index: 3;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	background-color: rgba(0,0,0, .7);
+	height: 800px;
+	display: none;
+}
+
+.login_form {
+	z-index: 4;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	background-color: rgba(0,0,0, .7);
+	height: 800px;
+	display: none;
+}
+
+.fa-window-close {
+	color: white;
+	font-size: 40px;
+	padding: 10px;
+	background-color: transparent;
 }
 
 

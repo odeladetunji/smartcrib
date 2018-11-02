@@ -13,6 +13,8 @@
         <script src="/js/jquery-3.2.1.min(first).js" type='text/JavaScript'></script>
         <!--CSS---->
         <link href="{{ asset('CSS/home.css') }}" rel="stylesheet" type="text/css" >
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
         
 <body>
 
@@ -30,9 +32,9 @@
 	   	     	    </ul>
 	   	     	</div>
 	   	     </div>
-	   	     <div class="row banner">
+	   	     <div class="row banner" style="background-image: url(/storage/images/smartapartment.jpg);">
 	   	     	<div class="col-sm-12 bannerContent">
-	   	     		 <h1>Let's go Home</h1>
+	   	     		 <h1 id="welcome_note">Let's go Home</h1>
 	   	     		 <button id="postingARequest" onclick="makeRequest()">Post A Request</button>
 	   	     		 <p> <span id="Buy"  onclick="hilightAction(this)">Buy</span>
 	   	     		     <span id="Rent" onclick="hilightAction(this)">Rent</span>
@@ -46,8 +48,9 @@
 	   	     	</div>
 	   	     </div>
 
-	   	     <div class="row">
-	   	     	 <div class="col-sm-6 login">
+	   	     <div class="row login_form">
+	   	     	 <div class="col-md-6 login">
+	   	     	 	  <i class="fas fa-window-close" onclick="closeForm()"></i>
 	   	     	 	  <form class="loginForm" encType="multipart/form-data" method="POST" action="{{URL::to('/')}}"> {{ csrf_field() }}
 	   	     	 	  	   <p>Login</p>
 	   	     	 	  	   <input type="email" placeholder="Email" id="email"><br>
@@ -60,12 +63,13 @@
 	   	     	 	  	  <input type="text" name="password" id="password1">
 	   	     	 	  </form>
 	   	     	 </div>
-	   	     	 <div class="col-sm-6 description">
+	   	     	 <div class="col-md-6 description">
 	   	     	 	 <p>something</p>
 	   	     	 </div>
 	   	     </div>
-	   	      <div class="row">
-	   	     	 <div class="col-sm-6 login">
+	   	      <div class="row signup_form">
+	   	     	 <div class="col-md-6 login">
+	   	     	 	  <i class="fas fa-window-close" onclick="closeForm2()"></i>
 	   	     	 	  <form class="signupForm" encType="multipart/form-data" method="POST" action="{{URL::to('/signup')}}"> {{ csrf_field() }}
 	   	     	 	  	   <p>SignUp</p>
 	   	     	 	  	   <input type="email" placeholder="Email" id="name" required><br>
@@ -78,7 +82,7 @@
 	   	     	 	  	  <input type="text" name="password" id="pass1">
 	   	     	 	  </form>
 	   	     	 </div>
-	   	     	 <div class="col-sm-6 description">
+	   	     	 <div class="col-md-6 description">
 	   	     	 	 <p>something</p>
 	   	     	 </div>
 	   	     </div>
@@ -510,7 +514,7 @@
         	}
 
         	function gotoLogin(){
-                window.location = '/login';
+                document.getElementsByClassName('login_form')[0].style.display = 'block';
         	}
 
         	function checkForEmailandPassword(param){
@@ -596,7 +600,7 @@
         	}
 
         	function gotoSignUp(){
-        		//window.location = '/signup';
+        		document.getElementsByClassName('signup_form')[0].style.display = 'block';
         	}
 
         	function searchForInput(param){
@@ -646,6 +650,23 @@
                         submitPostRequest(formData);
         	    }
             
+            function closeForm(){
+            	var formModal = document.getElementsByClassName('signup_form')[0];
+            	    if (formModal.style.display == 'none') {
+            	    	formModal.style.display = 'block';
+            	    }else{
+            	    	formModal.style.display = 'none';
+            	    }
+            }
+
+            function closeForm2(){
+            	var formModal = document.getElementsByClassName('login_form')[0];
+            	    if (formModal.style.display == 'none') {
+            	    	formModal.style.display = 'block';
+            	    }else{
+            	    	formModal.style.display = 'none';
+            	    }
+            }
            
         </script>
 </body>
