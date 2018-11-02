@@ -15,7 +15,6 @@
         <link href="{{ asset('CSS/home.css') }}" rel="stylesheet" type="text/css" >
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-        
 <body>
 
 	   	     <div class="row topHead">
@@ -87,9 +86,7 @@
 	   	     	 </div>
 	   	     </div>
 	   	      <div class="coverForPost">
-	   	      	  <div class="forheader">
-	   	      	  	   <button id="quitRequest" onclick="makeRequest()">Quit Post</button>
-	   	      	  </div>
+	   	      	  
 	   	      	   <div class="postingRequest" style="display: flex;">
 	   	     	  
 	   	     	   <div class="requestForm" >
