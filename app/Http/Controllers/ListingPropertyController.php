@@ -125,50 +125,50 @@ class ListingPropertyController extends BaseController
         //return response()->json(array('data' => (String)$theRandomNumber));
 
         // Facilities
-        DB::insert('insert into facilities (identity) values (?)', [(String)$theRandomNumber]);
-        DB::table('facilities')
+        DB::insert('insert into Facilities (identity) values (?)', [(String)$theRandomNumber]);
+        DB::table('Facilities')
                          ->where('identity', (String)$theRandomNumber)
                              ->update(['email' => $email]);
 
 
         if ($request->filled('Newly-Built')) {
-            DB::update('update facilities set newly_built = ? where identity = ?', [$request->input('Newly-Built'), (String)$theRandomNumber]);
+            DB::update('update Facilities set newly_built = ? where identity = ?', [$request->input('Newly-Built'), (String)$theRandomNumber]);
         }
         if($request->filled('Newly-Renovated')) {
-            DB::update('update facilities set newly_renovated = ? where identity = ?', [$request->input('Newly-Renovated'), (String)$theRandomNumber]);
+            DB::update('update Facilities set newly_renovated = ? where identity = ?', [$request->input('Newly-Renovated'), (String)$theRandomNumber]);
         }
         if($request->filled('POP')) {
-            DB::update('update facilities set pop = ? where identity = ?', [$request->input('POP'), (String)$theRandomNumber]);
+            DB::update('update Facilities set pop = ? where identity = ?', [$request->input('POP'), (String)$theRandomNumber]);
         }
         if($request->filled('Dilapidated')) {
-            DB::update('update facilities set dilapidated = ? where identity = ?', [$request->input('Dilapidated'), (String)$theRandomNumber]);
+            DB::update('update Facilities set dilapidated = ? where identity = ?', [$request->input('Dilapidated'), (String)$theRandomNumber]);
         }
         if($request->filled('Fenced')) {
-            DB::update('update facilities set fenced = ? where identity = ?', [$request->input('Fenced'), (String)$theRandomNumber]);
+            DB::update('update Facilities set fenced = ? where identity = ?', [$request->input('Fenced'), (String)$theRandomNumber]);
         }
         if($request->filled('Well-Water')) {
-            DB::update('update facilities set well_water = ? where identity = ?', [$request->input('Well-Water'), (String)$theRandomNumber]);
+            DB::update('update Facilities set well_water = ? where identity = ?', [$request->input('Well-Water'), (String)$theRandomNumber]);
         }
         if($request->filled('Borehole')) {
-            DB::update('update facilities set borehole = ? where identity = ?', [$request->input('Borehole'), (String)$theRandomNumber]);
+            DB::update('update Facilities set borehole = ? where identity = ?', [$request->input('Borehole'), (String)$theRandomNumber]);
         }
         if($request->filled('Gated-Estate')) {
-            DB::update('update facilities set gated_estate = ? where identity = ?', [$request->input('Gated-Estate'), (String)$theRandomNumber]);
+            DB::update('update Facilities set gated_estate = ? where identity = ?', [$request->input('Gated-Estate'), (String)$theRandomNumber]);
         }
         if($request->filled('Security')) {
-            DB::update('update facilities set security = ? where identity = ?', [$request->input('Security'), (String)$theRandomNumber]);
+            DB::update('update Facilities set security = ? where identity = ?', [$request->input('Security'), (String)$theRandomNumber]);
         }
         if($request->filled('Water-Treatment-Plant')) {
-            DB::update('update facilities set water_treatment_plant = ? where identity = ?', [$request->input('Water-Treatment-Plant'), (String)$theRandomNumber]);
+            DB::update('update Facilities set water_treatment_plant = ? where identity = ?', [$request->input('Water-Treatment-Plant'), (String)$theRandomNumber]);
         }
         if($request->filled('All-Room-Ensuite')) {
-            DB::update('update facilities set all_room_ensuit = ? where identity = ?', [$request->input('All-Room-Ensuite'), (String)$theRandomNumber]);
+            DB::update('update Facilities set all_room_ensuit = ? where identity = ?', [$request->input('All-Room-Ensuite'), (String)$theRandomNumber]);
         }
         if($request->filled('Ample-parking-Space')) {
-            DB::update('update facilities set ample_parking_space = ? where identity = ?', [$request->input('Ample-parking-Space'), (String)$theRandomNumber]);
+            DB::update('update Facilities set ample_parking_space = ? where identity = ?', [$request->input('Ample-parking-Space'), (String)$theRandomNumber]);
         }
         if($request->filled('All-others-not-Listed')) {
-            DB::update('update facilities set all_others_not_listed = ? where identity = ?', [$request->input('All-others-not-Listed'), (String)$theRandomNumber]);
+            DB::update('update Facilities set all_others_not_listed = ? where identity = ?', [$request->input('All-others-not-Listed'), (String)$theRandomNumber]);
         }
 
 
