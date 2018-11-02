@@ -14,10 +14,10 @@ class searchDBController extends BaseController
 {
 	public function queryDB($state){
          $data = DB::table('properties')
-              ->join('facilities', 'properties.identity', '=', 'facilities.identity')
+              ->join('Facilities', 'properties.identity', '=', 'Facilities.identity')
                   ->join('quantity', 'properties.identity', '=', 'quantity.identity')
                       ->join('pictures_of_properties', 'properties.identity', '=', 'pictures_of_properties.identity')
-                           ->select('properties.*', 'facilities.*', 'quantity.*', 'pictures_of_properties.*')
+                           ->select('properties.*', 'Facilities.*', 'quantity.*', 'pictures_of_properties.*')
                                  ->where('state_property_is_located', $state)
                                      ->get();
          return $data;
@@ -25,10 +25,10 @@ class searchDBController extends BaseController
 
 	public function searchEngine($state, $locaGv, $category){
          $query = DB::table('properties')
-              ->join('facilities', 'properties.identity', '=', 'facilities.identity')
+              ->join('Facilities', 'properties.identity', '=', 'Facilities.identity')
                   ->join('quantity', 'properties.identity', '=', 'quantity.identity')
                       ->join('pictures_of_properties', 'properties.identity', '=', 'pictures_of_properties.identity')
-                           ->select('properties.*', 'facilities.*', 'quantity.*', 'pictures_of_properties.*')
+                           ->select('properties.*', 'Facilities.*', 'quantity.*', 'pictures_of_properties.*')
                                  ->where([
 	                                 	     ['state_property_is_located', '=', $state],
 	                                         ['local_government', '=', $locaGv],
@@ -40,10 +40,10 @@ class searchDBController extends BaseController
 
 	public function searchBedrooms($state, $locaGv, $category, $bedrooms){
          $query = DB::table('properties')
-              ->join('facilities', 'properties.identity', '=', 'facilities.identity')
+              ->join('Facilities', 'properties.identity', '=', 'Facilities.identity')
                   ->join('quantity', 'properties.identity', '=', 'quantity.identity')
                       ->join('pictures_of_properties', 'properties.identity', '=', 'pictures_of_properties.identity')
-                           ->select('properties.*', 'facilities.*', 'quantity.*', 'pictures_of_properties.*')
+                           ->select('properties.*', 'Facilities.*', 'quantity.*', 'pictures_of_properties.*')
                                  ->where([
 	                                 	     ['state_property_is_located', '=', $state],
 	                                         ['local_government', '=', $locaGv],
@@ -56,10 +56,10 @@ class searchDBController extends BaseController
 
 	public function searchPrices($state, $locaGv, $category, $prices){
          $query = DB::table('properties')
-              ->join('facilities', 'properties.identity', '=', 'facilities.identity')
+              ->join('Facilities', 'properties.identity', '=', 'Facilities.identity')
                   ->join('quantity', 'properties.identity', '=', 'quantity.identity')
                       ->join('pictures_of_properties', 'properties.identity', '=', 'pictures_of_properties.identity')
-                           ->select('properties.*', 'facilities.*', 'quantity.*', 'pictures_of_properties.*')
+                           ->select('properties.*', 'Facilities.*', 'quantity.*', 'pictures_of_properties.*')
                                  ->where([
 	                                 	     ['state_property_is_located', '=', $state],
 	                                         ['local_government', '=', $locaGv],
@@ -72,10 +72,10 @@ class searchDBController extends BaseController
 
     public function searchTitle($state, $locaGv, $category, $title){
          $query = DB::table('properties')
-              ->join('facilities', 'properties.identity', '=', 'facilities.identity')
+              ->join('Facilities', 'properties.identity', '=', 'Facilities.identity')
                   ->join('quantity', 'properties.identity', '=', 'quantity.identity')
                       ->join('pictures_of_properties', 'properties.identity', '=', 'pictures_of_properties.identity')
-                           ->select('properties.*', 'facilities.*', 'quantity.*', 'pictures_of_properties.*')
+                           ->select('properties.*', 'Facilities.*', 'quantity.*', 'pictures_of_properties.*')
                                  ->where([
 	                                 	     ['state_property_is_located', '=', $state],
 	                                         ['local_government', '=', $locaGv],
@@ -88,10 +88,10 @@ class searchDBController extends BaseController
 
 	public function searchBedroomAndPrices($state, $locaGv, $category, $bedrooms, $prices){
          $query = DB::table('properties')
-              ->join('facilities', 'properties.identity', '=', 'facilities.identity')
+              ->join('Facilities', 'properties.identity', '=', 'Facilities.identity')
                   ->join('quantity', 'properties.identity', '=', 'quantity.identity')
                       ->join('pictures_of_properties', 'properties.identity', '=', 'pictures_of_properties.identity')
-                           ->select('properties.*', 'facilities.*', 'quantity.*', 'pictures_of_properties.*')
+                           ->select('properties.*', 'Facilities.*', 'quantity.*', 'pictures_of_properties.*')
                                  ->where([
 	                                 	     ['state_property_is_located', '=', $state],
 	                                         ['local_government', '=', $locaGv],
@@ -105,10 +105,10 @@ class searchDBController extends BaseController
 
 	public function searchPricesAndTitle($state, $locaGv, $category, $prices, $title){
          $query = DB::table('properties')
-              ->join('facilities', 'properties.identity', '=', 'facilities.identity')
+              ->join('Facilities', 'properties.identity', '=', 'Facilities.identity')
                   ->join('quantity', 'properties.identity', '=', 'quantity.identity')
                       ->join('pictures_of_properties', 'properties.identity', '=', 'pictures_of_properties.identity')
-                           ->select('properties.*', 'facilities.*', 'quantity.*', 'pictures_of_properties.*')
+                           ->select('properties.*', 'Facilities.*', 'quantity.*', 'pictures_of_properties.*')
                                  ->where([
 	                                 	     ['state_property_is_located', '=', $state],
 	                                         ['local_government', '=', $locaGv],
@@ -122,10 +122,10 @@ class searchDBController extends BaseController
 
 	public function searchBedroomsAndTitle($state, $locaGv, $category, $bedrooms, $title){
          $query = DB::table('properties')
-              ->join('facilities', 'properties.identity', '=', 'facilities.identity')
+              ->join('Facilities', 'properties.identity', '=', 'Facilities.identity')
                   ->join('quantity', 'properties.identity', '=', 'quantity.identity')
                       ->join('pictures_of_properties', 'properties.identity', '=', 'pictures_of_properties.identity')
-                           ->select('properties.*', 'facilities.*', 'quantity.*', 'pictures_of_properties.*')
+                           ->select('properties.*', 'Facilities.*', 'quantity.*', 'pictures_of_properties.*')
                                  ->where([
 	                                 	     ['state_property_is_located', '=', $state],
 	                                         ['local_government', '=', $locaGv],
@@ -139,10 +139,10 @@ class searchDBController extends BaseController
 
 	public function searchBedroomsPricesAndTitle($state, $locaGv, $category, $bedrooms, $prices, $title){
          $query = DB::table('properties')
-              ->join('facilities', 'properties.identity', '=', 'facilities.identity')
+              ->join('Facilities', 'properties.identity', '=', 'Facilities.identity')
                   ->join('quantity', 'properties.identity', '=', 'quantity.identity')
                       ->join('pictures_of_properties', 'properties.identity', '=', 'pictures_of_properties.identity')
-                           ->select('properties.*', 'facilities.*', 'quantity.*', 'pictures_of_properties.*')
+                           ->select('properties.*', 'Facilities.*', 'quantity.*', 'pictures_of_properties.*')
                                  ->where([
 	                                 	     ['state_property_is_located', '=', $state],
 	                                         ['local_government', '=', $locaGv],
