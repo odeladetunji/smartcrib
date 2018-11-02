@@ -648,7 +648,7 @@
         	    }
             
             function closeForm(){
-            	var formModal = document.getElementsByClassName('signup_form')[0];
+            	var formModal = document.getElementsByClassName('login_form')[0];
             	    if (formModal.style.display == 'none') {
             	    	formModal.style.display = 'block';
             	    }else{
@@ -657,7 +657,7 @@
             }
 
             function closeForm2(){
-            	var formModal = document.getElementsByClassName('login_form')[0];
+            	var formModal = document.getElementsByClassName('signup_form')[0];
             	    if (formModal.style.display == 'none') {
             	    	formModal.style.display = 'block';
             	    }else{
