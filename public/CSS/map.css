@@ -50,6 +50,10 @@
 	padding-left: 20px;
 }
 
+option {
+	color: black;
+}
+
 .welm_form button {
 	background-color: green;
 	color: white;
