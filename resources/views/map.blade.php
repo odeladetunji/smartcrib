@@ -20,14 +20,6 @@
 	 
 	  <div class="menuIcon">
 	  	   <i class="fas fa-bars" onclick="closeMenu()"></i>
-	  	   <button>Buy</button>
-	  	   <button>Rent</button>
-	  	   <button>Sell</button>
-	  	   <button>Mortgage</button>
-	  	   <button>Agent finder</button>
-	  	   <button>more</button>
-	  	   <button>signup</button>
-	  	   <button>login</button>
 	  </div>
 	  
 	  <div class="row mapCover">
@@ -203,7 +195,17 @@
 	  </div>
 	 
 	  <div class="search_section">
-	  <i class="fas fa-window-close" onclick="closeMenu()"></i>
+	               <i class="fas fa-window-close" onclick="closeMenu()"></i><br>
+			       <div class="cover_for_nav">
+			       	   <button class="menuButton" id="buy_button">Buy</button>
+				  	   <button class="menuButton" id="rent_button">Rent</button>
+				  	   <button class="menuButton" id="sell_button">Sell</button>
+				  	   <button class="menuButton" id="mortgage_button">Mortgage</button>
+				  	   <button class="menuButton" id="agent_finder">Agent finder</button>
+				  	   <button class="menuButton" id="the_more_button">more</button>
+				  	   <button class="menuButton" id="user_signup_button">signup</button>
+				  	   <button class="menuButton" id="userLogin">login</button>
+			       </div>
 	  	  	  <form name="searchForm" class="search_form" encType="multipart/form-data" method="POST" action="{{URL::to('/')}}" >{{ csrf_field() }}
 		  	  	  	<select name="category" id="category" required>
 		  	  	  		    <option value="Category">Category</option>
@@ -312,7 +314,7 @@
   	   	    			<option value="School">School</option>
   	   	    			<option value="Tank Farm">Tank Farm</option>
 	  	   	    	</select>
-                    <button>search database</button>
+                    <button id="submit_Form">search database</button>
 	  	  	  </form>
 	  </div>
 	 

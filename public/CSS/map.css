@@ -522,7 +522,7 @@ body, html {
 	margin-left: 20px;
 	color: white;
 	background-color: transparent;
-	margin-bottom: 70px;
+	margin-bottom: 10px;
 }
 
 .menuIcon {
@@ -559,5 +559,32 @@ body, html {
 	margin-left: 5px;
 }
 
+.menuButton {
+	margin-left: 5px;
+	background-color: transparent !important;
+	color: white !important;
+	border: none !important;
+	margin-top: 5px;
+}
+
+#buy_button:hover, #sell_button:hover, #rent_button:hover, #mortgage_button:hover, 
+#agent_finder:hover, #the_more_button:hover, #user_signup_button:hover, #userLogin:hover  {
+       background-color: white !important;
+       color: black !important;
+}
+
+
+.cover_for_nav {
+	width: 80%;
+	margin: auto;
+}
+
+#userLogin {
+	margin-bottom: 50px;
+}
+
+#submit_Form:hover {
+	background-color: green !important;
+}
 
 
