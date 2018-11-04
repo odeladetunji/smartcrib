@@ -23,11 +23,11 @@ class LoginController extends BaseController
         }
 
         if (sizeof($data) != 0) {
-             if ($data[0]->email != $email && $data[0]->password != $password) {
+             if ($data[0]->email != $email || $data[0]->password != $password) {
                  return response()->json(array('data' => 'Wrong Username or Password'));
              }
 
-            return response()->json(array('data' => true));
+            return response()->json(array('data' => true, 'email' => $email));
         }
         //return;
     }

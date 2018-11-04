@@ -407,9 +407,6 @@ function displayThisProperty(param){
                                           title_document = title_document + prop_document;
                                   }
                               
-                              // if (Object.keys(param).length == counter) {
-                              	  
-                              // }
                          }
                 	 }
 
@@ -423,6 +420,4 @@ function displayThisProperty(param){
                    }
 
                    document.getElementsByClassName('menuIcon')[0].style.display = 'none';
-                       
-          // }
   }

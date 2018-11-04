@@ -51,9 +51,10 @@
 	   	     	 <div class="col-md-6 login">
 	   	     	 	  <i class="fas fa-window-close" onclick="closeForm()"></i>
 	   	     	 	  <form class="loginForm" encType="multipart/form-data" method="POST" action="{{URL::to('/')}}"> {{ csrf_field() }}
+	   	     	 	  	   <label id="wan2" style="padding: 10px; text-align: center; color: red; display: none;">wrong username or password!</label>
 	   	     	 	  	   <p>Login</p>
-	   	     	 	  	   <input type="email" placeholder="Email" id="email"><br>
-	   	     	 	  	   <input type="password" placeholder="Password" id="password">
+	   	     	 	  	   <input type="email" placeholder="Email" name="email" id="email"><br>
+	   	     	 	  	   <input type="password" placeholder="Password" name="password" id="password">
 	   	     	 	  	   <button>submit</button>
 	   	     	 	  </form>
 
@@ -70,9 +71,10 @@
 	   	     	 <div class="col-md-6 login">
 	   	     	 	  <i class="fas fa-window-close" onclick="closeForm2()"></i>
 	   	     	 	  <form class="signupForm" encType="multipart/form-data" method="POST" action="{{URL::to('/signup')}}"> {{ csrf_field() }}
+	   	     	 	  	   <label id="wan" style="padding: 10px; text-align: center; color: red; display: none;">user already exist</label>
 	   	     	 	  	   <p>SignUp</p>
-	   	     	 	  	   <input type="email" placeholder="Email" id="name" required><br>
-	   	     	 	  	   <input type="password" placeholder="Password" id="pass" required>
+	   	     	 	  	   <input type="email" placeholder="Email" name= "email" id="name" required><br>
+	   	     	 	  	   <input type="password" placeholder="Password" name="password" id="pass" required>
 	   	     	 	  	   <button>submit</button>
 	   	     	 	  </form>
 
@@ -525,23 +527,22 @@
 		        	 var xhttp = new XMLHttpRequest();
 		        	       xhttp.open('POST', '/signup', true);
 		        	       xhttp.onreadystatechange = function() {
-
 		        	       	    if (this.readyState == 4 && this.status == 200) {
 		        	       	    	console.log('something is wrong');
-		        	       	    	var data = JSON.parse(this.responseText);
+		        	       	    	var data = JSON.parse(this.responseText)
 		        	       	    	      console.log(data);
 		        	       	    	      if (data.data == true) {
 		        	       	    	      	 var theForm = document.getElementsByClassName('actualForm')[0];
-		        	       	    	      	 //return;
 		        	       	    	      	 theForm.submit();
 		        	       	    	      }
+
 		        	       	    	      if (data.data == false) {
                                              var warning = document.getElementById('wan');
                                              warning.style.display = 'block';
 
                                              setTimeout(function(){
            										warning.style.display = 'none';
-                                             }, 5000);
+                                             }, 2000);
 		        	       	    	      }
 		        	       	    }
 		        	       }
@@ -550,7 +551,7 @@
 		                   xhttp.setRequestHeader("X-Requested-With", 'XMLHttpRequest');
 		                   xhttp.setRequestHeader("processData", 'false');
 		                   xhttp.setRequestHeader('cache', 'false');
-		                   xhttp.setRequestHeader("Content-Type", "application/json");
+		                   xhttp.setRequestHeader("ContentType", "application/json");
 		                   xhttp.send(param);
         	}
 
@@ -564,11 +565,23 @@
 
 		        	 const xhttp = new XMLHttpRequest();
 		        	       xhttp.open('POST', '/login', true);
-		        	       xhttp.onreadystatechange = () => {
-		        	       	    if (this.readystate == 4 && this.status == 200) {
-		        	       	    	const data = JSON.parse(this.responseText);
+		        	       xhttp.onreadystatechange = function(){
+		        	       	    if (this.readyState == 4 && this.status == 200) {
+		        	       	    	const data = JSON.parse(this.responseText)
 		        	       	    	      console.log(data);
-		        	       	    	      // use data here!
+		        	       	    	      if (data.data == true) {
+		        	       	    	      	 var theForm = document.getElementsByClassName('actualForm')[0];
+		        	       	    	      	 theForm.submit();
+		        	       	    	      }
+
+		        	       	    	      if (data.data == "Wrong Username or Password") {
+		        	       	    	      	  var warning = document.getElementById('wan2');
+                                                  warning.style.display = 'block';
+
+	                                              setTimeout(function(){
+	           										 warning.style.display = 'none';
+	                                              }, 2000);
+		        	       	    	      }
 		        	       	    }
 		        	       }
 
@@ -576,7 +589,7 @@
 		                   xhttp.setRequestHeader("X-Requested-With", 'XMLHttpRequest');
 		                   xhttp.setRequestHeader("processData", 'false');
 		                   xhttp.setRequestHeader('cache', 'false');
-		                   xhttp.setRequestHeader("Content-Type", "application/json");
+		                   xhttp.setRequestHeader("ContentType", "application/json");
 		                   xhttp.send(param);
         	}
 
