@@ -152,7 +152,7 @@ function useSelectedItem(param){
     useCity(lGA[param.value]);
 }
 
-function useState(param){
+function useTheState(param){
     console.log(param);
     var parentE = document.getElementById('loca_Gv');
     parentE.innerHTML = '';

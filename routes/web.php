@@ -28,6 +28,7 @@ Route::post('/reqProp', 'PostRequestController@myrequest');
 Route::post('/searchDB', 'searchDBController@search');
 Route::post('/searchAgent', 'SearchAgentController@searchAgent');
 Route::post('/searchProps', 'SearchPropController@searchProps');
+Route::post('/updateAgentRecords', 'UpdateAgentRecordsController@updateAgentRecords');
 
 Route::get('/mortgage', 'MortgageController@mortgage');
 Route::get('/agentFinder', 'AgentFinderController@agentFinder');

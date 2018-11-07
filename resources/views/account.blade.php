@@ -26,6 +26,7 @@
 	  	   	    	<li id="navHome">home</li>
 	  	   	    	<li>Listed Properties</li>
                         <li onclick="gotoMap()">Go to Map</li>
+                        <li onclick="findAgent()">Find Agent</li>
 	  	   	   </ul>
 	  	   </div>
 	  	   <div class="col-sm-10 mainBody">
@@ -41,6 +42,12 @@
 	  	   	    		</div>
                               <div class="widget" onclick="showUpdateForm()">
                                     <p>update records</p>
+                              </div>
+                              <div class="widget" onclick="showMessages()">
+                                    <p>inbox</p>
+                              </div>
+                              <div class="widget" onclick="showUpdateForm()">
+                                    <p>contacts</p>
                               </div>
 	  	   	    		<div class="widget">
 	  	   	    			<p>Available Properties</p>
@@ -59,14 +66,14 @@
 
         <div class="updateAgentRecords">
             <i class="fas fa-window-close closeForm" onclick="closeUpdateForm()"></i>
-              <form name="thePropertyForm" class="propertyForm" encType="multipart/form-data" method="POST" action="{{URL::to('/updateAgentRecords')}}">{{ csrf_field() }}
+              <form name="thePropertyForm" class="updateRecords" encType="multipart/form-data" method="POST" action="{{URL::to('/')}}">{{ csrf_field() }}
                   <label>please update your records</label>
-                  <input type="Telephone" placeholder="office phone">
-                  <input type="text" placeholder="firstname">
-                  <input type="text" placeholder="lastname">
-                  <input type="text" placeholder="office address">
-                  <input type="text" placeholder="home address">
-                  <select id="useState" name="state" onchange="useState(this)" required>
+                  <input type="Telephone" name="office_phone" placeholder="office phone">
+                  <input type="text" name="firstname" placeholder="firstname">
+                  <input type="text" name="lastname" placeholder="lastname">
+                  <input type="text" name="home_address" placeholder="home address">
+                  <input type="text" name="office_address" placeholder="office address">
+                  <select id="useState" name="state" onchange="useTheState(this);" required>
                          <option value="Abia">Abia</option>
                          <option value="Adamawa">Adamawa</option>
                          <option value="Anambra">Anambra</option>
@@ -109,9 +116,13 @@
                         <!--<option value="" id="optG">LGA</option>-->
                   </select>
 
-                  <input type="file" placeholder="profile picture">
+                  <input type="file" name="picture" placeholder="profile picture">
                   <button>update record!</button>
               </form>
+        </div>
+
+        <div class="eventModal">
+              <p>Update was successfull!</p>
         </div>
 
         <div class="listProperty">
@@ -542,6 +553,49 @@
                          });
             }
 
+
+            function updateRecords(param){
+                   var theToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+                   var xhttp = new XMLHttpRequest();
+                         xhttp.open('POST', '/updateAgentRecords', true);
+                         xhttp.onreadystatechange = function(){
+                                  if (this.status == 200) {
+                                          var data = JSON.parse(this.responseText);
+                                           console.log(data);
+                                          if (data.data == true) {
+                                              var eventModal = document.getElementsByClassName('eventModal')[0];
+                                              eventModal.innerHTML = '<p>Record was updated successfull!!</p>';
+                                              eventModal.style.display = 'block';
+                                              
+                                              document.getElementsByClassName('updateAgentRecords')[0].style.display = 'none';
+                                              setTimeout(function(){
+                                                  console.log('did something happened')
+                                                  var eventModal = document.getElementsByClassName('eventModal')[0];
+                                                  eventModal.style.display = 'none';
+                                              }, 3000);
+                                          }
+                                  }
+                         }
+
+                         xhttp.setRequestHeader('X-CSRF-TOKEN', theToken);
+                         xhttp.setRequestHeader("X-Requested-With", 'XMLHttpRequest');
+                         xhttp.setRequestHeader("processData", 'false');
+                         xhttp.setRequestHeader('cache', 'false');
+                         xhttp.setRequestHeader("ContentType", "application/x-www-form-urlencoded");
+                         xhttp.send(param);
+            }
+
+           
+            var recordForm = document.getElementsByClassName('updateRecords')[0];
+                recordForm.onsubmit = function(){
+                    event.preventDefault();
+                    var theOwner = document.getElementById('gottenValue').innerHTML;
+                    var recordForm = document.getElementsByClassName('updateRecords')[0];
+                    var formData = new FormData(recordForm);
+                        formData.append('email', theOwner);
+                        updateRecords(formData);
+                };
+
             function showForm(){
                   console.log('something')
       		var theForm = document.getElementsByClassName('listProperty')[0];
@@ -588,7 +642,9 @@
                       }
             }
 
-
+            function findAgent(){
+                  window.location = '/agentFinder';
+            }
 
       </script>
       <script async defer
