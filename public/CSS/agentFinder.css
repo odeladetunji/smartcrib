@@ -1,0 +1,249 @@
+* {
+	margin: 0px;
+	padding: 0px;
+    font-family: Geneva;
+    border: border-box;
+}
+
+.row {
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+.welcome_modal {
+	background-color: rgba(0,0,0, .4);
+	position: fixed;
+	top: 0px;
+	z-index: 1;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+}
+
+.welcome_modal ul li {
+	background-color: white;
+	border-radius: 5px;
+	color: black;
+	display: inline-flex;
+	margin-left: 10px;
+	border: none;
+	padding: 4px 20px;
+	cursor: pointer;
+}
+
+.welcome_modal ul {
+	margin-left: 9%;
+	margin-top: 150px;
+}
+
+.welcome_modal form {
+	background-color: transparent;
+	width: 80%;
+	margin-left: 10%;
+}
+
+#labelForForm {
+	margin-top: 10px;
+}
+
+.welcome_modal option {
+	color: black;
+}
+
+.welcome_modal select {
+	color: white;
+	height: 50px;
+	padding-left: 10px;
+	margin-bottom: 20px;
+	background-color: transparent;
+	width: 100%;
+	border: 1px solid orange;
+}
+
+.welcome_modal option {
+	color: black;
+}
+
+.welcome_modal button {
+	background-color: green;
+	color: white;
+	padding: 2px 30px;
+	float: right;
+	border: none;
+	border-radius: 5px;
+	margin-top: 10px;
+	font-size: 14px;
+}
+
+.welcome_modal label {
+	width: 100%;
+	text-align: center;
+	color: white;
+	padding: 10px;
+	background-color: transparent;
+}
+
+.banner {
+	background-position: center;
+	background-size: cover;
+}
+
+.banner h2 {
+	text-align: center;
+	color: white;
+	background-color: transparent;
+}
+
+.bannerContent {
+	background-color: rgba(0,0,0, .6);
+	padding-top: 150px;
+	padding-bottom: 300px;
+	width: 100%;
+}
+
+.theFooter {
+	background-color: black;
+	color: white;
+	padding-top: 100px;
+	padding-bottom: 20px;
+}
+
+.theFooter p {
+    text-align: center;
+}
+
+.parentComp {
+	flex-wrap: nowrap;
+	background-color: white;
+	width: 80%;
+	margin: auto;
+	border-radius: 5px;
+	margin-bottom: 10px;
+}
+
+.parentComp span i {
+	font-size: 30px;
+	color: black;
+	background-color: transparent;
+}
+
+.leftComp {
+	width: 40%;
+	height: 170px;
+	background-color: white;
+}
+
+.rightComp {
+	width: 60%;
+	background-color: white;
+}
+
+#agentPicture {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+
+#tele, #address, #local, #agent_state {
+   padding: 0px;
+   padding-left: 10px;
+   margin-bottom: 2px;
+}
+
+#tele {
+	margin-top: 50px;
+}
+
+.agentsAndProperties {
+	max-width: 100%;
+}
+
+.agentsAndProperties div {
+     margin-left: 0px;
+}
+
+.ratings {
+	width: 100%;
+}
+
+.ratings i {
+	color: orange;
+	font-size: 30px;
+	background-color: transparent;
+}
+
+.signup_form {
+	z-index: 3;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	background-color: rgba(0,0,0, .7);
+	height: 800px;
+	display: none;
+	width: 100%;
+}
+
+.login_form {
+	z-index: 4;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	background-color: rgba(0,0,0, .7);
+	height: 800px;
+	display: none;
+	width: 100%;
+}
+
+.fa-window-close {
+	color: white;
+	font-size: 40px;
+	padding: 10px;
+	background-color: transparent;
+}
+
+.login form {
+    width: 90%;
+    border-radius: 5px;
+    margin-left: 5%;
+    border: 1px solid #eeeeee;
+    background-color: #fafafa;
+    margin-top: 70px;
+    padding-bottom: 90px;
+    
+}
+
+.login input {
+	width: 90%;
+	padding: 10px;
+	border: 1px solid #eeeeee;
+	margin-bottom: 5px;
+	font-size: 15px;
+	margin-left: 4%;
+}
+
+.login button {
+	padding: 6px 30px;
+	float: right;
+	border: none;
+	background-color: green;
+	color: white;
+	border-radius: 5px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	margin-right: 6%;
+	font-size: 14px;
+}
+
+.login p {
+	padding: 50px 10px;
+	color: default;
+	text-align: center;
+}
+
+.login {
+	padding-bottom: 70px;
+}
+
+.description p {
+	text-align: center;
+}

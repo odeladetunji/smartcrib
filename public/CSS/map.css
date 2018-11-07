@@ -2,7 +2,7 @@
 	margin: 0px;
 	padding: 0px;
     font-family: Geneva;
-    border: border-box;
+    border: border-box; 
 }
 
 .row {
@@ -585,6 +585,73 @@ body, html {
 
 #submit_Form:hover {
 	background-color: green !important;
+}
+
+.signup_form {
+	z-index: 3;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	background-color: rgba(0,0,0, .7);
+	height: 800px;
+	display: none;
+}
+
+.login_form {
+	z-index: 4;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	background-color: rgba(0,0,0, .7);
+	height: 800px;
+	display: none;
+}
+
+.login form {
+    width: 90%;
+    border-radius: 5px;
+    margin-left: 5%;
+    border: 1px solid #eeeeee;
+    background-color: #fafafa;
+    margin-top: 70px;
+    padding-bottom: 90px;
+    
+}
+
+.login input {
+	width: 90%;
+	padding: 10px;
+	border: 1px solid #eeeeee;
+	margin-bottom: 5px;
+	font-size: 15px;
+	margin-left: 4%;
+}
+
+.login button {
+	padding: 6px 30px;
+	float: right;
+	border: none;
+	background-color: green;
+	color: white;
+	border-radius: 5px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	margin-right: 6%;
+	font-size: 14px;
+}
+
+.login p {
+	padding: 50px 10px;
+	color: default;
+	text-align: center;
+}
+
+.login {
+	padding-bottom: 70px;
+}
+
+.description p {
+	text-align: center;
 }
 
 

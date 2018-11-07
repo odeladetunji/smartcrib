@@ -10,16 +10,16 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\UploadedFile;
 
-class LoginController extends BaseController
+class LoginAgentController extends BaseController
 {
-    public function login(Request $request){
+    public function loginAgent(Request $request){
         $email = $request->input('email');
         $password = $request->input('password');
 
-        $data = DB::select('select email, password from registration where email = ?', [$email]);
+        $data = DB::select('select email, password from agents where email = ?', [$email]);
         
         if (sizeof($data) == 0) {
-            return response()->json(array('data' => false)); // user does not exits
+            return response()->json(array('data' => false));
         }
 
         if (sizeof($data) != 0) {

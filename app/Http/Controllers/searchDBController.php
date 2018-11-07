@@ -155,7 +155,7 @@ class searchDBController extends BaseController
          return $query;
 	}
 
-
+	
     public function search(Request $request){
 
     	 $a_message = 'routing from accountpage';  // Greeting  //
@@ -228,6 +228,8 @@ class searchDBController extends BaseController
     	       $searchDB = $this->searchBedroomsPricesAndTitle($request->input('state'), $request->input('locaGv'), $request->input('category'), $request->input('bedrooms'), $request->input('price'), $request->input('title'));
     	 	    return response()->json(array('data' => $searchDB, 'tag' => 'Bedrooms, Price and Title'));
     	 }
+
+    	 // for Agent Finder Properties
 
     }
 }

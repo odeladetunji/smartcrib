@@ -16,7 +16,6 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
 <body>
-
 	   	     <div class="row topHead">
 	   	     	<div class="col-sm-12 theHead">
 	   	     		<ul>
@@ -24,7 +23,7 @@
 		   	     		<li>Rent</li>
 		   	     		<li>Sell</li>
 		   	     		<li>Mortgage</li>
-		   	     		<li>Agent Finder</li>
+		   	     		<li onclick="gotoAgentFinder()">Agent Finder</li>
 		   	     		<li>More</li>
 		   	     		<li onclick="gotoSignUp()">Signup</li>
 		   	     		<li onclick="gotoLogin()">Login</li>
@@ -52,6 +51,7 @@
 	   	     	 	  <i class="fas fa-window-close" onclick="closeForm()"></i>
 	   	     	 	  <form class="loginForm" encType="multipart/form-data" method="POST" action="{{URL::to('/')}}"> {{ csrf_field() }}
 	   	     	 	  	   <label id="wan2" style="padding: 10px; text-align: center; color: red; display: none;">wrong username or password!</label>
+                                           <label id="wan3" style="padding: 10px; text-align: center; color: red; display: none;">user does not exit</label>
 	   	     	 	  	   <p>Login</p>
 	   	     	 	  	   <input type="email" placeholder="Email" name="email" id="email"><br>
 	   	     	 	  	   <input type="password" placeholder="Password" name="password" id="password">
@@ -533,21 +533,23 @@
 		        	       	    	      console.log(data);
 		        	       	    	      if (data.data == true) {
 		        	       	    	      	 var theForm = document.getElementsByClassName('actualForm')[0];
+
 		        	       	    	      	 theForm.submit();
 		        	       	    	      }
 
 		        	       	    	      if (data.data == false) {
-                                             var warning = document.getElementById('wan');
-                                             warning.style.display = 'block';
+                                                            // console.log('this ran');
+                                                             var warning = document.getElementById('wan');
+                                                             warning.style.display = 'block';
 
-                                             setTimeout(function(){
-           										warning.style.display = 'none';
-                                             }, 2000);
+                                                             setTimeout(function(){
+                						warning.style.display = 'none';
+                                                             }, 2000);
 		        	       	    	      }
 		        	       	    }
 		        	       }
 
-		        	       xhttp.setRequestHeader('X-CSRF-TOKEN', theToken);
+		        	   xhttp.setRequestHeader('X-CSRF-TOKEN', theToken);
 		                   xhttp.setRequestHeader("X-Requested-With", 'XMLHttpRequest');
 		                   xhttp.setRequestHeader("processData", 'false');
 		                   xhttp.setRequestHeader('cache', 'false');
@@ -560,8 +562,8 @@
 
                      var password = document.getElementById('password').value;
                      var email = document.getElementById('email').value;
-                     document.getElementById('password1').value = password;
-                     document.getElementById('email1').value = email;
+                     document.getElementById('pass1').value = password;
+                     document.getElementById('name1').value = email;
 
 		        	 const xhttp = new XMLHttpRequest();
 		        	       xhttp.open('POST', '/login', true);
@@ -571,21 +573,33 @@
 		        	       	    	      console.log(data);
 		        	       	    	      if (data.data == true) {
 		        	       	    	      	 var theForm = document.getElementsByClassName('actualForm')[0];
+		        	       	    	      	 //document.getElementById('name1').value = data.data.email;
 		        	       	    	      	 theForm.submit();
 		        	       	    	      }
 
 		        	       	    	      if (data.data == "Wrong Username or Password") {
 		        	       	    	      	  var warning = document.getElementById('wan2');
-                                                  warning.style.display = 'block';
-
-	                                              setTimeout(function(){
-	           										 warning.style.display = 'none';
-	                                              }, 2000);
+                                                          warning.style.display = 'block';
+  
+        	                                          setTimeout(function(){
+        						      warning.style.display = 'none';
+        	                                          }, 2000);
 		        	       	    	      }
+
+                                                      if (data.data == false) {
+                                                          console.log('this ran');
+                                                          var warning = document.getElementById('wan3');
+                                                              warning.innerHTML = 'user does not exist';
+                                                              warning.style.display = 'block';
+
+                                                              setTimeout(function(){
+                                                                  warning.style.display = 'none';
+                                                              }, 2000);
+                                                      }
 		        	       	    }
 		        	       }
 
-		        	       xhttp.setRequestHeader('X-CSRF-TOKEN', theToken);
+		        	   xhttp.setRequestHeader('X-CSRF-TOKEN', theToken);
 		                   xhttp.setRequestHeader("X-Requested-With", 'XMLHttpRequest');
 		                   xhttp.setRequestHeader("processData", 'false');
 		                   xhttp.setRequestHeader('cache', 'false');
@@ -615,12 +629,12 @@
 
         	function searchForInput(param){
         		var input = document.getElementById('input-Text').value;
-                switch(param.innerHTML){
-                   case Continue:
-                      
-                   case Search:
-                      getProperties(input);
-                }
+                        switch(param.innerHTML){
+                           case Continue:
+                              
+                           case Search:
+                              getProperties(input);
+                        }
         	}
 
         	function makeRequest(){
@@ -653,12 +667,12 @@
 		                   xhttp.send(param);
             }
 
-        	var postRequest = document.getElementsByClassName('propertyForm')[0];
-        	    postRequest.onsubmit = function(){
-        	    	var postRequest = document.getElementsByClassName('propertyForm')[0];
-        	    	var formData = new FormData(postRequest);
-                        submitPostRequest(formData);
-        	    }
+	    var postRequest = document.getElementsByClassName('propertyForm')[0];
+	    postRequest.onsubmit = function(){
+	    	var postRequest = document.getElementsByClassName('propertyForm')[0];
+	    	var formData = new FormData(postRequest);
+                submitPostRequest(formData);
+	    }
             
             function closeForm(){
             	var formModal = document.getElementsByClassName('login_form')[0];
@@ -676,6 +690,10 @@
             	    }else{
             	    	formModal.style.display = 'none';
             	    }
+            }
+
+            function gotoAgentFinder(){
+                 window.location = '/agentFinder';
             }
            
         </script>

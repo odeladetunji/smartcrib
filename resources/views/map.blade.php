@@ -200,11 +200,11 @@
 			       	   <button class="menuButton" id="buy_button">Buy</button>
 				  	   <button class="menuButton" id="rent_button">Rent</button>
 				  	   <button class="menuButton" id="sell_button">Sell</button>
-				  	   <button class="menuButton" id="mortgage_button">Mortgage</button>
-				  	   <button class="menuButton" id="agent_finder">Agent finder</button>
+				  	   <button class="menuButton" id="mortgage_button" onclick="gotoMortgagePage()">Mortgage</button>
+				  	   <button class="menuButton" id="agent_finder" onclick="gotoAgentFinder()">Agent finder</button>
 				  	   <button class="menuButton" id="the_more_button">more</button>
-				  	   <button class="menuButton" id="user_signup_button">signup</button>
-				  	   <button class="menuButton" id="userLogin">login</button>
+				  	   <button class="menuButton" id="user_signup_button" onclick="gotoSignUp()">signup</button>
+				  	   <button class="menuButton" id="userLogin" onclick="gotoLogin()">login</button>
 			       </div>
 	  	  	  <form name="searchForm" class="search_form" encType="multipart/form-data" method="POST" action="{{URL::to('/')}}" >{{ csrf_field() }}
 		  	  	  	<select name="category" id="category" required>
@@ -317,6 +317,48 @@
                     <button id="submit_Form">search database</button>
 	  	  	  </form>
 	  </div>
+
+	   <div class="row login_form">
+	   	     	 <div class="col-md-6 login">
+	   	     	 	  <i class="fas fa-window-close" onclick="closeForm()"></i>
+	   	     	 	  <form class="loginForm" encType="multipart/form-data" method="POST" action="{{URL::to('/')}}"> {{ csrf_field() }}
+	   	     	 	  	   <label id="wan2" style="padding: 10px; text-align: center; color: red; display: none;">wrong username or password!</label>
+	   	     	 	  	    <label id="wan3" style="padding: 10px; text-align: center; color: red; display: none;">user does not exit</label>
+	   	     	 	  	   <p>Login</p>
+	   	     	 	  	   <input type="email" placeholder="Email" name="email" id="email"><br>
+	   	     	 	  	   <input type="password" placeholder="Password" name="password" id="password">
+	   	     	 	  	   <button>submit</button>
+	   	     	 	  </form>
+
+	   	     	 	  <form class="actualForm1" encType="multipart/form-data" method="POST" action="{{URL::to('/')}}" style="display: none;">{{ csrf_field() }}
+	   	     	 	  	  <input type="text" name="email" id="email1">
+	   	     	 	  	  <input type="text" name="password" id="password1">
+	   	     	 	  </form>
+	   	     	 </div>
+	   	     	 <div class="col-md-6 description">
+	   	     	 	 <p>something</p>
+	   	     	 </div>
+	   	     </div>
+	   	      <div class="row signup_form">
+	   	     	 <div class="col-md-6 login">
+	   	     	 	  <i class="fas fa-window-close" onclick="closeForm2()"></i>
+	   	     	 	  <form class="signupForm" encType="multipart/form-data" method="POST" action="{{URL::to('/signup')}}"> {{ csrf_field() }}
+	   	     	 	  	   <label id="wan" style="padding: 10px; text-align: center; color: red; display: none;">user already exist</label>
+	   	     	 	  	   <p>SignUp</p>
+	   	     	 	  	   <input type="email" placeholder="Email" name= "email" id="name" required><br>
+	   	     	 	  	   <input type="password" placeholder="Password" name="password" id="pass" required>
+	   	     	 	  	   <button>submit</button>
+	   	     	 	  </form>
+
+	   	     	 	  <form class="actualForm" encType="multipart/form-data" method="POST" action="{{URL::to('/account')}}" style="display: none;">{{ csrf_field() }}
+	   	     	 	  	  <input type="text" name="email" id="name1">
+	   	     	 	  	  <input type="text" name="password" id="pass1">
+	   	     	 	  </form>
+	   	     	 </div>
+	   	     	 <div class="col-md-6 description">
+	   	     	 	 <p>something</p>
+	   	     	 </div>
+	   	     </div>
 	 
       <script type="text/JavaScript">
             
@@ -475,6 +517,112 @@
                         console.log('did the code ever got here');
                 	});
                 }
+
+                function checkForEmailandPassword(param){
+                     const theToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+                     var password = document.getElementById('name').value;
+                     var email = document.getElementById('pass').value;
+                     document.getElementById('pass1').value = password;
+                     document.getElementById('name1').value = email;
+
+		        	 var xhttp = new XMLHttpRequest();
+		        	       xhttp.open('POST', '/signup', true);
+		        	       xhttp.onreadystatechange = function() {
+		        	       	    if (this.readyState == 4 && this.status == 200) {
+		        	       	    	console.log('something is wrong');
+		        	       	    	var data = JSON.parse(this.responseText)
+		        	       	    	      console.log(data);
+		        	       	    	      if (data.data == true) {
+		        	       	    	      	 var theForm = document.getElementsByClassName('actualForm')[0];
+
+		        	       	    	      	 theForm.submit();
+		        	       	    	      }
+
+		        	       	    	      if (data.data == false) {
+                                             var warning = document.getElementById('wan');
+                                             warning.style.display = 'block';
+
+                                             setTimeout(function(){
+           										warning.style.display = 'none';
+                                             }, 2000);
+		        	       	    	      }
+		        	       	    }
+		        	       }
+
+		        	       xhttp.setRequestHeader('X-CSRF-TOKEN', theToken);
+		                   xhttp.setRequestHeader("X-Requested-With", 'XMLHttpRequest');
+		                   xhttp.setRequestHeader("processData", 'false');
+		                   xhttp.setRequestHeader('cache', 'false');
+		                   xhttp.setRequestHeader("ContentType", "application/json");
+		                   xhttp.send(param);
+            	}
+
+	        	function checkLoginCredentials(param){
+	                     const theToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+	                     var password = document.getElementById('password').value;
+	                     var email = document.getElementById('email').value;
+	                     document.getElementById('pass1').value = password;
+	                     document.getElementById('name1').value = email;
+
+			        	 const xhttp = new XMLHttpRequest();
+			        	       xhttp.open('POST', '/login', true);
+			        	       xhttp.onreadystatechange = function(){
+			        	       	    if (this.readyState == 4 && this.status == 200) {
+			        	       	    	const data = JSON.parse(this.responseText)
+			        	       	    	      console.log(data);
+			        	       	    	      if (data.data == true) {
+			        	       	    	      	 var theForm = document.getElementsByClassName('actualForm')[0];
+			        	       	    	      	 //document.getElementById('name1').value = data.data.email;
+			        	       	    	      	 theForm.submit();
+			        	       	    	      }
+
+			        	       	    	      if (data.data == "Wrong Username or Password") {
+			        	       	    	      	  var warning = document.getElementById('wan2');
+	                                                  warning.style.display = 'block';
+
+		                                              setTimeout(function(){
+		           										 warning.style.display = 'none';
+		                                              }, 2000);
+			        	       	    	      }
+
+			        	       	    	      if (data.data == false) {
+                                                  console.log('this ran');
+                                                  var warning = document.getElementById('wan3');
+                                                      warning.innerHTML = 'user does not exist';
+                                                      warning.style.display = 'block';
+
+                                                      setTimeout(function(){
+                                                          warning.style.display = 'none';
+                                                      }, 2000);
+                                              }
+			        	       	    }
+			        	       }
+
+			        	       xhttp.setRequestHeader('X-CSRF-TOKEN', theToken);
+			                   xhttp.setRequestHeader("X-Requested-With", 'XMLHttpRequest');
+			                   xhttp.setRequestHeader("processData", 'false');
+			                   xhttp.setRequestHeader('cache', 'false');
+			                   xhttp.setRequestHeader("ContentType", "application/json");
+			                   xhttp.send(param);
+	        	}
+
+	        	var loginForm = document.getElementsByClassName('loginForm')[0];
+	        	loginForm.onsubmit = function(){
+	        		event.preventDefault();
+	        		const loginForm = document.getElementsByClassName('loginForm')[0];
+	        		var formData = new FormData(loginForm);
+	        		checkLoginCredentials(formData);
+	        	}
+
+	        	var signupForm = document.getElementsByClassName('signupForm')[0];
+	        	signupForm.onsubmit = function(){
+	        		event.preventDefault();
+	        		const signupForm = document.getElementsByClassName('signupForm')[0];
+	        		var formData = new FormData(signupForm);
+	        		checkForEmailandPassword(formData);
+	        	}
                 
                 function selectCity(param){
                 	 console.log(param);
@@ -559,6 +707,40 @@
                          document.getElementsByClassName('menuIcon')[0].style.display = 'block';
                 }
                 
+	            function closeForm(){
+	            	var formModal = document.getElementsByClassName('login_form')[0];
+	            	    if (formModal.style.display == 'none') {
+	            	    	formModal.style.display = 'block';
+	            	    }else{
+	            	    	formModal.style.display = 'none';
+	            	    }
+	            }
+
+	            function closeForm2(){
+	            	var formModal = document.getElementsByClassName('signup_form')[0];
+	            	    if (formModal.style.display == 'none') {
+	            	    	formModal.style.display = 'block';
+	            	    }else{
+	            	    	formModal.style.display = 'none';
+	            	    }
+	            }
+
+	            function gotoSignUp(){
+        		    document.getElementsByClassName('signup_form')[0].style.display = 'block';
+        	    }
+
+        	    function gotoLogin(){
+                    document.getElementsByClassName('login_form')[0].style.display = 'block';
+        	    }
+
+        	    function gotoMortgagePage(){
+        	    	window.location = '/mortgage';
+        	    }
+
+        	    function gotoAgentFinder(){
+        	    	window.location = "/agentFinder";
+        	    }
+
       </script>
       <script src="{{ asset('js/google-map-api.js') }}"></script>
       <script src="{{ asset('js/propertydetails.js') }}"></script>
