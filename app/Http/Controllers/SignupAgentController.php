@@ -13,8 +13,16 @@ use Illuminate\Http\UploadedFile;
 class SignupAgentController extends BaseController
 {
     public function create_user($email, $password, $theRandomNumber){
-         DB::insert('insert into registration (email, password, identity) values (?, ?, ?)', [$email, $password, $theRandomNumber]);
+         DB::insert('insert into agents (email, password, identity) values (?, ?, ?)', [$email, $password, $theRandomNumber]);
     }
+
+    public function updatingUniqueIdentities($emptySpace, $theRandomNumber){
+                $emptySpace = " ";
+                $uniqueIdentities = Storage::get('uniqueIdentity.json');
+                $updatedValue = $uniqueIdentities . $emptySpace . $theRandomNumber;
+                Storage::put('uniqueIdentity.json', $updatedValue);
+    }
+
 
     public function randomStringGenerator($email, $password){
         $theRandomNumber;
@@ -27,7 +35,7 @@ class SignupAgentController extends BaseController
 
         if($checkingValue == false ){
            $theRandomNumber = $randomNumber;
-           //$this->updatingUniqueIdentities($emptySpace, $theRandomNumber);
+           $this->updatingUniqueIdentities($emptySpace, $theRandomNumber);
            $this->create_user($email, $password, $theRandomNumber);
            return $theRandomNumber;
         }else{

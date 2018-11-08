@@ -11,7 +11,7 @@
 }
 
 .welcome_modal {
-	background-color: rgba(0,0,0, .4);
+	background-color: rgba(0,0,0, .1);
 	position: fixed;
 	top: 0px;
 	z-index: 1;
@@ -113,62 +113,90 @@
 }
 
 .parentComp {
-	flex-wrap: nowrap;
 	background-color: white;
-	width: 80%;
-	margin: auto;
+	width: 300px;
+	margin-left: 10px;
 	border-radius: 5px;
 	margin-bottom: 10px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
 }
 
 .parentComp span i {
-	font-size: 30px;
+	font-size: 16px;
 	color: black;
 	background-color: transparent;
 }
 
-.leftComp {
-	width: 40%;
-	height: 170px;
+.bottomComp {
+	width: 100%;
 	background-color: white;
 }
 
-.rightComp {
-	width: 60%;
+.topComp {
+	width: 100%;
+	padding-top: 10px;
 	background-color: white;
 }
 
 #agentPicture {
-    width: 100%;
-    height: 100%;
-    background-color: white;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    margin-left: 40px;
+    margin-top: 10px;
+    background-color: orange;
 }
 
 #tele, #address, #local, #agent_state {
    padding: 0px;
-   padding-left: 10px;
    margin-bottom: 2px;
+
+}
+
+#local {
+	text-align: center;
+	padding-bottom: 20px;
+}
+
+
+#agentName {
+	text-align: center;
+	margin-bottom: 2px;
+	font-size: 22px;
 }
 
 #tele {
-	margin-top: 50px;
+	margin-top: 10px;
+	text-align: center;
+    padding-top: 10px;
+	border-top: 10px solid green;
 }
 
 .agentsAndProperties {
 	max-width: 100%;
 }
 
-.agentsAndProperties div {
-     margin-left: 0px;
+.theAgents {
+	padding-top: 50px;
+	background-color: #ecf5f5;
+	display: flex;
+	flex-wrap: wrap;
+	padding-bottom: 40px;
+}
+
+.someProps {
+	background-color: #ecf5f5;
 }
 
 .ratings {
 	width: 100%;
+	padding-left: 70px;
+	margin-bottom: 30px;
 }
 
 .ratings i {
-	color: orange;
-	font-size: 30px;
+	color: green;
+	font-size: 28px;
 	background-color: transparent;
 }
 
@@ -246,4 +274,9 @@
 
 .description p {
 	text-align: center;
+}
+
+.fa-phone, .fa-mountain {
+	padding-right: 10px;
+	color: green;
 }

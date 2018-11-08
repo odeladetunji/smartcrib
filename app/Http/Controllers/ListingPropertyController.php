@@ -49,18 +49,7 @@ class ListingPropertyController extends BaseController
         //return response()->json(array('data' => (String)$theRandomNumber));
         $email = $request->input('email');
         DB::insert('insert into properties (identity , email) values (?, ?)', [(String)$theRandomNumber, $email]);
-        //DB::update('update properties set email = ? where identity = ?', [$email, (String)$theRandomNumber]);
-        //$data  = explode(".com", $email)[0];
-        //print_r(gettype($data));
-
-        //print_r($data);
-        //return;
-
-        /* DB::table('properties')
-                ->where('identity', (String)$theRandomNumber)
-                     ->update(['email' => $data]); */
-                       
-        //return response()->json(array('data' => (String)$theRandomNumber));
+        
         
         // Property Table!
         if ($request->filled('category')) {

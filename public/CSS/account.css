@@ -51,8 +51,9 @@
    padding-right: 0px;
 }
 
+
 .widget {
-	background-color: purple;
+	background-color: #383c6b;
 	width: 270px;
 	padding-top: 20px;
 	padding-bottom: 20px;
@@ -401,7 +402,7 @@ h6 {
 .updateAgentRecords form input {
 	padding: 10px;
 	width: 80%;
-	border: 1px solid black;
+	border: none;
 	background-color: #fafafa;
 	margin-bottom: 10px;
 	margin-left: 10%;
@@ -455,6 +456,79 @@ h6 {
 	margin-top: 50px;
 	background-color: transparent;
 	color: white;
+}
+
+.aboutAgent {
+	position: fixed;
+	z-index: 7;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0, .5);
+	padding-top: 10px;
+	padding-bottom: 50px;
+	overflow: scroll;
+	display: none;
+}
+
+.aboutAgent .cover {
+	/*position: fixed;*/
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    max-height: 500px;
+    /*overflow: scroll;*/
+}
+.aboutAgent form {
+	width: 100%;
+	background-color: white;
+}
+
+.aboutAgent label {
+	color: green;
+	padding: 10px;
+	text-align: center;
+	width: 100%;
+	font-weight: bold;
+}
+
+.aboutAgent form button {
+	color: white;
+	background-color: green;
+	font-size: 14px;
+	padding: 4px 30px;
+	margin-top: 10px;
+	border: none;
+	margin-left: 43%;
+	border-radius: 5px;
+	margin-bottom: 50px;
+}
+
+.aboutAgent form input {
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 80%;
+    margin-left: 10%;
+    background-color: #fafafa;
+    color: black;
+    border: none;
+}
+
+.aboutAgent form textarea {
+	width: 80%;
+	background-color: #fafafa;
+	color: black;
+	padding: 10px;
+	margin-left: 10%;
+	height: 300px;
+	border: none;
+}
+
+.plusSign {
+	font-size: 50px;
+	color: purple;
+	background-color: white;
 }
 
 

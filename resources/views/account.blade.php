@@ -41,12 +41,15 @@
 	  	   	    			<p>List A Property</p>
 	  	   	    		</div>
                               <div class="widget" onclick="showUpdateForm()">
-                                    <p>update records</p>
+                                    <p>update contact</p>
                               </div>
                               <div class="widget" onclick="showMessages()">
                                     <p>inbox</p>
                               </div>
-                              <div class="widget" onclick="showUpdateForm()">
+                              <div class="widget" onclick="toggleForm()">
+                                    <p>About your Company</p>
+                              </div>
+                              <div class="widget">
                                     <p>contacts</p>
                               </div>
 	  	   	    		<div class="widget">
@@ -63,6 +66,21 @@
 	  	   	    	</div>
 	  	   </div>
 	  </div>
+
+        <div class="aboutAgent">
+             <i class="fas fa-window-close closeForm" onclick="toggleForm()"></i>
+             <div class="cover">
+                   <form class="aboutCompany" encType="multipart/form-data" method="POST" action="{{URL::to('/')}}">{{ csrf_field() }}
+                       <label>Tell Cleints about Business</label>
+                       <input type="text" placeholder="title or company name" required>
+                       <textarea name="" id="company_summary" placeholder="write a summary of your company" required></textarea>
+                       
+                       <input type="text" placeholder="add cover area" required>
+                       <i class="fas fa-plus-circle plusSign" onclick="showCovComp()"></i>
+                       <button>update record</button>
+                  </form>
+             </div>
+        </div>
 
         <div class="updateAgentRecords">
             <i class="fas fa-window-close closeForm" onclick="closeUpdateForm()"></i>
@@ -596,6 +614,18 @@
                         updateRecords(formData);
                 };
 
+            var aboutCompany = document.getElementsByClassName('aboutCompany')[0];
+                recordForm.onsubmit = function(){
+                    event.preventDefault();
+                    var theOwner = document.getElementById('gottenValue').innerHTML;
+                    var aboutCompany = document.getElementsByClassName('aboutCompany')[0];
+                    var formData = new FormData(recordForm);
+                        formData.append('email', theOwner);
+                        formData.append('aboutCompany', true);
+                        updateRecords(formData);
+                };
+
+
             function showForm(){
                   console.log('something')
       		var theForm = document.getElementsByClassName('listProperty')[0];
@@ -641,6 +671,25 @@
                           form.style.display = 'none';
                       }
             }
+
+            function toggleForm(){
+                  var form = document.getElementsByClassName('aboutAgent')[0];
+                      if (form.style.display == "none" || form.style.display == '') {
+                          form.style.display = 'block';
+                      }else{
+                          form.style.display = 'none';
+                      }
+            }
+
+            var comp_counter = 0;
+            function showCovComp(){
+                  comp_counter ++;
+                  var cov = 'cov'; // just for namming sake nothing more
+                  var elm = document.getElementById('company_summary');
+                  var comp = '<input type="text" name="' + cov.concat(comp_counter) + '" placeholder="Add Coverage Area"/>';
+                  $(comp).insertAfter(elm);
+            }
+
 
             function findAgent(){
                   window.location = '/agentFinder';

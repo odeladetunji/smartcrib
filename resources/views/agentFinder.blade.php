@@ -25,15 +25,13 @@
 	   	     	  </div>
 	   	     </div>
 
-	   	     <div class="agentsAndProperties">
+	   	     <div class="agentsAndProperties" style="display: none;">
              	<div class="row" style="margin-left: 0px;">
-		   	     	  <div class="col-md-4 theAgents" style="margin-left: 0px;">
+		   	     	  <div class="col-md-9 theAgents" style="margin-left: 0px;">
 		   	     	  	    <p>some</p>
 		   	     	  </div>
-		   	     	  <div class="col-md-4 theAgents" style="margin-left: 0px;">
-		   	     	  	  <p>properties are ment to be here</p>
-		   	     	  </div>
-		   	     	  <div class="col-md-4 someProps">
+		   	     	 
+		   	     	  <div class="col-md-3 someProps">
 		   	     	  	  <p>properties are ment to be here</p>
 		   	     	  </div>
 	   	        </div>
@@ -132,7 +130,7 @@
 	   	      <div class="row signup_form">
 	   	     	 <div class="col-md-6 login">
 	   	     	 	  <i class="fas fa-window-close" onclick="closeForm2()"></i>
-	   	     	 	  <form class="signupForm" encType="multipart/form-data" method="POST" action="{{URL::to('/signup')}}"> {{ csrf_field() }}
+	   	     	 	  <form class="signupForm" encType="multipart/form-data" method="POST" action="{{URL::to('/')}}"> {{ csrf_field() }}
 	   	     	 	  	   <label id="wan" style="padding: 10px; text-align: center; color: red; display: none;">user already exist</label>
 	   	     	 	  	   <p>SignUp</p>
 	   	     	 	  	   <input type="email" placeholder="Email" name= "email" id="name" required><br>
@@ -184,7 +182,7 @@
 		        	       	    if (this.readyState == 4 && this.status == 200) {
 		        	       	    	var data = JSON.parse(this.responseText);
 		        	       	    	      console.log(data.data);
-                                          return;
+                                       
 
                                           if (data.data == false) {
 
@@ -192,24 +190,22 @@
 
                                           if (data.data != false) {
                                           	    function showElems(){
+                                          	    	document.getElementsByClassName('agentsAndProperties')[0].style.display = 'block';
                                           	    	var parentElm = document.getElementsByClassName('theAgents')[0];
                                           	    	    parentElm.innerHTML = comp;
+                                          	    	    document.getElementsByClassName('banner')[0].style.display = 'none';
                                           	    }
 
                                           	    var comp = '';
 	                                            function useData(param){
-      												var component = '<div class="parentComp" style="display: flex;">' + 
-		   	     	  	    	                   '<div class="leftComp">' +
+      												var component = '<div class="parentComp">' + 
+		   	     	  	    	                   '<div class="topComp">' +
 							   	     	  	    	 	'<div id="agentPicture" style="background-image: url( {{ asset("/storage/images/' + param[picture] + '") }} )">' +
 							   	     	  	    	 		
 							   	     	  	    	 	'</div>' +
 							   	     	  	    	 '</div>' +
-							   	     	  	    	 '<div class="rightComp">' +
-							   	     	  	    	 	'<div id="badge">' +
-							   	     	  	    	 		'<i class="fas fa-ribbon"></i>' +
-							   	     	  	    	 	'</div>' +
-							   	     	  	    	 	'<p id="agentName">' + param[first_name] + param[lastname] + '</p>' +
-							   	     	  	    	 	'<p id="tele"> <span id="telSpan"><i class="fas fa-phone"></i></span>' + param[telephone] + '</p>' +
+							   	     	  	    	 '<div class="bottomComp">' + 
+							   	     	  	    	 	'<p id="agentName">' + param.first_name + ' ' +param.lastname + '</p>' +
 							   	     	  	    	 	'<div class="ratings" style="display: flex;">' +
 	 														'<div><i class="fas fa-star"></i></div>' + 
 	 														'<div><i class="fas fa-star"></i></div>' +
@@ -217,9 +213,8 @@
 	 														'<div><i class="fas fa-star"></i></div>' +
 	 														'<div><i class="fas fa-star"></i></div>' +
 							   	     	  	    	 	'</div>' +
-							   	     	  	    	 	'<p id="address"> <span id="addSpan"><i class="far fa-building"></i></span>' + param[office_address] + '</p>' +
-							   	     	  	    	 	'<p id="local"> <span id="locSpan"><i class="fas fa-mountain"></i></span>' + param[local_government] + '</p>' + 
-							   	     	  	    	 	'<p id="agent_state"> <span id="agentSpan"><i class="fas fa-home"></i></span>' + param[state] + '</p>' +
+							   	     	  	    	 	'<p id="tele"> <span id="telSpan"><i class="fas fa-phone"></i></span>' + param.telephone + '</p>' +
+							   	     	  	    	 	'<p id="local"> <span id="locSpan"><i class="fas fa-mountain"></i></span>' + param.local_government + '</p>' + 
 							   	     	  	    	 '</div>' +
 							   	     	  	       '</div>';
 							   	     	  	            comp = comp + component;

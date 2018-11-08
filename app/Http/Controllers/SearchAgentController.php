@@ -15,7 +15,8 @@ class SearchAgentController extends BaseController
     
 
     public function searchAgent(Request $request){
-        $state = $request->input('theStates');
+        $state = $request->input('state');
+        //return response()->json(array('data' => $state));
         $data = DB::select('select * from agents where state = ?', [$state]);
       
         if (sizeof($data) == 0) {
