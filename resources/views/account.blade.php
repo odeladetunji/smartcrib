@@ -23,10 +23,11 @@
 	  	   <div class="col-sm-2 nav">
 	  	   	   <ul class="inner-nav">
 	  	   	    	<li id="navTitle">Welcome</li>
-	  	   	    	<li id="navHome">home</li>
-	  	   	    	<li>Listed Properties</li>
-                        <li onclick="gotoMap()">Go to Map</li>
-                        <li onclick="findAgent()">Find Agent</li>
+	  	   	    	<li id="navHome">DashBoard</li>
+	  	   	    	
+                        <li onclick="gotoMap()">Search Engine</li>
+                        <li onclick="findAgent()">Agent Finder</li>
+                        <li id="signout" onclick="gotoHomePage()">Logout</li>
 	  	   	   </ul>
 	  	   </div>
 	  	   <div class="col-sm-10 mainBody">
@@ -37,9 +38,18 @@
 	  	   	    	<p id="owner" style="color: black;"></p>
 	  	   	    </div>
 	  	   	    	<div class="widgetContainer" style="display: flex;">
+                  <div class="widget" onclick="">
+                    <p>Profile</p>
+                  </div>
 	  	   	    		<div class="widget" onclick="showForm()">
 	  	   	    			<p>List A Property</p>
 	  	   	    		</div>
+                  <div class="widget" onclick="">
+                    <p>View Listed Properties</p>
+                  </div>
+                              <div class="widget">
+                                <p>Edit Properties</p>
+                              </div>
                               <div class="widget" onclick="showUpdateForm()">
                                     <p>update contact</p>
                               </div>
@@ -52,17 +62,15 @@
                               <div class="widget">
                                     <p>contacts</p>
                               </div>
-	  	   	    		<div class="widget">
-	  	   	    			<p>Available Properties</p>
-	  	   	    			<p>000</p>
-	  	   	    		</div>
-	  	   	    		<div class="widget">
-	  	   	    			<p>Edit Properties</p>
-	  	   	    		</div>
-	  	   	    		<div class="widget">
-	  	   	    			<p>Total Asset Value</p>
-	  	   	    			<p>$000</p>
-	  	   	    		</div>
+            	  	   	    		<div class="widget">
+            	  	   	    			<p>Available Properties</p>
+            	  	   	    			<p>000</p>
+            	  	   	    		</div>
+            	  	   	    		
+            	  	   	    		<div class="widget">
+            	  	   	    			<p>Total Asset Value</p>
+            	  	   	    			<p>$000</p>
+            	  	   	    		</div>
 	  	   	    	</div>
 	  	   </div>
 	  </div>
@@ -73,9 +81,12 @@
                    <form class="aboutCompany" encType="multipart/form-data" method="POST" action="{{URL::to('/')}}">{{ csrf_field() }}
                        <label>Tell Cleints about Business</label>
                        <input type="text" placeholder="title or company name" required>
+                       <input type="text" placeholder="website (enter url)">
+                       <input type="text" placeholder="facebook page (enter url)">
+                       <input type="text" placeholder="linkedIn page (enter url)">
                        <textarea name="" id="company_summary" placeholder="write a summary of your company" required></textarea>
                        
-                       <input type="text" placeholder="add cover area" required>
+                       <input type="text" placeholder="Add Coverage area (eg local governments)" required>
                        <i class="fas fa-plus-circle plusSign" onclick="showCovComp()"></i>
                        <button>update record</button>
                   </form>
@@ -628,14 +639,14 @@
 
             function showForm(){
                   console.log('something')
-      		var theForm = document.getElementsByClassName('listProperty')[0];
-      		if (theForm.style.display == 'block' || theForm.style.display == '') {
-                        console.log('whta');
-                       theForm.style.display = 'none';
-      		}else{
-      			theForm.style.display = 'block';
-                        console.log('padfads')
-      		}
+              		var theForm = document.getElementsByClassName('listProperty')[0];
+              		if (theForm.style.display == 'none' || theForm.style.display == '') {
+                                // console.log('whta');
+                      theForm.style.display = 'block';
+              		}else{
+              		  	theForm.style.display = 'none';
+                                // console.log('padfads')
+              		}
             }
 
             function gotoMap(){
@@ -679,6 +690,10 @@
                       }else{
                           form.style.display = 'none';
                       }
+            }
+
+            function gotoHomePage(){
+                  window.location = '/';
             }
 
             var comp_counter = 0;

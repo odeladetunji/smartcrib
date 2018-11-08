@@ -57,7 +57,7 @@
 	width: 270px;
 	padding-top: 20px;
 	padding-bottom: 20px;
-	margin-left: 50px;
+	margin-left: 50px !important;
 	color: white;
 	margin-bottom: 30px;
 	border-radius: 5px;
@@ -78,7 +78,7 @@
 }
 
 #navTitle {
-	color: purple;
+	color: orange;
 }
 
 #navHome {
@@ -529,6 +529,10 @@ h6 {
 	font-size: 50px;
 	color: purple;
 	background-color: white;
+}
+
+#signout {
+	background-color: maroon;
 }
 
 
