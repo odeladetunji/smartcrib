@@ -535,6 +535,73 @@ h6 {
 	background-color: maroon;
 }
 
+#shortProfile{
+    width: 270px;
+    background-color: cyan;
+    padding-top: 10px;
+    border-right: 10px;
+    margin-left: 50px;
+    margin-top: 10px;
+}
+
+#agentImage {
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	margin: auto;
+	background-color: white;
+}
+
+#tele, #local {
+	text-align: center;
+}
+
+.ratings {
+	margin-left: 50px;
+}
+
+.ratings i {
+	font-size: 30px;
+	color: green;
+}
+
+.loader {
+   position: fixed;
+   top: 0px;
+   z-index: 1000;
+   background-color: rgba(0,0,0, .8);
+   height: 100%;
+   width: 100%;
+   display: none;
+}
+
+.listedProps {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    padding-bottom: 50px;
+    overflow: scroll;
+    background-color: rgba(0,0,0, .5);
+    z-index: 7;
+    display: none;
+}
+
+.myProps {
+    width: 80%;
+    margin-left: 10%;
+    background-color: white;
+}
+
+#theLoader {
+	width: 150px;
+	height: 150px;
+	background-color: transparent;
+	border: 10px solid white;
+	border-radius: 50%;
+	border-left: 10px solid green;
+	margin: auto;
+	margin-top: 150px;
+}
 
 @media only screen and (max-width: 768px) {
     .size-of-property {

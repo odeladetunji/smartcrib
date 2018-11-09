@@ -37,21 +37,39 @@
 	  	   	    <div>
 	  	   	    	<p id="owner" style="color: black;"></p>
 	  	   	    </div>
+              <div id="shortProfile" style="display: none;">
+                   <div id="agentImage">
+                      
+                   </div>
+                   <div>
+                       <p id="agentName"></p>
+                       <div class="ratings" style="display: flex;">
+                            <div><i class="fas fa-star"></i></div> 
+                            <div><i class="fas fa-star"></i></div>
+                            <div><i class="fas fa-star"></i></div>
+                            <div><i class="fas fa-star"></i></div>
+                            <div><i class="fas fa-star"></i></div>
+                      </div>
+
+                      <p id="tele"> <span id="telSpan"><i class="fas fa-phone"></i></span></p>
+                      <p id="local"> <span id="locSpan"><i class="fas fa-mountain"></i></span></p>
+                   </div>
+              </div>
 	  	   	    	<div class="widgetContainer" style="display: flex;">
-                  <div class="widget" onclick="">
+                  <div class="widget" onclick="showProfile()">
                     <p>Profile</p>
                   </div>
 	  	   	    		<div class="widget" onclick="showForm()">
 	  	   	    			<p>List A Property</p>
 	  	   	    		</div>
-                  <div class="widget" onclick="">
+                  <div class="widget" onclick="showListedProps()">
                     <p>View Listed Properties</p>
                   </div>
                               <div class="widget">
                                 <p>Edit Properties</p>
                               </div>
                               <div class="widget" onclick="showUpdateForm()">
-                                    <p>update contact</p>
+                                    <p>update company contact</p>
                               </div>
                               <div class="widget" onclick="showMessages()">
                                     <p>inbox</p>
@@ -59,7 +77,7 @@
                               <div class="widget" onclick="toggleForm()">
                                     <p>About your Company</p>
                               </div>
-                              <div class="widget">
+                              <div class="widget" onclick="showContact()">
                                     <p>contacts</p>
                               </div>
             	  	   	    		<div class="widget">
@@ -506,41 +524,64 @@
              <input type="text" name="routing" id="hiInput">
         </form>
 	  <p id="gottenValue" style="display: none;">{{ $owner }}</p>
+
+     <div class="loader">
+           <div id="theLoader"></div>
+     </div>
+
+     <div class="listedProps">
+         <i class="fas fa-window-close closeForm" onclick="closeListed()"></i>
+         <div class="myProps">
+           
+         </div>
+     </div>
+
       <script src="{{ asset('js/localgovernments.js') }}" type="text/javascript"></script>
        <script src="{{ asset('js/google-map-api.js') }}" type="text/javascript"></script>
       <script type="text/JavaScript">
-      	    window.load = function(){
-      	    	     const theToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-		        	 const xhttp = new XMLHttpRequest();
-		        	       xhttp.open('GET', '/accountContent', true);
-		        	       xhttp.onreadystatechange = () => {
-		        	       	    if (this.readystate == 4 && this.status == 200) {
-		        	       	    	const data = JSON.parse(this.responseText);
-		        	       	    	      console.log(data);
-		        	       	    	      // use data here!
-		        	       	    }
-		        	       }
+            document.getElementsByClassName('loader')[0].style.display = 'block';
+            setTimeout(function(){
+               document.getElementsByClassName('loader')[0].style.display = 'none';
+            }, 500);
+        
+      	    window.onload = function(){
+               console.log('Document Ready!');
+      	    	 const theToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+               var formData = new FormData();
+               formData.append('ownersMail', document.getElementById('gottenValue').innerHTML);
 
-		        	       xhttp.setRequestHeader('X-CSRF-TOKEN', theToken);
-		                   xhttp.setRequestHeader("X-Requested-With", 'XMLHttpRequest');
-		                   xhttp.setRequestHeader("processData", 'false');
-		                   xhttp.setRequestHeader('cache', 'false');
-		                   xhttp.setRequestHeader("Content-Type", "application/json");
-		                   xhttp.send();
+               return;
+      	       const xhttp = new XMLHttpRequest();
+      	       xhttp.open('POST', '/accountContent', true);
+      	       xhttp.onreadystatechange = () => {
+      	       	    if (this.readystate == 4 && this.status == 200) {
+        	       	      	const data = JSON.parse(this.responseText);
+    	       	    	      console.log(data);
+                          
+                          document.getElementsByClassName('loader')[0].style.display = 'none';
+      	       	    }
+      	       }
+
+    	         xhttp.setRequestHeader('X-CSRF-TOKEN', theToken);
+               xhttp.setRequestHeader("X-Requested-With", 'XMLHttpRequest');
+               xhttp.setRequestHeader("processData", 'false');
+               xhttp.setRequestHeader('cache', 'false');
+               xhttp.setRequestHeader("Content-Type", "application/json");
+               xhttp.send(formData);
 
       	    }
 
              console.log(window.screen.width);
              if (window.screen.width < 576) {
-             	document.getElementsByClassName('nav')[0].style.paddingBottom = '10px';
-             	document.getElementsByClassName('inner-nav')[0].style.paddingTop = '10px';
-             	document.getElementsByClassName('widget')[0].style.marginLeft = '30px';
-             	document.getElementsByClassName('widget')[1].style.marginLeft = '30px';
-             	document.getElementsByClassName('widget')[2].style.marginLeft = '30px';
-             	document.getElementsByClassName('widget')[3].style.marginLeft = '30px';
+                 	document.getElementsByClassName('nav')[0].style.paddingBottom = '10px';
+                 	document.getElementsByClassName('inner-nav')[0].style.paddingTop = '10px';
+                 	document.getElementsByClassName('widget')[0].style.marginLeft = '30px';
+                 	document.getElementsByClassName('widget')[1].style.marginLeft = '30px';
+                 	document.getElementsByClassName('widget')[2].style.marginLeft = '30px';
+                 	document.getElementsByClassName('widget')[3].style.marginLeft = '30px';
              }
       	     var gottenValue = document.getElementById('gottenValue').innerHTML;
-                           console.log(gottenValue);
+                       console.log(gottenValue);
 		                   document.getElementById('owner').innerHTML = gottenValue;
 
 
@@ -557,7 +598,7 @@
 		        	       	    }
 		        	       }
 
-		        	       xhttp.setRequestHeader('X-CSRF-TOKEN', theToken);
+		        	         xhttp.setRequestHeader('X-CSRF-TOKEN', theToken);
 		                   xhttp.setRequestHeader("X-Requested-With", 'XMLHttpRequest');
 		                   xhttp.setRequestHeader("processData", 'false');
 		                   xhttp.setRequestHeader('cache', 'false');
@@ -693,6 +734,7 @@
             }
 
             function gotoHomePage(){
+                  document.getElementsByClassName('loader')[0].style.display = 'block';
                   window.location = '/';
             }
 
@@ -707,8 +749,201 @@
 
 
             function findAgent(){
+                  document.getElementsByClassName('loader')[0].style.display = 'block';
                   window.location = '/agentFinder';
             }
+
+            function closeListed(){
+                  var listedProps = document.getElementsByClassName('listedProps')[0];
+                      if (listedProps.style.display == "none" || listedProps.style.display == '') {
+                          listedProps.style.display = 'block';
+                      }else{
+                          listedProps.style.display = 'none';
+                      }
+            }
+
+            /*
+               Please Dont Delete the Code below
+            */
+
+
+            function showListedProps(){
+                   document.getElementsByClassName('loader')[0].style.display = 'block';
+                   var theToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+                   var formData = new FormData();
+                   formData.append('props', 'props');
+                   formData.append('email', document.getElementById('gottenValue').innerHTML);
+
+                   var xhttp = new XMLHttpRequest();
+                   xhttp.open('POST', '/accountContent', true);
+                   xhttp.onreadystatechange = function(){
+                        if (this.readystate == 4 && this.status == 200) {
+                          var data = this.responseText;
+                                console.log(data);
+                                if (data.props.length == 0) {
+                                   //document.getElementsByClassName('loader')[0].style.display = 'none';
+                                   var eventModal = document.getElementsByClassName('eventModal')[0];
+                                   eventModal.innerHTML = '<p>No Record Found!!</p>';
+                                   eventModal.style.display = 'block';
+
+                                   setTimeout(function(){
+                                      var eventModal = document.getElementsByClassName('eventModal')[0];
+                                      eventModal.style.display = 'none';
+                                   }, 5000);
+
+                                   return;
+                                }
+                                
+                     
+                                if (data.props.length != 0) {
+                                   document.getElementsByClassName('listedProps')[0].style.display = 'block';
+                                }
+
+                                document.getElementsByClassName('loader')[0].style.display = 'none';
+                        }
+                   }
+
+                   xhttp.setRequestHeader('X-CSRF-TOKEN', theToken);
+                   xhttp.setRequestHeader("X-Requested-With", 'XMLHttpRequest');
+                   xhttp.setRequestHeader("processData", 'false');
+                   xhttp.setRequestHeader('cache', 'false');
+                   xhttp.setRequestHeader("ContentType", "application/x-www-form-urlencoded");
+                   xhttp.send(formData);
+            }
+
+
+             function showProfile(){
+                   document.getElementsByClassName('loader')[0].style.display = 'block';
+                   var theToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+                   var formData = new FormData();
+                   formData.append('profile', 'profile');
+                   formData.append('email', document.getElementById('gottenValue').innerHTML);
+
+                   var xhttp = new XMLHttpRequest();
+                   xhttp.open('POST', '/accountContent', true);
+                   xhttp.onreadystatechange = function(){
+                        if (this.readystate == 4 && this.status == 200) {
+                          var data = this.responseText;
+                                console.log(data);
+                                if (data.profile.length == 0) {
+                                   //document.getElementsByClassName('loader')[0].style.display = 'none';
+                                   var eventModal = document.getElementsByClassName('eventModal')[0];
+                                   eventModal.innerHTML = '<p>No Record Found</p>';
+                                   eventModal.style.display = 'block';
+
+                                   setTimeout(function(){
+                                      var eventModal = document.getElementsByClassName('eventModal')[0];
+                                      eventModal.style.display = 'none';
+                                   }, 5000);
+
+                                   return;
+                                }
+                                
+                     
+                                if (data.profile.length != 0) {
+                                      document.getElementsByClassName('')[0].style.display = 'block';
+                                }
+
+                                document.getElementsByClassName('loader')[0].style.display = 'none';
+                        }
+                   }
+
+                   xhttp.setRequestHeader('X-CSRF-TOKEN', theToken);
+                   xhttp.setRequestHeader("X-Requested-With", 'XMLHttpRequest');
+                   xhttp.setRequestHeader("processData", 'false');
+                   xhttp.setRequestHeader('cache', 'false');
+                   xhttp.setRequestHeader("ContentType", "application/x-www-form-urlencoded");
+                   xhttp.send(formData);
+            }
+
+            function showContact(){
+                   document.getElementsByClassName('loader')[0].style.display = 'block';
+                   var theToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+                   var formData = new FormData();
+                   formData.append('contacts', 'contacts');
+                   formData.append('email', document.getElementById('gottenValue').innerHTML);
+
+                   var xhttp = new XMLHttpRequest();
+                   xhttp.open('POST', '/accountContent', true);
+                   xhttp.onreadystatechange = function(){
+                        if (this.readystate == 4 && this.status == 200) {
+                          var data = this.responseText;
+                                console.log(data);
+                                if (data.contacts.length == 0) {
+                                   //document.getElementsByClassName('loader')[0].style.display = 'none';
+                                   var eventModal = document.getElementsByClassName('eventModal')[0];
+                                   eventModal.innerHTML = '<p>No Record Found</p>';
+                                   eventModal.style.display = 'block';
+
+                                   setTimeout(function(){
+                                      var eventModal = document.getElementsByClassName('eventModal')[0];
+                                      eventModal.style.display = 'none';
+                                   }, 5000);
+
+                                   return;
+                                }
+                                
+                     
+                                if (data.contacts.length != 0) {
+                                      document.getElementsByClassName('')[0].style.display = 'block';
+                                }
+
+                                document.getElementsByClassName('loader')[0].style.display = 'none';
+                        }
+                   }
+
+                   xhttp.setRequestHeader('X-CSRF-TOKEN', theToken);
+                   xhttp.setRequestHeader("X-Requested-With", 'XMLHttpRequest');
+                   xhttp.setRequestHeader("processData", 'false');
+                   xhttp.setRequestHeader('cache', 'false');
+                   xhttp.setRequestHeader("ContentType", "application/x-www-form-urlencoded");
+                   xhttp.send(formData);
+            }
+
+            function showMessages(){
+                   document.getElementsByClassName('loader')[0].style.display = 'block';
+                   var theToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+                   var formData = new FormData();
+                   formData.append('mails', 'mails');
+                   formData.append('email', document.getElementById('gottenValue').innerHTML);
+
+                   var xhttp = new XMLHttpRequest();
+                   xhttp.open('POST', '/accountContent', true);
+                   xhttp.onreadystatechange = function(){
+                        if (this.readystate == 4 && this.status == 200) {
+                          var data = this.responseText;
+                                console.log(data);
+                                if (data.mails.length == 0) {
+                                   //document.getElementsByClassName('loader')[0].style.display = 'none';
+                                   var eventModal = document.getElementsByClassName('eventModal')[0];
+                                   eventModal.innerHTML = '<p>No Record Found</p>';
+                                   eventModal.style.display = 'block';
+
+                                   setTimeout(function(){
+                                      var eventModal = document.getElementsByClassName('eventModal')[0];
+                                      eventModal.style.display = 'none';
+                                   }, 5000);
+
+                                   return;
+                                }
+                                
+                     
+                                if (data.mails.length != 0) {
+                                      document.getElementsByClassName('')[0].style.display = 'block';
+                                }
+
+                                document.getElementsByClassName('loader')[0].style.display = 'none';
+                        }
+                   }
+
+                   xhttp.setRequestHeader('X-CSRF-TOKEN', theToken);
+                   xhttp.setRequestHeader("X-Requested-With", 'XMLHttpRequest');
+                   xhttp.setRequestHeader("processData", 'false');
+                   xhttp.setRequestHeader('cache', 'false');
+                   xhttp.setRequestHeader("ContentType", "application/x-www-form-urlencoded");
+                   xhttp.send(formData);
+            }
+ 
 
       </script>
       <script async defer

@@ -30,6 +30,7 @@ Route::post('/searchAgent', 'SearchAgentController@searchAgent');
 Route::post('/searchProps', 'SearchPropController@searchProps');
 Route::post('/agentAccount', 'AgentAccountController@agentAccount');
 Route::post('/updateAgentRecords', 'UpdateAgentRecordsController@updateAgentRecords');
+Route::post('/accountContent', 'AccountContentController@accountContent');
 
 Route::get('/mortgage', 'MortgageController@mortgage');
 Route::get('/agentFinder', 'AgentFinderController@agentFinder');
