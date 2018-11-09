@@ -680,6 +680,34 @@ h6 {
 	border-left: 10px solid green;
 	margin: auto;
 	margin-top: 150px;
+	-webkit-animation-name: rotation;
+	-ms-animation-name: rotation; /* Safari 4.0 - 8.0 */
+	animation-name: rotation;
+	/*-ms-transform: rotate(360deg); /* IE 9 */
+    /*-webkit-transform: rotate(360deg); /* Safari */
+    /*transform: rotate(360deg);*/
+    animation-duration: .1s;
+    -webkit-animation-duration: .1s; /* Safari */
+    -ms-animation-duration: .1s;
+    -webkit-animation-iteration-count: infinite;
+    -ms-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes rotation {
+    0%   {transform: rotate(90deg);}
+    25%  {transform: rotate(180deg);}
+    50%  {transform: rotate(270deg);}
+    100% {transform: rotate(360deg);}
+}
+
+/* Standard syntax */
+@keyframes rotation {
+    0%   {transform: rotate(90deg);}
+    25%  {transform: rotate(180deg);}
+    50%  {transform: rotate(270deg);}
+    100% {transform: rotate(360deg);}
 }
 
 @media only screen and (max-width: 768px) {

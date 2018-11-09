@@ -547,11 +547,11 @@
          <i class="fas fa-window-close closeForm" onclick="closeContact()"></i>
          <form name="thePropertyForm" class="myContacts" encType="multipart/form-data" method="POST" action="{{URL::to('/')}}">{{ csrf_field() }}
           <label>Add Client Leads</label>
-          <input type="text" placeholder="Client First Name" required>
-          <input type="text" placeholder="Client Last Name" required>
-          <input type="email" placeholder="Client Email" required>
-          <input type="text" placeholder="Telephone" required>
-          <select name="" id="status_of_contact" required>
+          <input type="text" placeholder="Client First Name" required name="firstname">
+          <input type="text" placeholder="Client Last Name" required name="lastname">
+          <input type="email" placeholder="Client Email" required name="email">
+          <input type="text" placeholder="Telephone" required name="telephone">
+          <select id="status_of_contact" required name="status">
              <option value=""></option>
              <option value=""></option>
              <option value=""></option>
@@ -560,7 +560,7 @@
              <option value=""></option>
           </select>
 
-          <select name="" id="type_of_contact" required>
+          <select id="type_of_contact" required name="type">
                <option value=""></option>
                <option value=""></option>
                <option value=""></option>

@@ -41,7 +41,7 @@ class UpdateAgentRecordsController extends BaseController
         $picture_name = $rand . $request->picture->getClientOriginalName();
         
         if($request->input('contactForm')){
-           DB::insert('insert into contacts () values ()', []);
+           DB::insert('insert into contacts (firstname, lastname, telephone, email, status, type) values (?, ?, ?, ?, ?, ?)', [$request->input(), $request->input(), $request->input(), $request->input(), $request->input(), $request->input(),]);
            return response()->json(array('data' => true));
         }
 
