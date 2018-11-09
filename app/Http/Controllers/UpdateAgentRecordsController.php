@@ -40,6 +40,11 @@ class UpdateAgentRecordsController extends BaseController
         $rand = $this->randomStringGenerator();
         $picture_name = $rand . $request->picture->getClientOriginalName();
         
+        if($request->input('contactForm')){
+           DB::insert('insert into contacts () values ()', []);
+           return response()->json(array('data' => true));
+        }
+
         DB::update('update agents set first_name = ?, lastname = ?, telephone = ?, office_address = ?, home_address = ?, state = ?, local_government = ?, picture = ? where email = ?', [$request->input('firstname'), $request->input('lastname'), $request->input('office_phone'), $request->input('office_address'), $request->input('home_address'), $request->input('state'), $request->input('localgovernment'), $picture_name, $request->input('email')]);
 
         Storage::putFileAs('/public/images', new File($request->picture), $picture_name);

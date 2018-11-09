@@ -536,6 +536,42 @@
          </div>
      </div>
 
+      <div class="myMails">
+         <i class="fas fa-window-close closeForm" onclick="closeMails();"></i>
+         <div class="eachMails">
+           
+         </div>
+     </div>
+
+     <div class="contact_leads">
+         <i class="fas fa-window-close closeForm" onclick="closeContact()"></i>
+         <form name="thePropertyForm" class="myContacts" encType="multipart/form-data" method="POST" action="{{URL::to('/')}}">{{ csrf_field() }}
+          <label>Add Client Leads</label>
+          <input type="text" placeholder="Client First Name" required>
+          <input type="text" placeholder="Client Last Name" required>
+          <input type="email" placeholder="Client Email" required>
+          <input type="text" placeholder="Telephone" required>
+          <select name="" id="status_of_contact" required>
+             <option value=""></option>
+             <option value=""></option>
+             <option value=""></option>
+             <option value=""></option>
+             <option value=""></option>
+             <option value=""></option>
+          </select>
+
+          <select name="" id="type_of_contact" required>
+               <option value=""></option>
+               <option value=""></option>
+               <option value=""></option>
+               <option value=""></option>
+               <option value=""></option>
+               <option value=""></option>
+          </select>
+          <button>Add</button>
+        </form>
+     </div>
+
       <script src="{{ asset('js/localgovernments.js') }}" type="text/javascript"></script>
        <script src="{{ asset('js/google-map-api.js') }}" type="text/javascript"></script>
       <script type="text/JavaScript">
@@ -623,6 +659,36 @@
                          });
             }
 
+             function addContact(param){
+                   var theToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+                   var xhttp = new XMLHttpRequest();
+                         xhttp.open('POST', '/updateAgentRecords', true);
+                         xhttp.onreadystatechange = function(){
+                                  if (this.status == 200) {
+                                          var data = JSON.parse(this.responseText);
+                                           console.log(data);
+                                          if (data.data == true) {
+                                              var eventModal = document.getElementsByClassName('eventModal')[0];
+                                              eventModal.innerHTML = '<p>Contact was added Successfully!!!</p>';
+                                              eventModal.style.display = 'block';
+                                              
+                                              document.getElementsByClassName('updateAgentRecords')[0].style.display = 'none';
+                                              setTimeout(function(){
+                                                  console.log('did something happened')
+                                                  var eventModal = document.getElementsByClassName('eventModal')[0];
+                                                  eventModal.style.display = 'none';
+                                              }, 3000);
+                                          }
+                                  }
+                         }
+
+                         xhttp.setRequestHeader('X-CSRF-TOKEN', theToken);
+                         xhttp.setRequestHeader("X-Requested-With", 'XMLHttpRequest');
+                         xhttp.setRequestHeader("processData", 'false');
+                         xhttp.setRequestHeader('cache', 'false');
+                         xhttp.setRequestHeader("ContentType", "application/x-www-form-urlencoded");
+                         xhttp.send(param);
+            }
 
             function updateRecords(param){
                    var theToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
@@ -667,7 +733,7 @@
                 };
 
             var aboutCompany = document.getElementsByClassName('aboutCompany')[0];
-                recordForm.onsubmit = function(){
+                aboutCompany.onsubmit = function(){
                     event.preventDefault();
                     var theOwner = document.getElementById('gottenValue').innerHTML;
                     var aboutCompany = document.getElementsByClassName('aboutCompany')[0];
@@ -689,6 +755,18 @@
                                 // console.log('padfads')
               		}
             }
+
+            var contactForm = document.getElementsByClassName('myContacts')[0];
+            contactForm.onsubmit = function(){
+                event.preventDefault();
+                var theOwner = document.getElementById('gottenValue').innerHTML;
+                var contactForm = document.getElementsByClassName('myContacts')[0];
+                var formData = new FormData(recordForm);
+                    formData.append('email', theOwner);
+                    formData.append('contactForm', true);
+                    addContact(formData);
+            };
+
 
             function gotoMap(){
                  var form = document.getElementById('goingToMap');
@@ -761,6 +839,27 @@
                           listedProps.style.display = 'none';
                       }
             }
+
+            function closeMails(){
+                  console.log('closeMails');
+                  var mails = document.getElementsByClassName('myMails')[0];
+                      if (mails.style.display == "none" || mails.style.display == '') {
+                          mails.style.display = 'block';
+                      }else{
+                          mails.style.display = 'none';
+                      }
+            }
+
+            function closeContact(){
+                  //console.log('closeMails');
+                  var comp = document.getElementsByClassName('contact_leads')[0];
+                      if (comp.style.display == "none" || comp.style.display == '') {
+                          comp.style.display = 'block';
+                      }else{
+                          comp.style.display = 'none';
+                      }
+            }
+
 
             /*
                Please Dont Delete the Code below
@@ -906,33 +1005,68 @@
                    var formData = new FormData();
                    formData.append('mails', 'mails');
                    formData.append('email', document.getElementById('gottenValue').innerHTML);
-
+                   console.log('Requesting Mails');
                    var xhttp = new XMLHttpRequest();
                    xhttp.open('POST', '/accountContent', true);
                    xhttp.onreadystatechange = function(){
-                        if (this.readystate == 4 && this.status == 200) {
-                          var data = this.responseText;
+                        //console.log(xhttp.readyState);
+                        if (this.readyState == 4 && this.status == '200') {
+                                var data = JSON.parse(this.response);
                                 console.log(data);
                                 if (data.mails.length == 0) {
-                                   //document.getElementsByClassName('loader')[0].style.display = 'none';
+                                   //console.log('no mails');
                                    var eventModal = document.getElementsByClassName('eventModal')[0];
-                                   eventModal.innerHTML = '<p>No Record Found</p>';
+                                   eventModal.innerHTML = '<p>Your Mail is Empty!</p>';
                                    eventModal.style.display = 'block';
 
                                    setTimeout(function(){
                                       var eventModal = document.getElementsByClassName('eventModal')[0];
                                       eventModal.style.display = 'none';
                                    }, 5000);
+                                   
+                                   document.getElementsByClassName('loader')[0].style.display = 'none';
 
                                    return;
                                 }
                                 
                      
                                 if (data.mails.length != 0) {
-                                      document.getElementsByClassName('')[0].style.display = 'block';
-                                }
 
-                                document.getElementsByClassName('loader')[0].style.display = 'none';
+                                       function showTheMails(){
+                                           var parentComp = document.getElementsByClassName('eachMails')[0];
+                                           parentComp.innerHTML = '';
+                                           parentComp.innerHTML = mails;
+                                           document.getElementsByClassName('myMails')[0].style.display = 'block';
+                                           document.getElementsByClassName('loader')[0].style.display = 'none';
+                                       }
+
+                                       var mails = '';
+
+                                       function useComponent(param){
+                                           var mail = '<div>' + 
+                                                       '<div id="senderImage">' +
+                                                            '<div>' + 
+                                                                '<div id="sender_image"></div>' +
+                                                            '</div>' + 
+                                                            '<div>' +
+                                                                '<p id="senders_name">' + param.fullname + '</p>' +
+                                                            '</div>' +
+                                                       '</div>' +
+                                                       '<p id="theMessage">' + param.message + '</p>' +
+                                                       '<p id="senderTag">Sender!</p>' + 
+                                                       '<p id="senderEmail">' + param.sender + '</p>' +
+                                                       '<p id="senderPhone">' + param.telephone + '</p>' +
+                                                 '</div>';
+                                                 mails = mails + mail;
+                                       }
+
+                                       for(var i=0; i < data.mails.length; i++){
+                                           useComponent(data.mails[i]);
+                                           if (i + 1 == data.mails.length) {
+                                              showTheMails();
+                                           }
+                                       }
+                                }
                         }
                    }
 

@@ -584,12 +584,91 @@ h6 {
     background-color: rgba(0,0,0, .5);
     z-index: 7;
     display: none;
+    height: 100%;
 }
 
 .myProps {
     width: 80%;
     margin-left: 10%;
     background-color: white;
+}
+
+.myMails {
+	position: fixed;
+    top: 0px;
+    width: 100%;
+    padding-bottom: 50px;
+    overflow: scroll;
+    background-color: rgba(0,0,0, .5);
+    z-index: 7;
+    display: none;
+    height: 100%;
+}
+
+.eachMails {
+	width: 80%;
+    margin-left: 10%;
+    background-color: white;
+}
+
+.contact_leads {
+	position: fixed;
+    top: 0px;
+    width: 100%;
+    padding-bottom: 50px;
+    overflow: scroll;
+    background-color: rgba(0,0,0, .5);
+    z-index: 7;
+    height: 100%;
+}
+
+.myContacts {
+	width: 50%;
+    margin-left: 25%;
+    background-color: white;
+    margin-top: 70px;
+    padding-bottom: 50px;
+}
+
+.myContacts input {
+	width: 80%;
+	padding: 10px;
+	margin-left: 10%;
+	background-color: #fafafa;
+	border-radius: 5px;
+	margin-bottom: 10px;
+	border: none;
+}
+
+.myContacts button {
+	padding: 4px 30px;
+	background-color: green;
+	color: white;
+	font-size: 14px;
+	border-radius: 5px;
+	border: none;
+    margin-right: 10%;
+	float: right;
+}
+
+.myContacts select {
+	color: black;
+	width: 80%;
+	height: 50px;
+	background-color: #fafafa;
+	border-radius: 5px;
+	margin-bottom: 10px;
+	border: none;
+	margin-left: 10%;
+}
+
+.myContacts label {
+	color: green;
+	font-weight: bold;
+	text-align: center;
+	width: 100%;
+	padding: 10px;
+	padding-top: 40px;
 }
 
 #theLoader {

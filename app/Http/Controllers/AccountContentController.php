@@ -18,13 +18,13 @@ class AccountContentController extends BaseController
                     ->join('quantity', 'properties.identity', '=', 'quantity.identity')
                         ->join('pictures_of_properties', 'properties.identity', '=', 'pictures_of_properties.identity')
                              ->select('properties.*', 'Facilities.*', 'quantity.*', 'pictures_of_properties.*')
-                                   ->where('email', $email);
+                                   ->where('email', $email)
                                        ->get();
          return $data; 
     }
 
     public function mails($email){
-         $data = DB::select('select * from mails where email = ?', [$email]);      
+         $data = DB::select('select * from mails where reciever = ?', [$email]);      
          return $data; 
     }
 
