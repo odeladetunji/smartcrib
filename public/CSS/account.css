@@ -620,6 +620,7 @@ h6 {
     background-color: rgba(0,0,0, .5);
     z-index: 7;
     height: 100%;
+    display: none;
 }
 
 .myContacts {
@@ -628,6 +629,38 @@ h6 {
     background-color: white;
     margin-top: 70px;
     padding-bottom: 50px;
+}
+
+.contact_modal {
+	position: fixed;
+    top: 0px;
+    width: 100%;
+    padding-bottom: 50px;
+    overflow: scroll;
+    background-color: rgba(0,0,0, .5);
+    z-index: 7;
+    height: 100%;
+}
+
+.contact_content {
+	width: 80%;
+    margin-left: 10%;
+    background-color: white;
+    margin-top: 70px;
+    padding-bottom: 50px;
+}
+
+.contact_modal button {
+	background-color: green;
+	color: white;
+	font-size: 14px;
+	border-radius: 5px;
+	border: none;
+	padding: 4px 20px;
+	float: right;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-right: 5%;
 }
 
 .myContacts input {
@@ -683,9 +716,6 @@ h6 {
 	-webkit-animation-name: rotation;
 	-ms-animation-name: rotation; /* Safari 4.0 - 8.0 */
 	animation-name: rotation;
-	/*-ms-transform: rotate(360deg); /* IE 9 */
-    /*-webkit-transform: rotate(360deg); /* Safari */
-    /*transform: rotate(360deg);*/
     animation-duration: .1s;
     -webkit-animation-duration: .1s; /* Safari */
     -ms-animation-duration: .1s;

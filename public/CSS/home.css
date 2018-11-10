@@ -32,12 +32,15 @@
 }
 
 #postingARequest {
-	border: 1px solid orange;
-	padding: 7px 30px;
-	background-color: green;
+	border: 1px solid white;
+	padding: 3px 20px;
+	background-color: #383c6b;
 	color: white;
-	border-radius: 5px;
 	margin-right: 20px;
+}
+
+#postingARequest:hover {
+    background-color: green;
 }
 
 #quitRequest {
@@ -225,8 +228,17 @@ span {
 	position: fixed;
     top: 0px;
     width: 100%;
-    background-color: transparent;
+    background-color: rgba(0,0,0, .5);
     display: none;
+}
+
+.closeForm:hover {
+   color: orange;
+}
+
+.bannerContent p span {
+	background-color: #383c6b;
+	border: 1px solid white;
 }
 
 #subtileMessage {
@@ -498,6 +510,52 @@ h6 {
 	font-size: 40px;
 	padding: 10px;
 	background-color: transparent;
+}
+
+.loader{
+   position: fixed;
+   top: 0px;
+   z-index: 1000;
+   background-color: rgba(0,0,0, .8);
+   height: 100%;
+   width: 100%;
+   display: none;
+} 
+
+#theLoader {
+	width: 150px;
+	height: 150px;
+	background-color: transparent;
+	border: 10px solid white;
+	border-radius: 50%;
+	border-left: 10px solid green;
+	margin: auto;
+	margin-top: 150px;
+	-webkit-animation-name: rotation;
+	-ms-animation-name: rotation; /* Safari 4.0 - 8.0 */
+	animation-name: rotation;
+    animation-duration: .1s;
+    -webkit-animation-duration: .1s; /* Safari */
+    -ms-animation-duration: .1s;
+    -webkit-animation-iteration-count: infinite;
+    -ms-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes rotation {
+    0%   {transform: rotate(90deg);}
+    25%  {transform: rotate(180deg);}
+    50%  {transform: rotate(270deg);}
+    100% {transform: rotate(360deg);}
+}
+
+/* Standard syntax */
+@keyframes rotation {
+    0%   {transform: rotate(90deg);}
+    25%  {transform: rotate(180deg);}
+    50%  {transform: rotate(270deg);}
+    100% {transform: rotate(360deg);}
 }
 
 

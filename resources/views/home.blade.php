@@ -48,7 +48,7 @@
 
 	   	     <div class="row login_form">
 	   	     	 <div class="col-md-6 login">
-	   	     	 	  <i class="fas fa-window-close" onclick="closeForm()"></i>
+	   	     	 	  <i class="fas fa-window-close closeform" onclick="closeForm()"></i>
 	   	     	 	  <form class="loginForm" encType="multipart/form-data" method="POST" action="{{URL::to('/')}}"> {{ csrf_field() }}
 	   	     	 	  	   <label id="wan2" style="padding: 10px; text-align: center; color: red; display: none;">wrong username or password!</label>
                                            <label id="wan3" style="padding: 10px; text-align: center; color: red; display: none;">user does not exit</label>
@@ -69,7 +69,7 @@
 	   	     </div>
 	   	      <div class="row signup_form">
 	   	     	 <div class="col-md-6 login">
-	   	     	 	  <i class="fas fa-window-close" onclick="closeForm2()"></i>
+	   	     	 	  <i class="fas fa-window-close closeform" onclick="closeForm2()"></i>
 	   	     	 	  <form class="signupForm" encType="multipart/form-data" method="POST" action="{{URL::to('/signup')}}"> {{ csrf_field() }}
 	   	     	 	  	   <label id="wan" style="padding: 10px; text-align: center; color: red; display: none;">user already exist</label>
 	   	     	 	  	   <p>SignUp</p>
@@ -88,7 +88,7 @@
 	   	     	 </div>
 	   	     </div>
 	   	      <div class="coverForPost">
-	   	      	  
+	   	      	   <i class="fas fa-window-close closeForm" onclick="closeRequestModal()"></i>
 	   	      	   <div class="postingRequest" style="display: flex;">
 	   	     	  
 	   	     	   <div class="requestForm" >
@@ -381,7 +381,8 @@
                   
                              <p class="localhead">Adress of Property</p>
 	  	   	    	     <select id="theStates" name="state" onchange="useSelectedItem(this)" required>
-	  	   	    			         <option value="Abia">Abia</option>
+                                     <option value="">Select LGA</option>
+	  	   	    			 <option value="Abia">Abia</option>
                                      <option value="Adamawa">Abia</option>
                                      <option value="Anambra">Anambra</option>
                                      <option value="Bauchi">Bauchi</option>
@@ -444,6 +445,9 @@
 	   	     	</ul>
 	   	     	<p>Terms and Policies</p>
 	   	     </div>
+                 <div class="loader">
+                       <div id="theLoader"></div>
+                 </div>
 	    <script src="{{ asset('js/localgovernments.js') }}" type="text/javascript"></script>
 	   <!-- <script src="{{ asset('js/google-map-api.js') }}" type="text/javascript"></script> --> 
         <script type="text/JavaScript">
@@ -532,6 +536,7 @@
 		        	       	    	var data = JSON.parse(this.responseText)
 		        	       	    	      console.log(data);
 		        	       	    	      if (data.data == true) {
+                                                       document.getElementsByClassName('loader')[0].style.display = 'block';
 		        	       	    	      	 var theForm = document.getElementsByClassName('actualForm')[0];
 
 		        	       	    	      	 theForm.submit();
@@ -572,6 +577,7 @@
 		        	       	    	const data = JSON.parse(this.responseText)
 		        	       	    	      console.log(data);
 		        	       	    	      if (data.data == true) {
+                                                       document.getElementsByClassName('loader')[0].style.display = 'block';
 		        	       	    	      	 var theForm = document.getElementsByClassName('actualForm')[0];
 		        	       	    	      	 //document.getElementById('name1').value = data.data.email;
 		        	       	    	      	 theForm.submit();
@@ -655,6 +661,7 @@
 		        	       	    if (this.readystate == 4 && this.status == 200) {
 		        	       	    	const data = JSON.parse(this.responseText);
 		        	       	    	      console.log(data);
+                                                
 		        	       	    	      // use data here!
 		        	       	    }
 		        	       }
@@ -669,9 +676,14 @@
 
 	    var postRequest = document.getElementsByClassName('propertyForm')[0];
 	    postRequest.onsubmit = function(){
+            event.preventDefault();
 	    	var postRequest = document.getElementsByClassName('propertyForm')[0];
 	    	var formData = new FormData(postRequest);
-                submitPostRequest(formData);
+                  document.getElementsByClassName('loader')[0].style.display = 'block';
+                  setTimeout(function(){
+                        document.getElementsByClassName('loader')[0].style.display = 'none';
+                  }, 500);
+                  submitPostRequest(formData);
 	    }
             
             function closeForm(){
@@ -692,7 +704,17 @@
             	    }
             }
 
+            function closeRequestModal(){
+                  var formModal = document.getElementsByClassName('coverForPost')[0];
+                      if (formModal.style.display == 'none') {
+                        formModal.style.display = 'block';
+                      }else{
+                        formModal.style.display = 'none';
+                      }
+            }
+
             function gotoAgentFinder(){
+                 document.getElementsByClassName('loader')[0].style.display = 'block';
                  window.location = '/agentFinder';
             }
            

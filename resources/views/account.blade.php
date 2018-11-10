@@ -572,6 +572,17 @@
         </form>
      </div>
 
+     <div class="contact_modal">
+       <i class="fas fa-window-close closeForm" onclick="closeContactModal()"></i>
+       <div class="contant_content">
+         <button>Add Contact</button>
+           <form class="contact_form" encType="multipart/form-data" method="POST" action="{{URL::to('/')}}">{{ csrf_field() }} 
+             <input type="text" placeholder="Search By Name" name="contactName">
+             <input type="number" placeholder="Search By Phone Number" name="contactPhone">
+          </form>
+       </div>
+     </div>
+
       <script src="{{ asset('js/localgovernments.js') }}" type="text/javascript"></script>
        <script src="{{ asset('js/google-map-api.js') }}" type="text/javascript"></script>
       <script type="text/JavaScript">
@@ -732,6 +743,48 @@
                         updateRecords(formData);
                 };
 
+            function searchContact(param){
+                   var theToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+                   var xhttp = new XMLHttpRequest();
+                         xhttp.open('POST', '/', true);
+                         xhttp.onreadystatechange = function(){
+                                  if (this.status == 200) {
+                                          var data = JSON.parse(this.responseText);
+                                           console.log(data);
+                                          if (data.data == true) {
+                                              var eventModal = document.getElementsByClassName('eventModal')[0];
+                                              eventModal.innerHTML = '<p>No Record Found!!</p>';
+                                              eventModal.style.display = 'block';
+                                              document.getElementsByClassName('loader')[0].style.display = 'none';
+                                              setTimeout(function(){
+                                                  console.log('setTimeout Function was Called')
+                                                  var eventModal = document.getElementsByClassName('eventModal')[0];
+                                                  eventModal.style.display = 'none';
+                                              }, 3000);
+                                          }
+                                  }
+                         }
+
+                         xhttp.setRequestHeader('X-CSRF-TOKEN', theToken);
+                         xhttp.setRequestHeader("X-Requested-With", 'XMLHttpRequest');
+                         xhttp.setRequestHeader("processData", 'false');
+                         xhttp.setRequestHeader('cache', 'false');
+                         xhttp.setRequestHeader("ContentType", "application/x-www-form-urlencoded");
+                         xhttp.send(param);
+            }
+
+
+            var contact_form = document.getElementsByClassName('contact_form')[0];
+                contact_form.onsubmit = function(){
+                    event.preventDefault();
+                    var theOwner = document.getElementById('gottenValue').innerHTML;
+                    var contact_form = document.getElementsByClassName('contact_form')[0];
+                    var formData = new FormData(contact_form);
+                        formData.append('email', theOwner);
+                        document.getElementsByClassName('loader')[0].style.display = 'block';
+                        searchContact(formData);
+                };
+
             var aboutCompany = document.getElementsByClassName('aboutCompany')[0];
                 aboutCompany.onsubmit = function(){
                     event.preventDefault();
@@ -860,6 +913,15 @@
                       }
             }
 
+            function closeContactModal(){
+                 //console.log('closeMails');
+                  var comp = document.getElementsByClassName('contact_modal')[0];
+                      if (comp.style.display == "none" || comp.style.display == '') {
+                          comp.style.display = 'block';
+                      }else{
+                          comp.style.display = 'none';
+                      }
+            }
 
             /*
                Please Dont Delete the Code below
