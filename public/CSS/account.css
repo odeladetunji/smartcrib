@@ -618,7 +618,7 @@ h6 {
     padding-bottom: 50px;
     overflow: scroll;
     background-color: rgba(0,0,0, .5);
-    z-index: 7;
+    z-index: 8;
     height: 100%;
     display: none;
 }
@@ -640,6 +640,7 @@ h6 {
     background-color: rgba(0,0,0, .5);
     z-index: 7;
     height: 100%;
+    display: none;
 }
 
 .contact_content {
@@ -650,17 +651,26 @@ h6 {
     padding-bottom: 50px;
 }
 
+.contact_add_contact {
+	border-bottom: 1px solid #383c6b;
+}
+
 .contact_modal button {
-	background-color: green;
+	background-color: #383c6b;
 	color: white;
 	font-size: 14px;
 	border-radius: 5px;
 	border: none;
 	padding: 4px 20px;
-	float: right;
+	/*float: right;*/
 	margin-top: 10px;
 	margin-bottom: 10px;
-	margin-right: 5%;
+	margin-left: 10%;
+	/*clear: both;*/
+}
+
+.contact_content button:hover {
+	background-color: green;
 }
 
 .myContacts input {
@@ -754,3 +764,25 @@ h6 {
     	margin-left: 5%;
     }
 }
+
+.contact_form {
+	width: 100%;
+	background-color: white;
+	padding-top: 10px;
+	padding-bottom: 50px;
+}
+
+.contact_form input {
+    padding: 10px;
+    background-color: #fafafa;
+    margin-left: 5%;
+    border: none;
+    margin-bottom: 10px;
+    width: 95%;
+    font-size: 14px;
+}
+
+/*.contact_form button {
+	padding: 4px 20px;
+	color: white;
+}*/

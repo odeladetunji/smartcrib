@@ -452,7 +452,14 @@
 	   <!-- <script src="{{ asset('js/google-map-api.js') }}" type="text/javascript"></script> --> 
         <script type="text/JavaScript">
         	// dont forget to use babal script!
+            
+            document.getElementsByClassName('loader')[0].style.display = 'block';
+
         	window.onload = () => {
+                  setTimeout(function(){
+                    document.getElementsByClassName('loader')[0].style.display = 'none';
+                  }, 200);
+
         		function loadContent(){
 	        	 	 const theToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 		        	 const xhttp = new XMLHttpRequest();

@@ -359,14 +359,23 @@
 	   	     	 	 <p>something</p>
 	   	     	 </div>
 	   	     </div>
+
+	  <div class="loader">
+           <div id="theLoader"></div>
+      </div>
 	 
       <script type="text/JavaScript">
+
+            document.getElementsByClassName('loader')[0].style.display = 'block';
             
             window.onload = function(){
                document.getElementsByClassName('props')[0].style.backgroundImage = 'url(/storage/images/smartcribpix1.jpg)';
                document.getElementsByClassName('props')[0].style.backgroundPosition = 'center';
                document.getElementsByClassName('props')[0].style.backgroundSize = 'cover';
-               //document.getElementsByClassName('property_modal')[0].style.display = 'none';
+
+               setTimeout(function(){
+                    document.getElementsByClassName('loader')[0].style.display = 'none';
+      	       }, 200);
             }
 
       	    function setPointersOnMap(map, param){

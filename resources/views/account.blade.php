@@ -551,7 +551,7 @@
           <input type="text" placeholder="Client Last Name" required name="lastname">
           <input type="email" placeholder="Client Email" required name="email">
           <input type="text" placeholder="Telephone" required name="telephone">
-          <select id="status_of_contact" required name="status">
+          <select id="status_of_contact"  name="status">
              <option value=""></option>
              <option value=""></option>
              <option value=""></option>
@@ -560,7 +560,7 @@
              <option value=""></option>
           </select>
 
-          <select id="type_of_contact" required name="type">
+          <select id="type_of_contact"  name="type">
                <option value=""></option>
                <option value=""></option>
                <option value=""></option>
@@ -568,18 +568,30 @@
                <option value=""></option>
                <option value=""></option>
           </select>
-          <button>Add</button>
+          <button onclick="addContact()">Add</button>
         </form>
      </div>
 
      <div class="contact_modal">
        <i class="fas fa-window-close closeForm" onclick="closeContactModal()"></i>
-       <div class="contant_content">
-         <button>Add Contact</button>
-           <form class="contact_form" encType="multipart/form-data" method="POST" action="{{URL::to('/')}}">{{ csrf_field() }} 
-             <input type="text" placeholder="Search By Name" name="contactName">
-             <input type="number" placeholder="Search By Phone Number" name="contactPhone">
-          </form>
+       <div class="contact_content">
+         <div class="contact_add_contact">
+           <button onclick="displayContactForm()">Add Contact</button>
+         </div>
+         <div class="row">
+              <div class="col-md-6 contact_search">
+                    <form class="contact_form" encType="multipart/form-data" method="POST" action="{{URL::to('/')}}">{{ csrf_field() }} 
+                      <input type="text" placeholder="Search with Name" name="searchName">
+                      <button>search!</button>
+                    </form>
+              </div>
+              <div class="col-md-6 contact_search">
+                     <form class="contact_form" encType="multipart/form-data" method="POST" action="{{URL::to('/')}}">{{ csrf_field() }} 
+                         <input type="text" placeholder="Search with Telephone">
+                         <button>search!</button>
+                     </form>
+              </div>
+         </div>
        </div>
      </div>
 
@@ -683,7 +695,7 @@
                                               eventModal.innerHTML = '<p>Contact was added Successfully!!!</p>';
                                               eventModal.style.display = 'block';
                                               
-                                              document.getElementsByClassName('updateAgentRecords')[0].style.display = 'none';
+                                              //document.getElementsByClassName('updateAgentRecords')[0].style.display = 'none';
                                               setTimeout(function(){
                                                   console.log('did something happened')
                                                   var eventModal = document.getElementsByClassName('eventModal')[0];
@@ -818,10 +830,14 @@
                     formData.append('email', theOwner);
                     formData.append('contactForm', true);
                     addContact(formData);
+                    document.getElementsByClassName('loader')[0].style.display = 'block';
             };
 
 
             function gotoMap(){
+                  // setTimeout(function(){
+                    document.getElementsByClassName('loader')[0].style.display = 'block';
+                  // }, 200);
                  var form = document.getElementById('goingToMap');
                      document.getElementById('hiInput').value = 'routing from accountpage';
                      form.submit();
@@ -906,6 +922,15 @@
             function closeContact(){
                   //console.log('closeMails');
                   var comp = document.getElementsByClassName('contact_leads')[0];
+                      if (comp.style.display == "none" || comp.style.display == '') {
+                          comp.style.display = 'block';
+                      }else{
+                          comp.style.display = 'none';
+                      }
+            }
+
+            function displayContactForm(){
+                var comp = document.getElementsByClassName('contact_leads')[0];
                       if (comp.style.display == "none" || comp.style.display == '') {
                           comp.style.display = 'block';
                       }else{
@@ -1018,47 +1043,54 @@
             }
 
             function showContact(){
-                   document.getElementsByClassName('loader')[0].style.display = 'block';
-                   var theToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-                   var formData = new FormData();
-                   formData.append('contacts', 'contacts');
-                   formData.append('email', document.getElementById('gottenValue').innerHTML);
+                      var comp = document.getElementsByClassName('contact_modal')[0];
+                      if (comp.style.display == "none" || comp.style.display == '') {
+                          comp.style.display = 'block';
+                      }else{
+                          comp.style.display = 'none';
+                      }
 
-                   var xhttp = new XMLHttpRequest();
-                   xhttp.open('POST', '/accountContent', true);
-                   xhttp.onreadystatechange = function(){
-                        if (this.readystate == 4 && this.status == 200) {
-                          var data = this.responseText;
-                                console.log(data);
-                                if (data.contacts.length == 0) {
-                                   //document.getElementsByClassName('loader')[0].style.display = 'none';
-                                   var eventModal = document.getElementsByClassName('eventModal')[0];
-                                   eventModal.innerHTML = '<p>No Record Found</p>';
-                                   eventModal.style.display = 'block';
+                   // document.getElementsByClassName('loader')[0].style.display = 'block';
+                   // var theToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+                   // var formData = new FormData();
+                   // formData.append('contacts', 'contacts');
+                   // formData.append('email', document.getElementById('gottenValue').innerHTML);
 
-                                   setTimeout(function(){
-                                      var eventModal = document.getElementsByClassName('eventModal')[0];
-                                      eventModal.style.display = 'none';
-                                   }, 5000);
+                   // var xhttp = new XMLHttpRequest();
+                   // xhttp.open('POST', '/accountContent', true);
+                   // xhttp.onreadystatechange = function(){
+                   //      if (this.readystate == 4 && this.status == 200) {
+                   //        var data = this.responseText;
+                   //              console.log(data);
+                   //              if (data.contacts.length == 0) {
+                   //                 //document.getElementsByClassName('loader')[0].style.display = 'none';
+                   //                 var eventModal = document.getElementsByClassName('eventModal')[0];
+                   //                 eventModal.innerHTML = '<p>No Record Found</p>';
+                   //                 eventModal.style.display = 'block';
 
-                                   return;
-                                }
+                   //                 setTimeout(function(){
+                   //                    var eventModal = document.getElementsByClassName('eventModal')[0];
+                   //                    eventModal.style.display = 'none';
+                   //                 }, 5000);
+
+                   //                 return;
+                   //              }
                                 
                      
-                                if (data.contacts.length != 0) {
-                                      document.getElementsByClassName('')[0].style.display = 'block';
-                                }
+                   //              if (data.contacts.length != 0) {
+                   //                    document.getElementsByClassName('')[0].style.display = 'block';
+                   //              }
 
-                                document.getElementsByClassName('loader')[0].style.display = 'none';
-                        }
-                   }
+                   //              document.getElementsByClassName('loader')[0].style.display = 'none';
+                   //      }
+                   // }
 
-                   xhttp.setRequestHeader('X-CSRF-TOKEN', theToken);
-                   xhttp.setRequestHeader("X-Requested-With", 'XMLHttpRequest');
-                   xhttp.setRequestHeader("processData", 'false');
-                   xhttp.setRequestHeader('cache', 'false');
-                   xhttp.setRequestHeader("ContentType", "application/x-www-form-urlencoded");
-                   xhttp.send(formData);
+                   // xhttp.setRequestHeader('X-CSRF-TOKEN', theToken);
+                   // xhttp.setRequestHeader("X-Requested-With", 'XMLHttpRequest');
+                   // xhttp.setRequestHeader("processData", 'false');
+                   // xhttp.setRequestHeader('cache', 'false');
+                   // xhttp.setRequestHeader("ContentType", "application/x-www-form-urlencoded");
+                   // xhttp.send(formData);
             }
 
             function showMessages(){

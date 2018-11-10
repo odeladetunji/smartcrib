@@ -147,7 +147,20 @@
 	   	     	 	 <p>something</p>
 	   	     	 </div>
 	   	     </div>
+
+	   	<div class="loader">
+           <div id="theLoader"></div>
+        </div>
+	 
         <script>
+        	    document.getElementsByClassName('loader')[0].style.display = 'block';
+
+        	    window.onload = function(){
+        	    	setTimeout(function(){
+                        document.getElementsByClassName('loader')[0].style.display = 'none';
+      	            },200);
+        	    }
+
         	    function getProperties(){
         	    	 var formData = new FormData();
         	    	     var theState = document.getElementById('theStates').value;
