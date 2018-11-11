@@ -65,30 +65,29 @@
                   <div class="widget" onclick="showListedProps()">
                     <p>View Listed Properties</p>
                   </div>
-                              <div class="widget">
-                                <p>Edit Properties</p>
-                              </div>
-                              <div class="widget" onclick="showUpdateForm()">
-                                    <p>update company contact</p>
-                              </div>
-                              <div class="widget" onclick="showMessages()">
-                                    <p>inbox</p>
-                              </div>
-                              <div class="widget" onclick="toggleForm()">
-                                    <p>About your Company</p>
-                              </div>
-                              <div class="widget" onclick="showContact()">
-                                    <p>contacts</p>
-                              </div>
-            	  	   	    		<div class="widget">
-            	  	   	    			<p>Available Properties</p>
-            	  	   	    			<p>000</p>
-            	  	   	    		</div>
-            	  	   	    		
-            	  	   	    		<div class="widget">
-            	  	   	    			<p>Total Asset Value</p>
-            	  	   	    			<p>$000</p>
-            	  	   	    		</div>
+                  <div class="widget">
+                    <p>Edit Properties</p>
+                  </div>
+                  <div class="widget" onclick="showUpdateForm()">
+                        <p>update company contact</p>
+                  </div>
+                  <div class="widget" onclick="showMessages()">
+                        <p>inbox</p>
+                  </div>
+                  <div class="widget" onclick="toggleForm()">
+                        <p>About your Company</p>
+                  </div>
+                  <div class="widget" onclick="showContact()">
+                        <p>contacts</p>
+                  </div>
+	  	   	    		<div class="widget">
+	  	   	    			<p>Available Properties</p>
+	  	   	    			<p>000</p>
+	  	   	    		</div>
+	  	   	    		<div class="widget">
+	  	   	    			<p>Total Asset Value</p>
+	  	   	    			<p>$000</p>
+	  	   	    		</div>
 	  	   	    	</div>
 	  	   </div>
 	  </div>
@@ -551,7 +550,7 @@
           <input type="text" placeholder="Client Last Name" required name="lastname">
           <input type="email" placeholder="Client Email" required name="email">
           <input type="text" placeholder="Telephone" required name="telephone">
-          <select id="status_of_contact"  name="status">
+          <select id="status_of_contact" required name="status">
              <option value=""></option>
              <option value=""></option>
              <option value=""></option>
@@ -560,7 +559,7 @@
              <option value=""></option>
           </select>
 
-          <select id="type_of_contact"  name="type">
+          <select id="type_of_contact" required name="type">
                <option value=""></option>
                <option value=""></option>
                <option value=""></option>
@@ -598,6 +597,24 @@
       <script src="{{ asset('js/localgovernments.js') }}" type="text/javascript"></script>
        <script src="{{ asset('js/google-map-api.js') }}" type="text/javascript"></script>
       <script type="text/JavaScript">
+            
+            var type0 = "application/x-www-form-urlencoded";
+            var type1 = 'application/json';
+            var theToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+            function smartCribServer(method, url, data, type, theToken){
+                     var xhttp = new XMLHttpRequest();
+                         xhttp.open(method, url, true);
+                         xhttp.setRequestHeader('X-CSRF-TOKEN', theToken);
+                         xhttp.setRequestHeader("X-Requested-With", 'XMLHttpRequest');
+                         xhttp.setRequestHeader("processData", 'false');
+                         xhttp.setRequestHeader('cache', 'false');
+                         xhttp.setRequestHeader("ContentType", type);
+                         xhttp.send(data);
+                         return xhttp;
+            }
+
+
             document.getElementsByClassName('loader')[0].style.display = 'block';
             setTimeout(function(){
                document.getElementsByClassName('loader')[0].style.display = 'none';
@@ -817,7 +834,6 @@
                       theForm.style.display = 'block';
               		}else{
               		  	theForm.style.display = 'none';
-                                // console.log('padfads')
               		}
             }
 
@@ -955,19 +971,15 @@
 
             function showListedProps(){
                    document.getElementsByClassName('loader')[0].style.display = 'block';
-                   var theToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
                    var formData = new FormData();
                    formData.append('props', 'props');
                    formData.append('email', document.getElementById('gottenValue').innerHTML);
-
-                   var xhttp = new XMLHttpRequest();
-                   xhttp.open('POST', '/accountContent', true);
-                   xhttp.onreadystatechange = function(){
-                        if (this.readystate == 4 && this.status == 200) {
-                          var data = this.responseText;
+                   var smartServer = smartCribServer('POST', '/accountContent', formData, type1, theToken);
+                       smartServer.onreadystatechange = function(){
+                           if (this.readystate == 4 && this.status == 200) {
+                                var data = this.responseText;
                                 console.log(data);
                                 if (data.props.length == 0) {
-                                   //document.getElementsByClassName('loader')[0].style.display = 'none';
                                    var eventModal = document.getElementsByClassName('eventModal')[0];
                                    eventModal.innerHTML = '<p>No Record Found!!</p>';
                                    eventModal.style.display = 'block';
@@ -986,15 +998,8 @@
                                 }
 
                                 document.getElementsByClassName('loader')[0].style.display = 'none';
-                        }
-                   }
-
-                   xhttp.setRequestHeader('X-CSRF-TOKEN', theToken);
-                   xhttp.setRequestHeader("X-Requested-With", 'XMLHttpRequest');
-                   xhttp.setRequestHeader("processData", 'false');
-                   xhttp.setRequestHeader('cache', 'false');
-                   xhttp.setRequestHeader("ContentType", "application/x-www-form-urlencoded");
-                   xhttp.send(formData);
+                           }
+                       }
             }
 
 
