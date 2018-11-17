@@ -13,14 +13,33 @@ use Illuminate\Http\UploadedFile;
 class AccountContentController extends BaseController
 {
     public function getProperties($email){
-         $data = DB::table('properties')
-                ->join('Facilities', 'properties.identity', '=', 'Facilities.identity')
-                    ->join('quantity', 'properties.identity', '=', 'quantity.identity')
-                        ->join('pictures_of_properties', 'properties.identity', '=', 'pictures_of_properties.identity')
-                             ->select('properties.*', 'Facilities.*', 'quantity.*', 'pictures_of_properties.*')
-                                   ->where('email', $email)
-                                       ->get();
-         return $data; 
+
+         $data = DB::select('select identity from properties where email = ?', [$email]);
+
+         $finalData = array();
+         $counter = 0;
+         $stringDataConstant = 'data';
+         $stringConstant = 'identity';
+
+         foreach ($data[0] as $key => $value) {
+             $counter++;
+             if($key == $stringConstant){
+                    $queryResult = DB::table('properties')
+                        ->join('Facilities', 'properties.identity', '=', 'Facilities.identity')
+                            ->join('quantity', 'properties.identity', '=', 'quantity.identity')
+                                ->join('pictures_of_properties', 'properties.identity', '=', 'pictures_of_properties.identity')
+                                     ->select('properties.*', 'Facilities.*', 'quantity.*', 'pictures_of_properties.*')
+                                           ->where('properties.identity', $value)
+                                               ->get();
+                    //usleep(500000); when refactoring in future this function should be called!
+                    $finalData[] = $queryResult[0];
+             }
+
+             if ($counter == sizeof($data)) {
+                 usleep(1000000); // wait for half a second, this is to ensure that database query is finished before proceeding!
+                 return $finalData;  // would love to use set timeout function here!
+             }
+         }
     }
 
     public function mails($email){
@@ -45,7 +64,8 @@ class AccountContentController extends BaseController
         }
 
         if ($request->input('props')) {
-            $props = $this->getProperties($request->input('email'));
+            // return response()->json(array('email' => $request->input('email')));
+             $props = $this->getProperties($request->input('email'));
              return response()->json(array('props' => $props));
         }
 

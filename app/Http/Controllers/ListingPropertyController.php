@@ -114,10 +114,10 @@ class ListingPropertyController extends BaseController
         //return response()->json(array('data' => (String)$theRandomNumber));
 
         // Facilities
-        DB::insert('insert into Facilities (identity) values (?)', [(String)$theRandomNumber]);
-        DB::table('Facilities')
-                         ->where('identity', (String)$theRandomNumber)
-                             ->update(['email' => $email]);
+        DB::insert('insert into Facilities (identity, email) values (?, ?)', [(String)$theRandomNumber, $request->input('email')]);
+        // DB::table('Facilities')
+        //                  ->where('identity', (String)$theRandomNumber)
+        //                      ->update(['email' => $email]);
 
 
         if ($request->filled('Newly-Built')) {
@@ -163,7 +163,7 @@ class ListingPropertyController extends BaseController
 
         //Quantity Section
         DB::insert('insert into quantity (identity) value (?)', [(String)$theRandomNumber]);
-        DB::update('update quantity set email = ? where identity = ?', [(String)$theRandomNumber, (String)$theRandomNumber]);
+        DB::update('update quantity set email = ? where identity = ?', [ $request->input('email'), (String)$theRandomNumber]);
 
         if($request->filled('price')) {
             DB::update('update quantity set price = ? where identity = ?', [$request->input('price'), (String)$theRandomNumber]);
@@ -207,17 +207,17 @@ class ListingPropertyController extends BaseController
             
             $newIdentity = $this->randomStringGenerator();
 
-            DB::insert('insert into pictures_of_properties (cover_picture) values (?) ', [$newIdentity . $nameOfCoverPicture]);
+            DB::insert('insert into pictures_of_properties (cover_picture, email) values (?, ?) ', [$newIdentity . $nameOfCoverPicture,  $request->input('email')]);
 
 
             Storage::putFileAs('/public/images', new File($request->coverpicture), $newIdentity . $nameOfCoverPicture);
 
             DB::table('pictures_of_properties')
                          ->where('cover_picture', $newIdentity . $nameOfCoverPicture)
-                             ->update(['email' => (String)$theRandomNumber]);
+                             ->update(['email' =>  $request->input('email')]);
 
             DB::table('pictures_of_properties')
-                         ->where('email', (String)$theRandomNumber)
+                         ->where('email',  $request->input('email'))
                              ->update(['identity' => (String)$theRandomNumber]);
 
         }
@@ -232,8 +232,6 @@ class ListingPropertyController extends BaseController
                 $aString = "otherpicture";
                 $param = $aString . $counter;
 
-                //return response()->json(array('data' => $param));
-
                 $name = $photo->getClientOriginalName();
                 
                 $anIdentity = $this->randomStringGenerator();
@@ -241,9 +239,8 @@ class ListingPropertyController extends BaseController
                 Storage::putFileAs('/public/images', new File($photo), $anIdentity . $name);
 
                 DB::table('pictures_of_properties')
-                         ->where('email', (String)$theRandomNumber)
+                         ->where('email',  $request->input('email'))
                              ->update([$param => $anIdentity .$name]);
-
 
                 if ($counter == 24) {
                     break;
@@ -252,7 +249,7 @@ class ListingPropertyController extends BaseController
 
         }
 
-        return response()->json(array('data' => $nameOfCoverPicture));
+        return response()->json(array('data' => true));
 
        /* if (sizeof($data) == 0) {
             return response()->json(array('data' => false));

@@ -23,9 +23,15 @@ function displayThisProperty(param){
                                     document.getElementsByClassName('propTitle_documents')[0].innerHTML = '<h6 class="last_heading">Title Documents</h6>'.concat(title_document);
                                    
 	                              	  //document.getElementsByClassName('picture_tray')[0].innerHTML = microImages;
+                                    if (typeof proplistStore == 'object') {
+                                       document.getElementsByClassName('details')[0].style.display = 'block';
+                                       document.getElementsByClassName('listedProps')[0].style.display = 'none';
+                                       continue;
+                                    }
+
 	                              	  document.getElementsByClassName('custom-modal-wrapper')[0].style.display = 'block';
 	                              	      continue;
-                              	  }
+                              	  } 
 
                               	  var li = '<li style="background-image: url(/storage/images/' + param[x] + ')" class="other_images"></li>';
                                   ul = ul + li;
@@ -411,13 +417,31 @@ function displayThisProperty(param){
                 	 }
 
 
-           
-                   for (var i = 0; i < propStore[city].length; i++) {
-                        //console.log(propStore[city][i]);
-                        if (propStore[city][i]['identity'] == param) {
-                           usePropStore(propStore[city][i]);
-                        }
-                   }
+                   if (typeof proplistStore == 'object') {
+                         console.log('condition met!');
+                         console.log(proplistStore);
+                         for (var i = 0; i < proplistStore.length; i++) {
+                              if (proplistStore[i]['identity'] == param) {
+                                 console.log('condition passed!');
+                                 usePropStore(proplistStore[i]);
+                              }
+                              
+                              if (proplistStore.length == i + 1) {
+                                break;
+                              }
+                         } 
 
-                   document.getElementsByClassName('menuIcon')[0].style.display = 'none';
+                         document.getElementsByClassName('askQuestion')[0].style.display = 'none';
+
+                   }
+                      
+                   if (propStore != undefined) {
+                       for (var i = 0; i < propStore[city].length; i++) {
+                            if (propStore[city][i]['identity'] == param) {
+                               usePropStore(propStore[city][i]);
+                            }
+                       }  
+
+                       document.getElementsByClassName('menuIcon')[0].style.display = 'none';
+                   }
   }

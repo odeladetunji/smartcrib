@@ -587,11 +587,36 @@ h6 {
     height: 100%;
 }
 
+#editProperty {
+	position: fixed;
+	padding: 4px 20px;
+	color: white;
+	background-color: #383c6b;
+	z-index: 8;
+	right: 10px;
+	top: 200px;
+	border: none;
+	border-radius: 5px;
+}
+
+.editProperty:hover {
+	background-color: green;
+}
+
+#price_search {
+	margin-bottom: 10px;
+}
+
+
 .myProps {
-    width: 80%;
-    margin-left: 10%;
+    width: 86%;
+    margin-left: 7%;
     background-color: white;
 }
+
+/*.propRow {
+	background-color: white;
+}*/
 
 .myMails {
 	position: fixed;
@@ -604,6 +629,7 @@ h6 {
     display: none;
     height: 100%;
 }
+
 
 .eachMails {
 	width: 80%;
@@ -781,6 +807,155 @@ h6 {
     width: 95%;
     font-size: 14px;
 }
+
+.props {
+	flex-wrap: wrap;
+	height: 700px;
+	overflow: scroll;
+}
+
+.a_property {
+     width: 300px;
+     margin-left: 5px;
+     /*margin-top: 20px;*/
+     border: 1px solid white;
+     border-radius: 5px;
+     background-color: #eeeeee;
+     cursor: pointer;
+     max-height: 400px;
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+.a_property:hover {
+	border: 1px solid green;
+	color: green;
+}
+
+.a_property ul li {
+	list-style-type: none;
+	text-align: center;
+	padding: 5px;
+}
+
+.cover_pix {
+	width: 100%;
+	height: 200px;
+	background-position: center;
+	background-size: cover;
+}
+
+.propFilter {
+	background-color: white;
+	width: 86%;
+	margin-left: 7%;
+}
+
+.propFilter input{
+	margin-top: 10px;
+    padding: 8px;
+    background-color: #fafafa;
+    border: none;
+    border-radius: 5px;
+    color: default;
+    width: 90%;
+    margin-left: 5%;
+}
+
+.propFilter button {
+	padding: 4px 20px;
+	color: white;
+	background-color: green;
+	border-radius: 5px;
+	margin-top: 10px;
+	margin-left: 20px;
+	border: none;
+}
+
+.askQuestion {
+	position: absolute;
+	height: 100%;
+	z-index: 7;
+	top: 0;
+	width: 100%;
+	display: none;
+	background-color: rgba(0,0,0, .5);
+}
+
+.askQuestion div {
+	width: 30%;
+	background-color: white;
+	border-radius: 5px;
+	padding-top: 50px;
+	padding-bottom: 70px;
+	margin: auto;
+    margin-top: 200px;
+}
+
+.askQuestion button{
+    color: white;
+    background-color: #383c6b;
+    border: none;
+    padding: 4px 20px;
+    margin-bottom: 10px;
+    margin-left: 32%;
+    border-radius: 5px;
+}
+
+.askQuestion button:hover {
+	background-color: green;
+}
+
+.upDateProps {
+	display: none;
+	position: absolute;
+	top: 0px;
+	width: 100%;
+	background-color: rgba(0,0,0, .5);
+	height: 100%;
+}
+
+.editModal {
+	display: none;
+	position: absolute;
+	top: 0px;
+	width: 100%;
+	background-color: rgba(0,0,0, .5);
+	height: 100%;
+	z-index: 7;
+}
+
+.prop_param {
+	width: 50%;
+	background-color: white;
+	border-radius: 5px;
+	/*padding-top: 50px;*/
+	margin: auto;
+	padding-left: 10px;
+}
+
+.prop_param button {
+	color: white;
+    background-color: #383c6b;
+    border: none;
+    padding: 2px 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.prop_param button:hover {
+	background-color: maroon;
+}
+
+.prop_param p {
+	margin-bottom: 0px;
+}
+
+hr {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
 
 /*.contact_form button {
 	padding: 4px 20px;

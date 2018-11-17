@@ -15,6 +15,7 @@
         <script src="{{ asset('/js/jquery-3.2.1.min(first).js') }}" type='text/JavaScript'></script>
         <!--CSS---->
         <link href="{{ asset('CSS/account.css') }}" rel="stylesheet" type="text/css" >
+        <link href="{{ asset('CSS/details.css') }}" rel="stylesheet" type="text/css" >
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
 
 </head>
@@ -63,11 +64,11 @@
 	  	   	    			<p>List A Property</p>
 	  	   	    		</div>
                   <div class="widget" onclick="showListedProps()">
-                    <p>View Listed Properties</p>
+                    <p>View / Edit Properties</p>
                   </div>
-                  <div class="widget">
+                  <!-- <div class="widget">
                     <p>Edit Properties</p>
-                  </div>
+                  </div> -->
                   <div class="widget" onclick="showUpdateForm()">
                         <p>update company contact</p>
                   </div>
@@ -527,11 +528,22 @@
      <div class="loader">
            <div id="theLoader"></div>
      </div>
-
+     
      <div class="listedProps">
          <i class="fas fa-window-close closeForm" onclick="closeListed()"></i>
+         <!-- <button id="editProperty">Edit Property</button> -->
+         <div class="row propFilter">
+             <div class="col-md-6">
+                 <input type="text" placeholder="search by Local Government">
+                 <button>search!</button>
+             </div>
+             <div class="col-md-6">
+                 <input type="text" placeholder="search by price">
+                 <button id="price_search">search!</button>
+             </div>
+         </div>
          <div class="myProps">
-           
+             
          </div>
      </div>
 
@@ -594,10 +606,31 @@
        </div>
      </div>
 
-      <script src="{{ asset('js/localgovernments.js') }}" type="text/javascript"></script>
-       <script src="{{ asset('js/google-map-api.js') }}" type="text/javascript"></script>
+     <div class="editModal">
+         <i class="fas fa-window-close closeForm" onclick="quitForm('editModal')"></i>
+         <div class="prop_param">
+              
+         </div>
+     </div>
+
+     <div class="details">
+         @include('includes.details')
+     </div>
+
+     <div>
+         @include('includes.addFutures')
+     </div>
+
+    <div class="askQuestion">
+        <i class="fas fa-window-close closeForm" onclick="closeAskQuestion()"></i>
+        <div>
+            <button onclick="propertyDetails(this)" class="viewProperty" id="">View property</button><br>
+            <button onclick="editMe(this)" class="editMe" id="">Edit Property</button>
+        </div>
+    </div>
+
       <script type="text/JavaScript">
-            
+            var propStore;
             var type0 = "application/x-www-form-urlencoded";
             var type1 = 'application/json';
             var theToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
@@ -851,9 +884,7 @@
 
 
             function gotoMap(){
-                  // setTimeout(function(){
-                    document.getElementsByClassName('loader')[0].style.display = 'block';
-                  // }, 200);
+                 document.getElementsByClassName('loader')[0].style.display = 'block';
                  var form = document.getElementById('goingToMap');
                      document.getElementById('hiInput').value = 'routing from accountpage';
                      form.submit();
@@ -963,11 +994,32 @@
                           comp.style.display = 'none';
                       }
             }
+            
+            function closeAskQuestion(){
+                 //console.log('closeMails');
+                  var comp = document.getElementsByClassName('askQuestion')[0];
+                      if (comp.style.display == "none" || comp.style.display == '') {
+                          comp.style.display = 'block';
+                      }else{
+                          comp.style.display = 'none';
+                      }
+            }
 
+            function quitForm(param){
+                 //console.log('closeMails');
+                  var comp = document.getElementsByClassName(param)[0];
+                      if (comp.style.display == "none" || comp.style.display == '') {
+                          comp.style.display = 'block';
+                      }else{
+                          comp.style.display = 'none';
+                      }
+            }
+            /*
             /*
                Please Dont Delete the Code below
             */
 
+            var proplistStore;
 
             function showListedProps(){
                    document.getElementsByClassName('loader')[0].style.display = 'block';
@@ -976,8 +1028,8 @@
                    formData.append('email', document.getElementById('gottenValue').innerHTML);
                    var smartServer = smartCribServer('POST', '/accountContent', formData, type1, theToken);
                        smartServer.onreadystatechange = function(){
-                           if (this.readystate == 4 && this.status == 200) {
-                                var data = this.responseText;
+                           if (this.readyState == 4 && this.status == 200) {
+                                var data = JSON.parse(this.responseText);
                                 console.log(data);
                                 if (data.props.length == 0) {
                                    var eventModal = document.getElementsByClassName('eventModal')[0];
@@ -994,14 +1046,89 @@
                                 
                      
                                 if (data.props.length != 0) {
-                                   document.getElementsByClassName('listedProps')[0].style.display = 'block';
-                                }
+                                      function showHTML(){
+                                           var elem = document.getElementsByClassName('myProps')[0];
+                                               elem.innerHTML = '';
+                                               elem.innerHTML = finalElem;
+                                               // document.getElementsByClassName('ltnInterface')[0].style.display = 'none';
+                                               document.getElementsByClassName('loader')[0].style.display = 'none';
+                                               document.getElementsByClassName('listedProps')[0].style.display = 'block';           
+                                      }
 
-                                document.getElementsByClassName('loader')[0].style.display = 'none';
+                                      var nullValue = "vintage";
+                                      var finalElem = '';
+
+                                     function useData(param){
+                                           var coverpicture;
+                                           var category;
+                                           var price;
+                                           var bedroom;
+                                           var address;
+                                           var counter = 0;
+
+                                           for(x in param){
+                                               counter++;
+                                               //console.log(param);
+                                               if (x == 'coverpicture') {
+                                                     coverpicture = '<li>' + param[x] + '</li>';
+                                               }
+                                               if (x == 'category') { 
+                                                     category = '<li>' + param[x] + '</li>'; 
+                                               }
+                                               if (x == 'price') { 
+                                                     price = '<li>' + param[x] + '</li>'; 
+                                               }
+                                               if (x == 'bedroom') { 
+                                                     bedroom = '<li>' + param[x] + '</li>'; 
+                                               }
+                                               if (x == 'address') { 
+                                                     address = '<li>' + param[x] + '</li>';
+                                               }
+
+                                               if (Object.keys(param).length == counter) {
+                                                  var a_component = '<div class="a_property" onclick="askQuestion(' + param['identity'] + ')">' + '<div class="cover_pix" style="background-image: url(/storage/images/' + param['cover_picture'] + ')" );"></div>' + '<ul>' + category + price + address + '</ul></div>';
+                                                  finalElem = finalElem.concat(a_component);
+                                               }
+                                           }
+                                     }
+
+                                      proplistStore = data.props;  // this was used in secondPropertyDetails
+
+                                      for (var i = 0; i < data['props'].length; i++) {
+                                           useData(data['props'][i]);
+                                           console.log('Debug');
+                                           if (i + 1 == data['props'].length) {
+                                               setTimeout(function(){
+                                                   console.log('setTimer was called!');
+                                                   showHTML();
+                                               }, 40);
+                                           }
+                                      }
+
+                                      // document.getElementsByClassName('listedProps')[0].style.display = 'block';
+                              }
+
+                                // document.getElementsByClassName('loader')[0].style.display = 'none';
                            }
                        }
             }
 
+            function askQuestion(param){
+                document.getElementsByClassName('askQuestion')[0].style.display = 'block';
+                var elem = document.getElementsByClassName('viewProperty')[0];
+                    elem.setAttribute('id', param);
+                var secondElem = document.getElementsByClassName('editMe')[0];
+                    secondElem.setAttribute('id', param);
+                    // console.log(param);
+            }
+
+            function propertyDetails(param){
+                displayThisProperty(param.id);
+            }
+            
+            function editMe(param){
+                editThisProperty(param.id);
+            }
 
              function showProfile(){
                    document.getElementsByClassName('loader')[0].style.display = 'block';
@@ -1179,6 +1306,10 @@
  
 
       </script>
+      <script src="{{ asset('js/localgovernments.js') }}" type="text/javascript"></script>
+      <script src="{{ asset('js/google-map-api.js') }}" type="text/javascript"></script>
+      <script src="{{ asset('js/secondPropertyDetails.js') }}"></script>
+      <script src="{{ asset('js/editThisProperty.js') }}"></script>
       <script async defer
              src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4D1-koeikvwYczC2EpHU-mwLSzTH6UIE&callback=initialize">
       </script>

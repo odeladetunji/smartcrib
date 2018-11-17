@@ -1,0 +1,267 @@
+
+.details {
+     position: absolute;
+     top: 0;
+     display: none;
+     z-index: 8;
+}
+
+.propRow {
+	background-color: rgba(0,0,0, .5);
+}
+
+.pictures_section{
+	background-color: transparent;
+	width: 90%; 
+	margin-left: 5%;
+}
+
+.prop_facilities {
+	width: 90%;
+    cursor: pointer;
+    margin-left: 5%;
+    background-color: #eeeeee;
+}
+
+.facilities_with_props {
+	width: 90%;
+	margin-left: 5%;
+	cursor: pointer;
+	background-color: #eeeeee;
+}
+
+.propTitle_documents {
+	width: 90%;
+	margin-left: 0px;
+	cursor: pointer;
+	background-color: #eeeeee;
+	margin-left: 5%;
+    margin-top: 10px;
+}
+
+.midsection {
+    max-height: 900px;
+    overflow: scroll;
+    background-color: transparent;
+}
+
+.prop_facilities p {
+    color: purple;
+}
+
+.other_images {
+	width: 100%;
+	height: 250px;
+	background-size: cover;
+	background-position: center;
+	list-style-type: none;
+	display: inline-block;
+}
+
+
+.ul_of_props {
+	height: 600px;
+	max-height: 600px;
+	width: 100%;
+	overflow-y: scroll;
+	padding-left: 0px;
+}
+
+.props {
+	flex-wrap: wrap;
+	height: 700px;
+	overflow: scroll;
+}
+
+.a_property {
+     width: 300px;
+     margin-left: 5px;
+     /*margin-top: 20px;*/
+     border: 1px solid white;
+     border-radius: 5px;
+     background-color: #eeeeee;
+     cursor: pointer;
+     max-height: 400px;
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+.a_property:hover {
+	border: 1px solid green;
+	color: green;
+}
+
+.a_property ul li {
+	list-style-type: none;
+	text-align: center;
+	padding: 5px;
+}
+
+.cover_pix {
+	width: 100%;
+	height: 200px;
+	background-position: center;
+	background-size: cover;
+}
+
+.contact_agent {
+    background-color: transparent;
+    width: 100%;
+    margin-top: 70px;
+    margin-bottom: 70px;
+    color: white;
+    padding-left: 7%;
+}
+
+.contact_agent input{
+    background-color: white;
+    width: 90%;
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    border: none;
+}
+
+.contact_agent textarea {
+	background-color: white;
+    width: 90%;
+    padding: 10px;
+    height: 100px;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 5px;
+}
+
+.contact_agent button {
+	padding: 5px 30px;
+	border-radius: 5px;
+	border: 1px solid orange;
+	color: white;
+	background-color: purple;
+	cursor: pointer;
+	float: right;
+	margin-top: 10px;
+	margin-right: 40px;
+}
+
+.contact_agent button:hover {
+	background-color: lightgreen;
+	color: black;
+	border: 1px solid white;
+}
+
+
+.pixCont {
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 100% !important;
+}
+
+.closeDetails {
+	margin-bottom: 20px !important;
+}
+
+.propContainer {
+	flex-wrap: nowrap;
+	background-color: transparent;
+}
+
+.an_icon {
+	width: 10%;
+	background-color: transparent;
+}
+
+.an_icon i {
+    font-size: 30px;
+    padding-left: 8px;
+    color: #2a938e;
+}
+
+.actual_content {
+	width: 100%;
+	background-color: transparent;
+}
+
+.propContent {
+	padding-left: 20px;
+	color: purple;
+	background-color: transparent;
+	border-bottom: 1px solid #2a938e;
+	width: 95%;
+	padding-bottom: 10px;
+}
+
+.left_part {
+	width: 10%;
+    background-color: transparent;
+}
+
+.left_part i {
+	font-size: 25px;
+	background-color: transparent;
+	color: #2a938e;
+	padding-left: 8px;
+}
+
+.left_part p {
+	padding-left: 20px;
+	color: purple;
+	background-color: transparent;
+}
+
+.right_part {
+	width: 80%;
+	background-color: transparent;
+}
+
+.right_part p {
+	padding-left: 20px;
+	color: purple;
+	background-color: transparent;
+}
+
+.prop_facilities h6 {
+	padding-left: 10px;
+	padding-top: 10px;
+	text-align: center;
+	padding-bottom: 10px;
+	background-color: black;
+	color: white;
+}
+
+.last_heading {
+	padding-left: 10px;
+	padding-top: 10px;
+	text-align: center;
+	padding-bottom: 5px;
+	background-color: black;
+	color: white;
+}
+
+.titleDocument {
+	display: flex;
+	flex-wrap: nowrap;
+}
+
+.documentValue {
+	padding-top: 10px;
+    width: 90%;
+}
+
+.documentValue p{
+    color: purple;
+    padding-left: 20px;
+    border-bottom: 1px solid #2a938e;
+    border-right: 1px solid #2a938e;;
+    width: 95%;
+    padding-bottom: 10px;
+}
+
+.forIcon {
+    width: 10%;
+    float: right;
+    font-size: 30px;
+    padding-left: 10px;
+    color: #2a938e;
+}
